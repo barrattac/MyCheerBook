@@ -24,7 +24,7 @@ namespace DAL
         }
         public List<User> ReadUsers(string statement, SqlParameter[] parameters)
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=HelloMVC;Integrated Security=SSPI;"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(statement, connection))

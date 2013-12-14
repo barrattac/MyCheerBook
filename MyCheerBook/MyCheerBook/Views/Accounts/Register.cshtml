@@ -6,24 +6,24 @@
 
 <h2>Register</h2>
 
-<div class="error">
-    @ViewBag.ErrorMessage
-</div>
-        @FirstName, @LastName, @Email, @Password, @Active
-<div class="firstName">
-    First Name
-    @Html.TextBoxFor(model => model.FirstName)
-</div><div class="lastName">
-    Last Name
-    @Html.TextBoxFor(model => model.LastName)
-</div>
-<div class="emailBox">
-    Email Address
-    @Html.TextBoxFor(model => model.Email)
-</div>
-<div class="password">
-    Email Address
-    @Html.PasswordFor(model => model.Email)
-</div>
+@using (Html.BeginForm("Register", "Accounts", FormMethod.Post))
+{
 
-<input type="submit" value="Register" />
+    <div class="firstName">
+        First Name
+        @Html.TextBoxFor(model => model.FirstName)
+    </div><div class="lastName">
+        Last Name
+        @Html.TextBoxFor(model => model.LastName)
+    </div>
+    <div class="emailBox">
+        Email Address
+        @Html.TextBoxFor(model => model.Email)
+    </div>
+    <div class="password">
+        Password
+        @Html.PasswordFor(model => model.Password)
+    </div>
+
+    <input type="submit" value="Register" />
+}

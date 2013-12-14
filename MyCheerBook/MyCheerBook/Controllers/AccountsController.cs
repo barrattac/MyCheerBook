@@ -28,8 +28,7 @@ namespace MyCheerBook.Controllers
             {
                 log.CreateUser(user);
             }
-            return RedirectToAction("Index");  //with errors
+            return RedirectToAction("Index", "Home");
         }
-
 	}
 }
