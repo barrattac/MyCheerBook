@@ -42,6 +42,7 @@
     <Compile Include="AccountServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserFM.cs" />
+    <Compile Include="UserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

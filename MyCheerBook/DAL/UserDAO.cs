@@ -73,6 +73,17 @@ namespace DAL
         {
             return ReadUsers("GetAllActiveUsers", null);
         }
-
+        public User GetUserByEmail(string email)
+        {
+            List<User> users = GetAllUsers();
+            foreach (User user in users)
+            {
+                if (user.Email == email)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
     }
 }

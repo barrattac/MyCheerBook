@@ -12,8 +12,8 @@ namespace BLL
 
         public bool IsExistingUser(string email)
         {
-            UserDAO log = new UserDAO();
-            List<User> users = log.GetAllUsers();
+            UserDAO dao = new UserDAO();
+            List<User> users = dao.GetAllUsers();
             foreach (User user in users)
             {
                 if (user.Email == email)
@@ -36,6 +36,26 @@ namespace BLL
             user.Email = userFM.Email;
             user.Password = userFM.Password;
             return user;
+        }
+        public UserVM Login(UserFM userFM)
+        {
+            UserDAO dao = new UserDAO();
+            User user = dao.GetUserByEmail(userFM.Email);
+            if (user.Password == userFM.Password)
+            {
+                UserVM userVM = ConvertUser(user);
+                return userVM;
+            }
+            return null;
+        }
+        public UserVM ConvertUser(User user)
+        {
+            UserVM userVM = new UserVM();
+            userVM.ID = user.ID;
+            userVM.FirstName = user.FirstName;
+            userVM.LastName = user.LastName;
+            userVM.Email = user.Email;
+            return userVM;
         }
     }
 }
