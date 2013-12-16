@@ -1,23 +1,20 @@
 ﻿@if (Session["UserID"] != null)
 {
-//    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-        @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("" + Session["UserName"] + "", "Profile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink("" + Session["UserName"] + "", "Profile", "Account")
             </li>
             <li>
-                @Html.ActionLink("Log Out", "Logout", "Accounts", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                @Html.ActionLink("Log Out", "Logout", "Accounts")
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Accounts", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log In", "Login", "Accounts", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Accounts")</li>
+        <li>@Html.ActionLink("Log In", "Login", "Accounts")</li>
     </ul>
 }
