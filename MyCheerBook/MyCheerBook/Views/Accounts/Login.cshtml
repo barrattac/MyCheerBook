@@ -11,13 +11,17 @@
     <div class="error">
         @ViewBag.ErrorMessage
     </div>
-    <div class="emailBox">
-        Email Address
-        @Html.TextBoxFor(model => model.Email)
+    <div class="form-group">
+        <div class="col-md-2 control-label">Email Address</div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
     </div>
-    <div class="password">
-        Password
-        @Html.PasswordFor(model => model.Password)
+    <div class="form-group">
+        <div class="col-md-2 control-label">Password</div>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
     </div>
     <input type="submit" value="Login" />
 }

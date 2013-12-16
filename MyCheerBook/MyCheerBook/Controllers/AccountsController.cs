@@ -27,8 +27,15 @@ namespace MyCheerBook.Controllers
             if (!log.IsExistingUser(user.Email) && user.Email.Length > 5 && user.Password.Length > 7)
             {
                 log.CreateUser(user);
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            if (log.IsExistingUser(user.Email))
+            {
+                ViewBag.ErrorMessage = "Email Address already in use.";
+                return View();
+            }
+            ViewBag.ErrorMessage = "Password not valid.";
+            return View();
         }
         [HttpGet]
         public ActionResult Login()
@@ -45,6 +52,7 @@ namespace MyCheerBook.Controllers
                 if (user != null)
                 {
                     Session["UserID"] = user.ID;
+                    Session["UserName"] = user.FirstName + " " + user.LastName;
                     return RedirectToAction("Index", "Home");
                 }
             }

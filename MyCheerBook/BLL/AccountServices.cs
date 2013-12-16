@@ -9,7 +9,6 @@ namespace BLL
 {
     public class AccountServices
     {
-
         public bool IsExistingUser(string email)
         {
             UserDAO dao = new UserDAO();

@@ -4,25 +4,44 @@
     ViewBag.Title = "Register";
 }
 
+@ViewBag.ErrorMessage
+
 <h2>Register</h2>
 
 @using (Html.BeginForm("Register", "Accounts", FormMethod.Post))
 {
-
-    <div class="firstName">
-        First Name
-        @Html.TextBoxFor(model => model.FirstName)
-    </div><div class="lastName">
-        Last Name
-        @Html.TextBoxFor(model => model.LastName)
+    <div class="error">
+        @ViewBag.ErrorMessage
     </div>
-    <div class="emailBox">
-        Email Address
-        @Html.TextBoxFor(model => model.Email)
+    <div class="form-group">
+        <div class="col-md-2 control-label">First Name</div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
     </div>
-    <div class="password">
-        Password
-        @Html.PasswordFor(model => model.Password)
+    <div class="form-group">
+        <div class="col-md-2 control-label">Last Name</div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </div>
+    </div>
+        <div class="form-group">
+        <div class="col-md-2 control-label">Email Address</div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 control-label">Password</div>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 control-label">Confirm Password</div>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
     </div>
 
     <input type="submit" value="Register" />
