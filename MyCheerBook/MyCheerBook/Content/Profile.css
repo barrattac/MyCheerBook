@@ -1,0 +1,35 @@
+﻿body {
+    width: 1366px;
+    font-size: 20px;
+}
+
+.profile {
+    margin-top: 10px;
+}
+
+.left {
+    float: left;
+    width: 200px;
+    border: 1.5px solid black;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.profileImage {
+    height: 250px;
+    width: 180px;
+    background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQBmTVnd8vnp41QMYzUIwAJ5Idj4hWZp5Wf18GMI2vfCqFuZtoYFA");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+}
+
+.status {
+    position: absolute;
+    top: 110px;
+    left: 340px;
+    float: left;
+    height: 412px;
+}

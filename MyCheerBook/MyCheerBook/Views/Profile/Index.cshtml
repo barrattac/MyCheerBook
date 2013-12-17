@@ -1,7 +1,29 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = Session["UserName"];
+
 }
 
-<h2>Index</h2>
-
+<link href="~/Content/Profile.css" rel="stylesheet" />
+<div class="profile">
+    <div class="left">
+        <div class="profileImage"></div>
+        <div class="links">
+                <p>Team: @Html.ActionLink("Unknown", "AddTeam", "Profile")</p>
+                <p>Location: @Html.ActionLink("Unknown", "AddLocation", "Profile")</p>
+                <p>@Html.ActionLink("View Images", "Images", "Profile")</p>
+                <p>@Html.ActionLink("View Videos", "Videos", "Profile")</p>
+                <p>@Html.ActionLink("View Friends", "Friends", "Profile")</p>
+        </div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Change Password", "ChangePassword", "Profile")</li>
+            <li>@Html.ActionLink("Edit Profile", "Edit", "Profile")</li>
+            <li>@Html.ActionLink("Create Page", "CreatePage", "Profile")</li>
+        </ul>
+        <div class="status">
+            <p>News Feed</p>
+        </div>
+    </div>
+</div>
+<div class="container body-content"></div>
