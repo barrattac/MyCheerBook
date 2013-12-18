@@ -10,7 +10,7 @@ namespace BLL
     public class TeamServices
     {
 
-        public bool IsExistingTeam(string p)
+        public bool IsExistingTeam(string name)
         {
             throw new NotImplementedException();
         }
