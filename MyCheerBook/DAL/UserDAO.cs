@@ -85,5 +85,17 @@ namespace DAL
             }
             return null;
         }
+        public void UpdateUser(User user)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", user.ID),
+                new SqlParameter("@FirstName", user.FirstName),
+                new SqlParameter("@LastName", user.LastName),
+                new SqlParameter("@Email", user.Email),
+                new SqlParameter("@Password", user.Password)
+            };
+            Write("UpdateUser", parameters);
+        }
     }
 }

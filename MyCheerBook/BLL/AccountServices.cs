@@ -22,6 +22,7 @@ namespace BLL
             }
             return false;
         }
+            //Checks if it is an valid Email
         public bool ValidEmail(string email)
         {
             if (email.Length < 100)
@@ -71,6 +72,32 @@ namespace BLL
             userVM.LastName = user.LastName;
             userVM.Email = user.Email;
             return userVM;
+        }
+            //Checks Password Requirements
+        public bool ValidPassword(string pass)
+        {
+            if (pass != null && pass.Length > 7)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool ValidPasswords(PasswordFM pass)
+        {
+            UserDAO dao = new UserDAO();
+            if (pass.Email != null && IsExistingUser(pass.Email) && dao.GetUserByEmail(pass.Email).Password == pass.CurrentPass
+                && ValidPassword(pass.NewPass) && pass.NewPass == pass.ConfirmPass)
+            {
+                return true;
+            }
+            return false;
+        }
+        public void ChangePassword(PasswordFM pass)
+        {
+            UserDAO dao = new UserDAO();
+            User user = dao.GetUserByEmail(pass.Email);
+            user.Password = pass.NewPass;
+            dao.UpdateUser(user);
         }
     }
 }

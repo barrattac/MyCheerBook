@@ -26,7 +26,7 @@ namespace MyCheerBook.Controllers
             AccountServices log = new AccountServices();
             if (!log.IsExistingUser(user.Email) && log.ValidEmail(user.Email))
             {
-                if (user.Password != null && user.Password == user.ConfirmPassword && user.Password.Length > 7)
+                if (log.ValidPassword(user.Password) && user.Password == user.ConfirmPassword)
                 {
                     log.CreateUser(user);
                     return RedirectToAction("Index", "Home");
@@ -67,6 +67,23 @@ namespace MyCheerBook.Controllers
             Session["UserName"] = null;
             return RedirectToAction("Index", "Home");
 
+        }
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(PasswordFM pass)
+        {
+            AccountServices log = new AccountServices();
+            if (log.ValidPasswords(pass))
+            {
+                log.ChangePassword(pass);
+                return RedirectToAction("Index", "Profile");
+            }
+            ViewBag.ErrorMessage = "Your password was not changed.  Try again.";
+            return View();
         }
     }
 }
