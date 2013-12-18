@@ -44,6 +44,8 @@
     <Compile Include="PasswordFM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamFM.cs" />
+    <Compile Include="TeamServices.cs" />
+    <Compile Include="TeamVM.cs" />
     <Compile Include="UserFM.cs" />
     <Compile Include="UserVM.cs" />
   </ItemGroup>

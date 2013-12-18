@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
 
 namespace MyCheerBook.Controllers
 {
@@ -20,10 +21,16 @@ namespace MyCheerBook.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreatePage()
+        public ActionResult CreatePage(TeamFM team)
         {
+            TeamServices log = new TeamServices();
+            if (!log.IsExistingTeam(team.Email))
+            {
+                    log.CreateTeam(team);
+                    return RedirectToAction("Index", "Profile");
+            }
+            ViewBag.ErrorMessage = "Team already exist.";
             return View();
         }
-
-	}
+    }
 }
