@@ -15,7 +15,5 @@ namespace MyCheerBook.Controllers
         {
             return View();
         }
-
-
 	}
 }

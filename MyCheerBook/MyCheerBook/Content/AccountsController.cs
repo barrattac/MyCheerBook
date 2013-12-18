@@ -59,7 +59,7 @@ namespace MyCheerBook.Controllers
                 }
             }
             ViewBag.ErrorMessage = "Login Credentials Not Valid.";
-            return View();
+            return View(model);
         }
         public ActionResult Logout()
         {
