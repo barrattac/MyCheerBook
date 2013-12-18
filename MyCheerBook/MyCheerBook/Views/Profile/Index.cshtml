@@ -1,6 +1,5 @@
 ﻿@{
     ViewBag.Title = Session["UserName"];
-
 }
 
 <link href="~/Content/Profile.css" rel="stylesheet" />
@@ -17,7 +16,7 @@
     </div>
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Change Password", "ChangePassword", "Profile")</li>
+            <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts")</li>
             <li>@Html.ActionLink("Edit Profile", "Edit", "Profile")</li>
             <li>@Html.ActionLink("Create Page", "CreatePage", "Profile")</li>
         </ul>

@@ -10,39 +10,39 @@
 
 @using (Html.BeginForm("Register", "Accounts", FormMethod.Post))
 {
-    <div class="error">
-        @ViewBag.ErrorMessage
-    </div>
     <div class="form-group">
-        <div class="col-md-2 control-label">First Name</div>
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 control-label">Last Name</div>
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
-        <div class="form-group">
-        <div class="col-md-2 control-label">Email Address</div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 control-label">Password</div>
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 control-label">Confirm Password</div>
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-
-    <input type="submit" value="Register" />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
 }
