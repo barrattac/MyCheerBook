@@ -22,6 +22,22 @@ namespace BLL
             }
             return false;
         }
+        public bool ValidEmail(string email)
+        {
+            if (email.Length < 100)
+            {
+                try
+                {
+                    var addr = new System.Net.Mail.MailAddress(email);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
         public void CreateUser(UserFM userFM)
         {
             UserDAO dao = new UserDAO();

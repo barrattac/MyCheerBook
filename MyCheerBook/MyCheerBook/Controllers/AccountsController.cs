@@ -24,17 +24,19 @@ namespace MyCheerBook.Controllers
         public ActionResult Register(UserFM user)
         {
             AccountServices log = new AccountServices();
-            if (!log.IsExistingUser(user.Email) && user.Email.Length > 5 && user.Password.Length > 7)
+            if (!log.IsExistingUser(user.Email) && log.ValidEmail(user.Email))
             {
-                log.CreateUser(user);
-                return RedirectToAction("Index", "Home");
+                if (user.Password != null && user.Password == user.ConfirmPassword && user.Password.Length > 7)
+                {
+                    log.CreateUser(user);
+                    return RedirectToAction("Index", "Home");
+                }
+                ViewBag.ErrorMessage = "Passwords are not valid.  Password must be atleast 8 characters and match.";
             }
             if (log.IsExistingUser(user.Email))
             {
                 ViewBag.ErrorMessage = "Email Address already in use.";
-                return View();
             }
-            ViewBag.ErrorMessage = "Password not valid.";
             return View();
         }
         [HttpGet]
