@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL
 {
-    class Teams
+    public class Teams
     {
         public int ID { get; set; }
         public string TeamName { get; set; }

@@ -27,22 +27,25 @@ namespace DAL
                         command.Parameters.AddRange(parameters);
                     }
                     SqlDataReader data = command.ExecuteReader();
-                    List<Teams> users = new List<Teams>();
+                    List<Teams> teams = new List<Teams>();
                     while (data.Read())
                     {
-
-                        //Need to work on
-                        User user = new User();
-                        user.ID = Convert.ToInt32(data["ID"]);
-                        user.FirstName = data["FirstName"].ToString();
-                        user.LastName = data["LastName"].ToString();
-                        user.Email = data["Email"].ToString();
-                        user.Password = data["Password"].ToString();
-                        users.Add(user);
+                        Teams team = new Teams();
+                        team.ID = Convert.ToInt32(data["ID"]);
+                        team.TeamName = data["TeamName"].ToString();
+                        team.Coach = data["Coach"].ToString();
+                        team.Email = data["Email"].ToString();
+                        team.Phone = data["Phone"].ToString();
+                        team.Line1 = data["Line1"].ToString();
+                        team.Line2 = data["Line2"].ToString();
+                        team.City = data["City"].ToString();
+                        team.State = data["State"].ToString();
+                        team.Zip = Convert.ToInt32(data["Zip"]);
+                        teams.Add(team);
                     }
                     try
                     {
-                        return users;
+                        return teams;
                     }
                     catch (Exception)
                     {
@@ -51,6 +54,56 @@ namespace DAL
                 }
             }
         }
-
+        public List<Teams> GetAllTeams()
+        {
+            return ReadTeams("GetAllActiveTeams", null);
+        }
+        public Teams GetTeamByName(string teamName)
+        {
+            List<Teams> teams = GetAllTeams();
+            foreach (Teams team in teams)
+            {
+                if (team.TeamName == teamName)
+                {
+                    return team;
+                }
+            }
+            return null;
+        }
+        public void CreateTeam(Teams team)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", team.ID),
+                new SqlParameter("@TeamName", team.TeamName),
+                new SqlParameter("@Coach", team.Coach),
+                new SqlParameter("@Email", team.Email),
+                new SqlParameter("@Phone", team.Phone),
+                new SqlParameter("@Line1", team.Line1),
+                new SqlParameter("@Line2", team.Line2),
+                new SqlParameter("@City", team.City),
+                new SqlParameter("@State", team.State),
+                new SqlParameter("@Zip", team.Zip),
+                new SqlParameter("@Active", 1)
+            };
+            Write("CreateTeam", parameters);
+        }
+        public void UpdateTeam(Teams team)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", team.ID),
+                new SqlParameter("@TeamName", team.TeamName),
+                new SqlParameter("@Coach", team.Coach),
+                new SqlParameter("@Email", team.Email),
+                new SqlParameter("@Phone", team.Phone),
+                new SqlParameter("@Line1", team.Line1),
+                new SqlParameter("@Line2", team.Line2),
+                new SqlParameter("@City", team.City),
+                new SqlParameter("@State", team.State),
+                new SqlParameter("@Zip", team.Zip)
+            };
+            Write("UpdateTeam", parameters);
+        }
     }
 }

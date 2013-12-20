@@ -1,15 +1,13 @@
 ﻿@if (Session["UserID"] != null)
 {
-    {
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("" + Session["UserName"] + "", "Index", "Profile")
-            </li>
-            <li>
-                @Html.ActionLink("Log Out", "Logout", "Accounts")
-            </li>
-        </ul>
-    }
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("" + Session["UserName"] + "", "Index", "Profile")
+        </li>
+        <li>
+            @Html.ActionLink("Log Out", "Logout", "Accounts")
+        </li>
+    </ul>
 }
 else
 {

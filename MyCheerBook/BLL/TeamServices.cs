@@ -10,14 +10,34 @@ namespace BLL
     public class TeamServices
     {
 
-        public bool IsExistingTeam(string name)
+        public bool IsExistingTeam(string teamName)
         {
-            throw new NotImplementedException();
+            TeamDAO dao = new TeamDAO();
+            if (dao.GetTeamByName(teamName) == null)
+            {
+                return false;
+            }
+            return true;
         }
-
-        public void CreateTeam(TeamFM team)
+        public void CreateTeam(TeamFM teamFM)
         {
-            throw new NotImplementedException();
+            TeamDAO dao = new TeamDAO();
+            dao.CreateTeam(ConvertTeam(teamFM));
+        }
+        public Teams ConvertTeam(TeamFM teamFM)
+        {
+            Teams team = new Teams();
+            team.TeamName = teamFM.TeamName;
+            team.Coach = teamFM.Coach;
+            team.Email = teamFM.Email;
+            team.Phone = teamFM.Phone;
+            team.Line1 = teamFM.Line1;
+            team.Line2 = teamFM.Line2;
+            team.City = teamFM.City;
+            team.State = teamFM.State;
+            team.Zip = teamFM.Zip;
+            team.Web = teamFM.Web;
+            return team;
         }
     }
 }

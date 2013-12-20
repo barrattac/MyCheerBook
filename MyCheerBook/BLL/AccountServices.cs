@@ -12,16 +12,12 @@ namespace BLL
         public bool IsExistingUser(string email)
         {
             UserDAO dao = new UserDAO();
-            List<User> users = dao.GetAllUsers();
-            foreach (User user in users)
+            if (dao.GetUserByEmail(email) == null)
             {
-                if (user.Email == email)
-                {
-                    return true;
-                }
+                return false;
             }
-            return false;
-        }
+            return true;
+        }       
             //Checks if it is an valid Email
         public bool ValidEmail(string email)
         {
