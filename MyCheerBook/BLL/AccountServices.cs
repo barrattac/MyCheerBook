@@ -67,6 +67,7 @@ namespace BLL
             userVM.FirstName = user.FirstName;
             userVM.LastName = user.LastName;
             userVM.Email = user.Email;
+            userVM.ProfileImage = user.ProfileImage;
             return userVM;
         }
             //Checks Password Requirements

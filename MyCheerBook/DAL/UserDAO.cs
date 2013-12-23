@@ -96,7 +96,8 @@ namespace DAL
                 new SqlParameter("@LastName", user.LastName),
                 new SqlParameter("@Email", user.Email),
                 new SqlParameter("@Password", user.Password),
-                new SqlParameter("@ProfileImage", user.ProfileImage)
+                new SqlParameter("@ProfileImage", user.ProfileImage),
+                new SqlParameter("@Active", 1)
             };
             Write("UpdateUser", parameters);
         }
