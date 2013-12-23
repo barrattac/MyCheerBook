@@ -9,10 +9,12 @@ namespace MyCheerBook.Controllers
 {
     public class ProfileController : Controller
     {
-        //
-        // GET: /Profile/
         public ActionResult Index()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 	}
