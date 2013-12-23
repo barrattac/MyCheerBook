@@ -44,6 +44,7 @@ namespace DAL
                         user.LastName = data["LastName"].ToString();
                         user.Email = data["Email"].ToString();
                         user.Password = data["Password"].ToString();
+                        user.ProfileImage = Convert.ToInt32(data["ProfileImage"]);
                         users.Add(user);
                     }
                     try
@@ -65,6 +66,7 @@ namespace DAL
                 new SqlParameter("@LastName", user.LastName),
                 new SqlParameter("@Email", user.Email),
                 new SqlParameter("@Password", user.Password),
+                new SqlParameter("@ProfileImage", 1),
                 new SqlParameter("@Active", 1)
             };
             Write("CreateUser", parameters);
@@ -93,7 +95,8 @@ namespace DAL
                 new SqlParameter("@FirstName", user.FirstName),
                 new SqlParameter("@LastName", user.LastName),
                 new SqlParameter("@Email", user.Email),
-                new SqlParameter("@Password", user.Password)
+                new SqlParameter("@Password", user.Password),
+                new SqlParameter("@ProfileImage", user.ProfileImage)
             };
             Write("UpdateUser", parameters);
         }
