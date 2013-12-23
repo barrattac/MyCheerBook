@@ -17,7 +17,7 @@ namespace BLL
         public string Coach { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Team or Coach's Email Address")]
+        [Display(Name = "Team or Coach's Email")]
         public string Email { get; set; }
 
         [DataType(DataType.PhoneNumber)]

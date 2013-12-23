@@ -75,7 +75,7 @@ namespace DAL
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@TeamName", team.TeamName),
-                new SqlParameter("@Coach", team.Coach),
+                new SqlParameter("@CoachName", team.Coach),
                 new SqlParameter("@Email", team.Email),
                 new SqlParameter("@Phone", team.Phone),
                 new SqlParameter("@Line1", team.Line1),

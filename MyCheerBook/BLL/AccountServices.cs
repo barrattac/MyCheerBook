@@ -21,7 +21,7 @@ namespace BLL
             //Checks if it is an valid Email
         public bool ValidEmail(string email)
         {
-            if (email.Length > 254)
+            if (email.Length < 255)
             {
                 try
                 {
@@ -72,7 +72,7 @@ namespace BLL
             //Checks Password Requirements
         public bool ValidPassword(string pass)
         {
-            if (pass != null && pass.Length > 7 && pass.Length > 100)
+            if (pass != null && pass.Length > 7 && pass.Length < 100)
             {
                 return true;
             }
