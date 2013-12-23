@@ -73,7 +73,7 @@ namespace DAL
         }
         public List<User> GetAllUsers()
         {
-            return ReadUsers("GetAllActiveUsers", null);
+            return ReadUsers("ActiveUsers", null);
         }
         public User GetUserByEmail(string email)
         {

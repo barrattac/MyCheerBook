@@ -56,7 +56,7 @@ namespace DAL
         }
         public List<Teams> GetAllTeams()
         {
-            return ReadTeams("GetAllActiveTeams", null);
+            return ReadTeams("ActiveTeams", null);
         }
         public Teams GetTeamByName(string teamName)
         {
@@ -74,7 +74,6 @@ namespace DAL
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@ID", team.ID),
                 new SqlParameter("@TeamName", team.TeamName),
                 new SqlParameter("@Coach", team.Coach),
                 new SqlParameter("@Email", team.Email),
