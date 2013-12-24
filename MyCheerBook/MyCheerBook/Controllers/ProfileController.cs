@@ -26,5 +26,9 @@ namespace MyCheerBook.Controllers
             }
             return View(log.GetUserTeams(Convert.ToInt32(Session["UserID"])));
         }
+        public ActionResult TeamPage(TeamVM team)
+        {
+            return View(team);
+        }
     }
 }

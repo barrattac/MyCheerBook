@@ -87,6 +87,18 @@ namespace DAL
             }
             return null;
         }
+        public User GetUserByID(int ID)
+        {
+            List<User> users = GetAllUsers();
+            foreach (User user in users)
+            {
+                if (user.ID == ID)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
         public void UpdateUser(User user)
         {
             SqlParameter[] parameters = new SqlParameter[]

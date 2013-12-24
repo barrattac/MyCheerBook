@@ -96,5 +96,10 @@ namespace BLL
             user.Password = pass.NewPass;
             dao.UpdateUser(user);
         }
+        public UserVM GetUserByID(int userID)
+        {
+            UserDAO dao = new UserDAO();
+            return ConvertUser(dao.GetUserByID(userID));
+        }
     }
 }
