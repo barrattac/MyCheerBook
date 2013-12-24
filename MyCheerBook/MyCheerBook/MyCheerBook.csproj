@@ -211,6 +211,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
     <Content Include="Views\Team\CreatePage.cshtml" />
+    <Content Include="Views\Profile\Links.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

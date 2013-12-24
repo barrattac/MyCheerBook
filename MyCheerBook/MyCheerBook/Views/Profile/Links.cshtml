@@ -1,0 +1,15 @@
+﻿@model BLL.TeamsVM
+
+@using BLL
+
+@if (Model != null)
+{
+    foreach (TeamVM vm in Model.Teams)
+    {
+        <p>@Html.ActionLink(vm.TeamName, "TeamPage", new { vm })</p>
+    }
+}
+<p>@Html.ActionLink("Add Team", "CreatePage", "Team")</p>
+<p>@Html.ActionLink("View Images", "Images", "Profile")</p>
+<p>@Html.ActionLink("View Videos", "Videos", "Profile")</p>
+<p>@Html.ActionLink("View Friends", "Friends", "Profile")</p>

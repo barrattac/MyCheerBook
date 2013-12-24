@@ -33,7 +33,7 @@ namespace DAL
                         Teams team = new Teams();
                         team.ID = Convert.ToInt32(data["ID"]);
                         team.TeamName = data["TeamName"].ToString();
-                        team.Coach = data["Coach"].ToString();
+                        team.Coach = data["CoachName"].ToString();
                         team.Email = data["Email"].ToString();
                         team.Phone = data["Phone"].ToString();
                         team.Line1 = data["Line1"].ToString();
@@ -103,6 +103,23 @@ namespace DAL
                 new SqlParameter("@Zip", team.Zip)
             };
             Write("UpdateTeam", parameters);
+        }
+        public void AddUserTeam(int userID, int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@TeamID", teamID)
+            };
+            Write("AddUserTeam", parameters);
+        }
+        public List<Teams> GetUserTeams(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadTeams("GetUserTeams", parameters);
         }
     }
 }

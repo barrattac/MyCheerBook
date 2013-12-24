@@ -9,7 +9,6 @@ namespace BLL
 {
     public class TeamServices
     {
-
         public bool IsExistingTeam(string teamName)
         {
             TeamDAO dao = new TeamDAO();
@@ -19,10 +18,11 @@ namespace BLL
             }
             return true;
         }
-        public void CreateTeam(TeamFM teamFM)
+        public void CreateTeam(TeamFM teamFM, int UserID)
         {
             TeamDAO dao = new TeamDAO();
             dao.CreateTeam(ConvertTeam(teamFM));
+            dao.AddUserTeam(UserID, dao.GetTeamByName(teamFM.TeamName).ID); 
         }
         public Teams ConvertTeam(TeamFM teamFM)
         {
@@ -38,6 +38,34 @@ namespace BLL
             team.Zip = teamFM.Zip;
             team.Web = teamFM.Web;
             return team;
+        }
+        public TeamVM ConvertTeam(Teams team)
+        {
+            TeamVM vm = new TeamVM();
+            vm.ID = team.ID;
+            vm.TeamName = team.TeamName;
+            vm.Coach = team.Coach;
+            vm.Email = team.Email;
+            vm.Phone = team.Phone;
+            vm.Line1 = team.Line1;
+            vm.Line2 = team.Line2;
+            vm.City = team.City;
+            vm.State = team.State;
+            vm.Zip = team.Zip;
+            vm.Web = team.Web;
+            return vm;
+        }
+        public TeamsVM GetUserTeams(int userID)
+        {
+            TeamDAO dao = new TeamDAO();
+            TeamsVM list = new TeamsVM();
+            List<TeamVM> vm = new List<TeamVM>();
+            foreach (Teams team in dao.GetUserTeams(userID))
+            {
+                vm.Add(ConvertTeam(team));
+            }
+            list.Teams = vm;
+            return list;
         }
     }
 }

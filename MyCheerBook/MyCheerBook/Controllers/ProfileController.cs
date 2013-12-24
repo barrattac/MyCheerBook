@@ -17,5 +17,14 @@ namespace MyCheerBook.Controllers
             }
             return View();
         }
-	}
+        public ActionResult Links()
+        {
+            TeamServices log = new TeamServices();
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(log.GetUserTeams(Convert.ToInt32(Session["UserID"])));
+        }
+    }
 }

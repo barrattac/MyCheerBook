@@ -7,10 +7,7 @@
     <div class="left">
         <div class="profileImage"></div>
         <div class="links">
-                <p>@Html.ActionLink("Add Team", "AddTeam", "Profile")</p>
-                <p>@Html.ActionLink("View Images", "Images", "Profile")</p>
-                <p>@Html.ActionLink("View Videos", "Videos", "Profile")</p>
-                <p>@Html.ActionLink("View Friends", "Friends", "Profile")</p>
+            @Html.Action("Links")
         </div>
     </div>
     <div class="navbar-collapse collapse">

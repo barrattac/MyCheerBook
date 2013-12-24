@@ -26,7 +26,7 @@ namespace MyCheerBook.Controllers
             TeamServices log = new TeamServices();
             if (!log.IsExistingTeam(team.Email))
             {
-                    log.CreateTeam(team);
+                    log.CreateTeam(team, Convert.ToInt32(Session["UserID"]));
                     return RedirectToAction("Index", "Profile");
             }
             ViewBag.ErrorMessage = "Team already exist.";
