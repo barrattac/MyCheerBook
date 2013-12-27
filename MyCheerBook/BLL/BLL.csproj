@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices.cs" />
+    <Compile Include="ImagesVM.cs" />
     <Compile Include="PasswordFM.cs" />
     <Compile Include="ImageVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
