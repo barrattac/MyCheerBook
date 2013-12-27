@@ -213,6 +213,7 @@
     <Content Include="Views\Team\CreatePage.cshtml" />
     <Content Include="Views\Profile\Links.cshtml" />
     <Content Include="Views\Profile\TeamPage.cshtml" />
+    <Content Include="Views\Profile\ProfileImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

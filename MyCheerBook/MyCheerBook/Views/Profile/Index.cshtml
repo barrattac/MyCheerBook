@@ -5,7 +5,9 @@
 <link href="~/Content/Profile.css" rel="stylesheet" />
 <div class="profile">
     <div class="left">
-        <div class="profileImage"></div>
+        <div class="profileImage">
+            @Html.Action("ProfileImage")
+        </div>
         <div class="links">
             @Html.Action("Links")
         </div>
@@ -14,7 +16,7 @@
         <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts")</li>
             <li>@Html.ActionLink("Edit Profile", "Edit", "Profile")</li>
-            <li>@Html.ActionLink("Create Page", "CreatePage", "Team")</li>
+            <li>@Html.ActionLink("Create Team Page", "CreatePage", "Team")</li>
         </ul>
         <div class="status">
             <p>News Feed</p>

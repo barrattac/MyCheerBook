@@ -101,5 +101,17 @@ namespace BLL
             UserDAO dao = new UserDAO();
             return ConvertUser(dao.GetUserByID(userID));
         }
+        public ImageVM ConvertImage(Image image)
+        {
+            ImageVM vm = new ImageVM();
+            vm.ID = image.ID;
+            vm.Location = image.Location;
+            return vm;
+        }
+        public ImageVM GetProfileImage(UserVM vm)
+        {
+            ImageDAO dao = new ImageDAO();
+            return ConvertImage(dao.GetProfileImage(vm.ProfileImage));
+        }
     }
 }

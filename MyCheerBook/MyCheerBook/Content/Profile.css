@@ -3,6 +3,13 @@
     font-size: 20px;
 }
 
+.profileImage {
+    height: 250px;
+    width: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .profile {
     margin-top: 10px;
 }
@@ -13,14 +20,6 @@
     border: 1.5px solid black;
     margin-right: 10px;
     padding: 10px;
-}
-
-.profileImage {
-    height: 250px;
-    width: 180px;
-    background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQBmTVnd8vnp41QMYzUIwAJ5Idj4hWZp5Wf18GMI2vfCqFuZtoYFA");
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .navbar {

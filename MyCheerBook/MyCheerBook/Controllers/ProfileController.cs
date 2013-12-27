@@ -17,6 +17,15 @@ namespace MyCheerBook.Controllers
             }
             return View();
         }
+        public ActionResult ProfileImage()
+        {
+            AccountServices log = new AccountServices();
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(log.GetProfileImage((log.GetUserByID(Convert.ToInt32(Session["UserID"])))));
+        }
         public ActionResult Links()
         {
             TeamServices log = new TeamServices();
