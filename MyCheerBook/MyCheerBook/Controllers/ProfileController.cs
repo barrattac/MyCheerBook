@@ -39,5 +39,45 @@ namespace MyCheerBook.Controllers
         {
             return View(team);
         }
+
+        //Needs View
+        public ActionResult Images()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        //Needs View
+        public ActionResult Videos()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        //Needs View
+        public ActionResult Friends()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        //Needs View
+        public ActionResult StatusFeed()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
     }
 }
