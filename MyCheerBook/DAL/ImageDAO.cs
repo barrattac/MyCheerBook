@@ -61,5 +61,13 @@ namespace DAL
             }
             return GetAllImages()[0];
         }
+        public List<Image> GetUserImages(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadImages("GetUserImages", parameters);
+        }
     }
 }

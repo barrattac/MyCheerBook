@@ -113,5 +113,15 @@ namespace BLL
             ImageDAO dao = new ImageDAO();
             return ConvertImage(dao.GetProfileImage(vm.ProfileImage));
         }
+        public ImagesVM GetUserImages(int userID)
+        {
+            ImageDAO dao = new ImageDAO();
+            ImagesVM vm = new ImagesVM();
+            foreach (Image image in dao.GetUserImages(userID))
+            {
+                vm.Images.Add(ConvertImage(image));
+            }
+            return vm;
+        }
     }
 }

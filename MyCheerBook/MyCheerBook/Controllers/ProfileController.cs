@@ -43,11 +43,12 @@ namespace MyCheerBook.Controllers
         //Needs View
         public ActionResult Images()
         {
+            AccountServices log = new AccountServices();
             if (Session["UserID"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            return View(log.GetUserImages(Convert.ToInt32(Session["UserID"])));
         }
 
         //Needs View
