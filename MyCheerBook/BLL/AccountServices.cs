@@ -17,8 +17,8 @@ namespace BLL
                 return false;
             }
             return true;
-        }       
-            //Checks if it is an valid Email
+        }
+        //Checks if it is an valid Email
         public bool ValidEmail(string email)
         {
             if (email.Length < 255)
@@ -70,7 +70,7 @@ namespace BLL
             userVM.ProfileImage = user.ProfileImage;
             return userVM;
         }
-            //Checks Password Requirements
+        //Checks Password Requirements
         public bool ValidPassword(string pass)
         {
             if (pass != null && pass.Length > 7 && pass.Length < 100)

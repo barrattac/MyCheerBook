@@ -7,8 +7,12 @@
 }
 
 <h2>Images</h2>
+<div class="right">
+    @Html.Action("AddImage")
+</div>
 
-@if (Model == null)
+
+@if(Model.Images == null)
 {
     <p>You have not added any images yet.</p>
 }

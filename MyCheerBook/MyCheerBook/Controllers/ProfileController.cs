@@ -60,7 +60,6 @@ namespace MyCheerBook.Controllers
         [HttpPost]
         public ActionResult AddImage(ImageFM image)
         {
-            //Code for adding Image
             return RedirectToAction("Images");
         }
 
