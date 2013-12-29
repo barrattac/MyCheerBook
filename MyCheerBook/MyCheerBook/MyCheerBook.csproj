@@ -215,6 +215,7 @@
     <Content Include="Views\Profile\TeamPage.cshtml" />
     <Content Include="Views\Profile\ProfileImage.cshtml" />
     <Content Include="Views\Profile\Images.cshtml" />
+    <Content Include="Views\Profile\AddImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

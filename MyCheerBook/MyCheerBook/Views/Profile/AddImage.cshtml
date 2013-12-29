@@ -1,0 +1,15 @@
+﻿@model BLL.ImageFM
+
+@using (Html.BeginForm("AddImage", "Profile", FormMethod.Post))
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Image, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" class="btn btn-default" value="Upload Image" />
+        </div>
+    </div>
+}

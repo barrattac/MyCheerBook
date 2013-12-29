@@ -39,8 +39,6 @@ namespace MyCheerBook.Controllers
         {
             return View(team);
         }
-
-        //Needs View
         public ActionResult Images()
         {
             AccountServices log = new AccountServices();
@@ -50,6 +48,22 @@ namespace MyCheerBook.Controllers
             }
             return View(log.GetUserImages(Convert.ToInt32(Session["UserID"])));
         }
+        [HttpGet]
+        public ActionResult AddImage()
+        {
+            //if (Session["UserID"] == null)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddImage(ImageFM image)
+        {
+            //Code for adding Image
+            return RedirectToAction("Images");
+        }
+
 
         //Needs View
         public ActionResult Videos()
