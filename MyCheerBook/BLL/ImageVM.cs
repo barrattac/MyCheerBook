@@ -10,5 +10,6 @@ namespace BLL
     {
         public int ID { get; set; }
         public string Location { get; set; }
+        public string Title { get; set; }
     }
 }

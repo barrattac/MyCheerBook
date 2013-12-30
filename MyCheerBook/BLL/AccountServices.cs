@@ -106,6 +106,7 @@ namespace BLL
             ImageVM vm = new ImageVM();
             vm.ID = image.ID;
             vm.Location = image.Location;
+            vm.Title = image.Title;
             return vm;
         }
         public ImageVM GetProfileImage(UserVM vm)

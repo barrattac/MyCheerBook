@@ -9,8 +9,7 @@ namespace BLL
 {
     public class ImageFM
     {
-        [Required]
-        [Display(Name = "Add Image")]
-        public string Image { get; set; }
+        public string Location { get; set; }
+        public string Title { get; set; }
     }
 }

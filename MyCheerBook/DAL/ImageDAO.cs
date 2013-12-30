@@ -33,6 +33,7 @@ namespace DAL
                         Image image = new Image();
                         image.ID = Convert.ToInt32(data["ID"]);
                         image.Location = data["Location"].ToString();
+                        image.Title = data["Title"].ToString();
                         images.Add(image);
                     }
                     try
