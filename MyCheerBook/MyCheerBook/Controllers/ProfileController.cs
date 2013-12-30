@@ -51,15 +51,16 @@ namespace MyCheerBook.Controllers
         [HttpGet]
         public ActionResult AddImage()
         {
-            //if (Session["UserID"] == null)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         [HttpPost]
         public ActionResult AddImage(ImageFM image)
         {
+            //need code to add image
             return RedirectToAction("Images");
         }
 

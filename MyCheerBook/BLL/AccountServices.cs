@@ -118,10 +118,12 @@ namespace BLL
         {
             ImageDAO dao = new ImageDAO();
             ImagesVM vm = new ImagesVM();
+            List<ImageVM> images = new List<ImageVM>();
             foreach (Image image in dao.GetUserImages(userID))
             {
-                vm.Images.Add(ConvertImage(image));
+                images.Add(ConvertImage(image));
             }
+            vm.Images = images;
             return vm;
         }
     }

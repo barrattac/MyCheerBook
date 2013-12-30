@@ -5,7 +5,8 @@
 @using (Html.BeginForm("AddImage", "Profile", FormMethod.Post))
 {
     <form method="post" action="file-upload-1.htm" name="submit" enctype="multipart/form-data">
-        <input type="file" name="fileField"><br />
+        <input type="file" name="fileName"><br />
+        <input type="text" name="title" /><br/>
         <input type="submit" name="submit" value="Add Image">
     </form>
 }
