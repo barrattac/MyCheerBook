@@ -58,7 +58,7 @@ namespace MyCheerBook.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddImage(ImageFM image)
+        public ActionResult AddImage(HttpPostedFileBase file, ImageFM image)
         {
             //need code to add image
             return RedirectToAction("Images");
