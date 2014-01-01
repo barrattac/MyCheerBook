@@ -71,15 +71,15 @@ namespace MyCheerBook.Controllers
                     ViewBag.Upload = "Upload failed.  Wrong file type. File must be in GIF, JPG or PNG format.";
                     return RedirectToAction("Images");
                 }
-                image.Location = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
-                while (System.IO.File.Exists(image.Location))
+                image.Location = ("~/Uploads/Images/" + log.RngString() + ext);
+                while (System.IO.File.Exists(Server.MapPath(image.Location)))
                 {
-                    image.Location = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
+                    image.Location = ("~/Uploads/Images/" + log.RngString() + ext);
                 }
-                file.SaveAs(image.Location);
+                file.SaveAs(Server.MapPath(image.Location));
                 log.AddImage(Convert.ToInt32(Session["UserID"]), image);
             }
-            ViewBag.Upload = "Imaage Uploaded";
+            ViewBag.Upload = "Image Uploaded";
             return RedirectToAction("Images");
         }
 
