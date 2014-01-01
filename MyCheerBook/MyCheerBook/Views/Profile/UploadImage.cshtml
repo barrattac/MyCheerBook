@@ -1,9 +1,0 @@
-﻿<h4>Upload Image</h4>
-
-@ViewBag.ImageUpload
-
-@using (Html.BeginForm("UploadImage", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <input type="file" name="file"><br />
-    <input type="submit" value="Upload Image">
-}
