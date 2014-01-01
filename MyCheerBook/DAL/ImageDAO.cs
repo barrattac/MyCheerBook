@@ -70,5 +70,34 @@ namespace DAL
             };
             return ReadImages("GetUserImages", parameters);
         }
+        public void AddImage(Image image)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Location", image.Location),
+                new SqlParameter("@Title", image.Title)
+            };
+            Write("AddImage", parameters);
+        }
+        public Image GetImageByLocation(string location)
+        {
+            foreach(Image image in GetAllImages())
+            {
+                if(image.Location == location)
+                {
+                    return image;
+                }
+            }
+            return null;
+        }
+        public void CreateUserImage(int userID, int imageID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@ImageID", imageID)
+            };
+            Write("AddUserImage", parameters);
+        }
     }
 }

@@ -157,10 +157,18 @@ namespace BLL
             }
             return false;
         }
-
-        public void UploadImage(string path)
+        public void AddImage(int userID, ImageFM fm)
         {
-            throw new NotImplementedException();
+            ImageDAO dao = new ImageDAO();
+            dao.AddImage(ConvertImage(fm));
+            dao.CreateUserImage(userID, dao.GetImageByLocation(fm.Location).ID);
+        }
+        public Image ConvertImage(ImageFM fm)
+        {
+            Image image = new Image();
+            image.Location = fm.Location;
+            image.Title = fm.Title;
+            return image;
         }
     }
 }

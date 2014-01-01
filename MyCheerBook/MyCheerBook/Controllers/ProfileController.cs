@@ -47,6 +47,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            ImagesVM vm = log.GetUserImages(Convert.ToInt32(Session["UserID"]));
             return View(log.GetUserImages(Convert.ToInt32(Session["UserID"])));
         }
         [HttpGet]
@@ -70,13 +71,13 @@ namespace MyCheerBook.Controllers
                     ViewBag.Upload = "Upload failed.  Wrong file type. File must be in GIF, JPG or PNG format.";
                     return RedirectToAction("Images");
                 }
-                string path = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
-                while (System.IO.File.Exists(path))
+                image.Location = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
+                while (System.IO.File.Exists(image.Location))
                 {
-                    path = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
+                    image.Location = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
                 }
-                file.SaveAs(path);
-                log.UploadImage(path);
+                file.SaveAs(image.Location);
+                log.AddImage(Convert.ToInt32(Session["UserID"]), image);
             }
             ViewBag.Upload = "Imaage Uploaded";
             return RedirectToAction("Images");
