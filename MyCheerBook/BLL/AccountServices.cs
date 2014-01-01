@@ -126,5 +126,41 @@ namespace BLL
             vm.Images = images;
             return vm;
         }
+        //return a random string, possible 1,572,120,576 unquie strings
+        //used for producing rng fileName for uploads
+        public string RngString()
+        {
+            {
+                Random rng = new Random();
+                string rngString = "" + Convert.ToChar(rng.Next(97, 123));
+                for (int i = 0; i < 5; i++)
+                {
+                    int dec = rng.Next(2);
+                    switch (dec)
+                    {
+                        case 1: // number
+                            rngString = rngString + Convert.ToChar(rng.Next(48, 58));
+                            break;
+                        case 3:  // lower case
+                            rngString = rngString + Convert.ToChar(rng.Next(97, 123));
+                            break;
+                    }
+                }
+                return rngString;
+            }
+        }
+        public bool ValidImageExt(string ext)
+        {
+            if(ext == ".gif" | ext == ".jpg" | ext == ".png")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void UploadImage(string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

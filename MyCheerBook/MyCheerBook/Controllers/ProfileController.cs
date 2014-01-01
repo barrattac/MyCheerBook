@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL;
+using System.IO;
 
 namespace MyCheerBook.Controllers
 {
@@ -60,7 +61,24 @@ namespace MyCheerBook.Controllers
         [HttpPost]
         public ActionResult AddImage(HttpPostedFileBase file, ImageFM image)
         {
-            //need code to add image
+            AccountServices log = new AccountServices();
+            if (file != null && file.ContentLength > 0)
+            {
+                string ext = Path.GetExtension(file.FileName);
+                if (!log.ValidImageExt(ext))
+                {
+                    ViewBag.Upload = "Upload failed.  Wrong file type. File must be in GIF, JPG or PNG format.";
+                    return RedirectToAction("Images");
+                }
+                string path = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
+                while (System.IO.File.Exists(path))
+                {
+                    path = Path.Combine(Server.MapPath("~/App_Data/Uploads/Images"), (log.RngString() + ext));
+                }
+                file.SaveAs(path);
+                log.UploadImage(path);
+            }
+            ViewBag.Upload = "Imaage Uploaded";
             return RedirectToAction("Images");
         }
 
