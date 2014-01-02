@@ -3,6 +3,10 @@
     font-size: 20px;
 }
 
+.img-thumbnail{
+    margin: 5px;
+}
+
 .profileImage {
     height: 250px;
     width: 180px;

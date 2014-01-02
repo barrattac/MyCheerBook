@@ -18,12 +18,14 @@
 }
 else
 {
+    <link href="~/Content/Profile.css" rel="stylesheet" />
     <div>
         @for (int i = 0; i < Model.Images.Count(); i++)
         {
             <div class="img-thumbnail">
-                <img src="@Url.Content(Model.Images[i].Location)" /><br />
-                @Model.Images[i].Title
+                <img src="@Url.Content(Model.Images[i].Location)" height="220" width="150" hspace="5px" vspace="5px" /><br />
+                @Model.Images[i].Title<br />
+                @Html.ActionLink("Delete", "Delete", new { Model.Images[i].Location })
             </div>
         }
     </div>
