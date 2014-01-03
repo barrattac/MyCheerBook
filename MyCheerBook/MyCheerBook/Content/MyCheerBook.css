@@ -1,0 +1,47 @@
+﻿body {
+    margin: 10px;
+    padding: 0px;
+    width: 1340px;
+    height: 640px;
+    border:groove 3px #a34386; 
+    overflow: hidden;
+}
+
+.logo{
+    display: inline-block;
+    float: left;
+    height: 105px;
+    width: 105px;
+}
+
+.topNav{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    background-color: black;
+    color: #a34386;
+    height: 75px;
+    width: 1205px;
+    text-align: right;
+    font-size: 30px;
+}
+
+.body{
+    clear: both;
+    width: 1366px;
+    height: 495px;
+}
+
+.footer{
+    background-color: black;
+    width: 1330px;
+    height: 25px;
+    padding: 5px;
+    padding-top: 10px;
+    font-size: 15px;
+    color: #a34386;
+}
+
+.purple{
+    color: #a34386;
+}

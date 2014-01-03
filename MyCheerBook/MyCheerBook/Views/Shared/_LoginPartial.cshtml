@@ -1,18 +1,16 @@
 ﻿@if (Session["UserID"] != null)
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("" + Session["UserName"] + "", "Index", "Profile")
-        </li>
-        <li>
-            @Html.ActionLink("Log Out", "Logout", "Accounts")
-        </li>
-    </ul>
+    <p>
+        @Html.ActionLink("" + Session["UserName"] + "", "Index", "Profile", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Log Out", "Logout", "Accounts", new { }, new { @class = "purple" })
+    </p>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Accounts")</li>
-        <li>@Html.ActionLink("Log In", "Login", "Accounts")</li>
-    </ul>
+    <p>
+        @Html.ActionLink("Sign Up", "Register", "Accounts", new{}, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Log In", "Login", "Accounts", new{}, new { @class = "purple" })
+    </p>
 }
