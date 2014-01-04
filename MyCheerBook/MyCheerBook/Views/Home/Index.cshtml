@@ -2,28 +2,25 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="body scroll">
     <h1>MyCheerBook</h1>
-    <p class="lead">MyCheerBook is a free social networking site for Cheerleaders, Coaches, Event Organizers, and Fans.</p>
-    <p><a href="About" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
+    <div class="left">
         <h2>Cheerleaders</h2>
-        <p>
-            You can connect with squad members, and other cheerleaders.  You can shared pictures and videos.
-        </p>
-        <p><a class="btn btn-default" href="About">Learn more &raquo;</a></p>
+        <p>You can connect with squad members, and other cheerleaders.  You can shared pictures and videos.</p>
     </div>
-    <div class="col-md-4">
+    <div class="middle">
         <h2>Coaches</h2>
         <p>You can create pages for your team.  Post information about Team meetings, schedules, upcoming competitions.</p>
-        <p><a class="btn btn-default" href="About">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
+    <div class="right">
         <h2>Event Organizers</h2>
         <p>You can create pages for competitions.  Post information about registration date, competition dates, and so much more.</p>
-        <p><a class="btn btn-default" href="About">Learn more &raquo;</a></p>
     </div>
+
+    <h1>
+        @Html.ActionLink("More About", "About")
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Contact Info", "Contact")
+    </h1>
 </div>

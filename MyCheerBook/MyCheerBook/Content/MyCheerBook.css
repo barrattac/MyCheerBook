@@ -33,8 +33,7 @@
     width: 1316px;
     height: 480px;
     background-color: white;
-    overflow-y: scroll;
-    overflow-x: initial;
+    overflow: hidden;
 }
 
 .footer {
@@ -49,4 +48,47 @@
 
 .purple {
     color: #a34386;
+}
+
+.scroll{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+p{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.left{
+    float: left;
+    display: inline-block;
+    width: 31%;
+}
+
+.middle{
+    float: left;
+    display: inline-block;
+    width: 31%;
+    margin-left: 3%;
+}
+
+.right{
+    float: left;
+    display: inline-block;
+    width: 31%;
+    margin-left: 3%;
+}
+
+.pad{
+    padding: 25px;
 }
