@@ -9,7 +9,7 @@
 <body>
     <div class="logo">
         <a href=@Url.Action("Index", "Home" )>
-            <img class="logo" src=@Url.Content("/Resources/Logo.png")>
+            <img class="logo" src=@Url.Content("/Resources/Logo.gif")>
         </a>
     </div>
     <div class="topNav">
@@ -21,6 +21,5 @@
     <div class="footer">&copy; @DateTime.Now.Year - MyCheerBook</div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

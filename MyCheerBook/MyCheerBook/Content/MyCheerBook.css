@@ -31,8 +31,10 @@
 .body {
     clear: both;
     width: 1316px;
-    height: 471px;
+    height: 480px;
     background-color: white;
+    overflow-y: scroll;
+    overflow-x: initial;
 }
 
 .footer {
