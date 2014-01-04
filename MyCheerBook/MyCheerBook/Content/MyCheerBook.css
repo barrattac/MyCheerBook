@@ -1,47 +1,50 @@
 ﻿body {
-    margin: 10px;
+    border: 1px solid black;
+    margin: 25px;
     padding: 0px;
-    width: 1340px;
-    height: 640px;
-    border:groove 3px #a34386; 
+    width: 1316px;
+    height: 610px;
     overflow: hidden;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO_OQ3TD8SL8uz7Z3VDTwMxehEOJ05ZUWlSwuwVmti8rb-lzG2SA");
+    background-size: cover;
 }
 
-.logo{
+.logo {
     display: inline-block;
     float: left;
     height: 105px;
     width: 105px;
 }
 
-.topNav{
+.topNav {
     display: inline-block;
     float: left;
     padding: 15px;
     background-color: black;
     color: #a34386;
     height: 75px;
-    width: 1205px;
+    width: 1181px;
     text-align: right;
     font-size: 30px;
 }
 
-.body{
+.body {
     clear: both;
-    width: 1366px;
-    height: 495px;
+    width: 1316px;
+    height: 471px;
+    background-color: white;
 }
 
-.footer{
+.footer {
     background-color: black;
-    width: 1330px;
+    width: 1306px;
     height: 25px;
     padding: 5px;
     padding-top: 10px;
     font-size: 15px;
-    color: #a34386;
+    color: white;
 }
 
-.purple{
+.purple {
     color: #a34386;
 }

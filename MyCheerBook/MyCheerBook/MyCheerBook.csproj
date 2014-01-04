@@ -178,6 +178,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\Logo.gif" />
+    <Content Include="Resources\logo.png" />
+    <Content Include="Resources\ZebraStripes.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
