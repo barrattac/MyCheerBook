@@ -92,7 +92,7 @@ namespace DAL
         }
 
         //Add video to user's video
-        public void CreateUserImage(int userID, int videoID)
+        public void CreateUserVideo(int userID, int videoID)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
