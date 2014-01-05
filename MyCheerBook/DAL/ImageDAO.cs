@@ -9,11 +9,14 @@ namespace DAL
 {
     public class ImageDAO
     {
+        //Writes to database
         public void Write(string statement, SqlParameter[] parameters)
         {
             UserDAO userDao = new UserDAO();
             userDao.Write(statement, parameters);
         }
+
+        //Reads from database for teams
         public List<Image> ReadImages(string statement, SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))
@@ -47,10 +50,14 @@ namespace DAL
                 }
             }
         }
+
+        //Gets all images
         public List<Image> GetAllImages()
         {
             return ReadImages("GetImages", null);
         }
+
+        //Gets profile image
         public Image GetProfileImage(int profileImage)
         {
             foreach (Image image in GetAllImages())
@@ -62,6 +69,8 @@ namespace DAL
             }
             return GetAllImages()[0];
         }
+        
+        //Gets list of user's images
         public List<Image> GetUserImages(int userID)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -70,6 +79,8 @@ namespace DAL
             };
             return ReadImages("GetUserImages", parameters);
         }
+        
+        //Add image to database
         public void AddImage(Image image)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -79,6 +90,8 @@ namespace DAL
             };
             Write("AddImage", parameters);
         }
+        
+        //Gets Image by file path
         public Image GetImageByLocation(string location)
         {
             foreach(Image image in GetAllImages())
@@ -90,6 +103,8 @@ namespace DAL
             }
             return null;
         }
+        
+        //Add image to user's images
         public void CreateUserImage(int userID, int imageID)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -99,6 +114,8 @@ namespace DAL
             };
             Write("AddUserImage", parameters);
         }
+        
+        //Deletes image from user's images
         public void DeleteUserImage(int userID, int imageID)
         {
             SqlParameter[] parameters = new SqlParameter[]
