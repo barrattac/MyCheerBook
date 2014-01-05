@@ -1,0 +1,12 @@
+﻿@model BLL.VideoFM
+
+<h4>Upload Video</h4>
+
+@ViewBag.Upload
+
+@using (Html.BeginForm("AddVideo", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" accept="video/*" name="file"><br />
+    @Html.TextBoxFor(m => m.Title, new { @placeholder = "Video Title" })<br />
+    <input type="submit" name="submit" value="Add Video">
+}

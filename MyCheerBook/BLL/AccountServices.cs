@@ -231,5 +231,32 @@ namespace BLL
             vm.Title = video.Title;
             return vm;
         }
+
+        //Makes sure Uploaded Video is a valid video extention
+        public bool ValidVideoExt(string ext)
+        {
+            if (ext == ".mp4" | ext == ".webm" | ext == ".ogv")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //Add Video to database(Videos and userVideos)
+        public void AddVideo(int userID, VideoFM fm)
+        {
+            VideoDAO dao = new VideoDAO();
+            dao.AddVideo(ConvertVideo(fm));
+            dao.CreateUserVideo(userID, dao.GetVideoByLocation(fm.Location).ID);
+        }
+
+        //Converts From into a Video
+        public Video ConvertVideo(VideoFM fm)
+        {
+            Video video = new Video();
+            video.Location = fm.Location;
+            video.Title = fm.Title;
+            return video;
+        }
     }
 }

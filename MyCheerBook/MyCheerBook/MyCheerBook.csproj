@@ -218,6 +218,8 @@
     <Content Include="Views\Profile\ProfileImage.cshtml" />
     <Content Include="Views\Profile\Images.cshtml" />
     <Content Include="Views\Profile\AddImage.cshtml" />
+    <Content Include="Views\Profile\Videos.cshtml" />
+    <Content Include="Views\Profile\AddVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

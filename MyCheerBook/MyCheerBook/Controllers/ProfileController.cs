@@ -95,7 +95,7 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Images");
         }
 
-        //Needs View
+        //Video Page for User's Profile
         public ActionResult Videos()
         {
             AccountServices log = new AccountServices();
@@ -104,8 +104,43 @@ namespace MyCheerBook.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(log.GetUserVideos(Convert.ToInt32(Session["UserID"])));
-
         }
+
+        //Adds Video to User
+        [HttpGet]
+        public ActionResult AddVideo()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult AddVideo(HttpPostedFileBase file, VideoFM video)
+        {
+            AccountServices log = new AccountServices();
+            if (file != null && file.ContentLength > 0)
+            {
+                string ext = Path.GetExtension(file.FileName);
+                if (!log.ValidVideoExt(ext))
+                {
+                    ViewBag.Upload = "Upload failed.  Wrong file type. File must be in MP4, WebM, or Ogg format.";
+                    return RedirectToAction("Videos");
+                }
+                video.Location = ("Uploads/Videos/" + log.RngString() + ext);
+                while (System.IO.File.Exists(Server.MapPath("~/" + video.Location)))
+                {
+                    video.Location = ("Uploads/Videos/" + log.RngString() + ext);
+                }
+                file.SaveAs(Server.MapPath("~/" + video.Location));
+                log.AddVideo(Convert.ToInt32(Session["UserID"]), video);
+            }
+            ViewBag.Upload = "Video Uploaded";
+            return RedirectToAction("Videos");
+        }
+
+
 
         //Needs View
         public ActionResult Friends()

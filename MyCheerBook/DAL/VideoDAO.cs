@@ -66,5 +66,40 @@ namespace DAL
             };
             return ReadVideos("GetUserVideos", parameters);
         }
+
+        //Add video to database
+        public void AddVideo(Video video)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Location", video.Location),
+                new SqlParameter("@Title", video.Title)
+            };
+            Write("AddVideo", parameters);
+        }
+
+        //Gets Video by file path
+        public Video GetVideoByLocation(string location)
+        {
+            foreach (Video video in GetAllVideos())
+            {
+                if (video.Location == location)
+                {
+                    return video;
+                }
+            }
+            return null;
+        }
+
+        //Add video to user's video
+        public void CreateUserImage(int userID, int videoID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@VideoID", videoID)
+            };
+            Write("AddUserVideo", parameters);
+        }
     }
 }
