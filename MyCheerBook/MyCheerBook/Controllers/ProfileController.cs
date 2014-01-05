@@ -50,7 +50,6 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            ImagesVM vm = log.GetUserImages(Convert.ToInt32(Session["UserID"]));
             return View(log.GetUserImages(Convert.ToInt32(Session["UserID"])));
         }
 
@@ -96,15 +95,16 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Images");
         }
 
-
         //Needs View
         public ActionResult Videos()
         {
+            AccountServices log = new AccountServices();
             if (Session["UserID"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            return View(log.GetUserVideos(Convert.ToInt32(Session["UserID"])));
+
         }
 
         //Needs View

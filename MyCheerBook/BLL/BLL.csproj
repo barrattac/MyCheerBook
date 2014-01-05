@@ -52,6 +52,8 @@
     <Compile Include="TeamVM.cs" />
     <Compile Include="UserFM.cs" />
     <Compile Include="UserVM.cs" />
+    <Compile Include="VideosVM.cs" />
+    <Compile Include="VideoVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

@@ -16,7 +16,7 @@ namespace DAL
             userDao.Write(statement, parameters);
         }
 
-        //Reads from database for teams
+        //Reads from database for images
         public List<Image> ReadImages(string statement, SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))

@@ -46,6 +46,8 @@
     <Compile Include="Teams.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserDAO.cs" />
+    <Compile Include="Video.cs" />
+    <Compile Include="VideoDAO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

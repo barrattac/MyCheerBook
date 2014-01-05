@@ -192,7 +192,7 @@ namespace BLL
             dao.CreateUserImage(userID, dao.GetImageByLocation(fm.Location).ID);
         }
         
-        //Converts Image From into a Image
+        //Converts From into a Image
         public Image ConvertImage(ImageFM fm)
         {
             Image image = new Image();
@@ -206,6 +206,30 @@ namespace BLL
         {
             ImageDAO dao = new ImageDAO();
             dao.DeleteUserImage(userID, imageID);
+        }
+
+        //Gets Videos for User
+        public VideosVM GetUserVideos(int userID)
+        {
+            VideoDAO dao = new VideoDAO();
+            VideosVM vm = new VideosVM();
+            List<VideoVM> videos = new List<VideoVM>();
+            foreach (Video video in dao.GetUserVideos(userID))
+            {
+                videos.Add(ConvertVideo(video));
+            }
+            vm.Videos = videos;
+            return vm;
+        }
+
+        //Converts Video into View Model
+        public VideoVM ConvertVideo(Video video)
+        {
+            VideoVM vm = new VideoVM();
+            vm.ID = video.ID;
+            vm.Location = video.Location;
+            vm.Title = video.Title;
+            return vm;
         }
     }
 }
