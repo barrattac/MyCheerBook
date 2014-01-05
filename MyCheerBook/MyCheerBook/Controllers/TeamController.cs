@@ -9,12 +9,7 @@ namespace MyCheerBook.Controllers
 {
     public class TeamController : Controller
     {
-        //
-        // GET: /Team/
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //Creates a Team Page
         [HttpGet]
         public ActionResult CreatePage()
         {

@@ -10,6 +10,7 @@ namespace MyCheerBook.Controllers
 {
     public class ProfileController : Controller
     {
+        //User Profile Page
         public ActionResult Index()
         {
             if (Session["UserID"] == null)
@@ -18,6 +19,8 @@ namespace MyCheerBook.Controllers
             }
             return View();
         }
+
+        //Gets Profile Image for Profile
         public ActionResult ProfileImage()
         {
             AccountServices log = new AccountServices();
@@ -27,6 +30,8 @@ namespace MyCheerBook.Controllers
             }
             return PartialView(log.GetProfileImage((log.GetUserByID(Convert.ToInt32(Session["UserID"])))));
         }
+
+        //Puts links on left side of Profile
         public ActionResult Links()
         {
             TeamServices log = new TeamServices();
@@ -36,10 +41,8 @@ namespace MyCheerBook.Controllers
             }
             return PartialView(log.GetUserTeams(Convert.ToInt32(Session["UserID"])));
         }
-        public ActionResult TeamPage(TeamVM team)
-        {
-            return View(team);
-        }
+
+        //Image Page for User's Profile
         public ActionResult Images()
         {
             AccountServices log = new AccountServices();
@@ -50,6 +53,8 @@ namespace MyCheerBook.Controllers
             ImagesVM vm = log.GetUserImages(Convert.ToInt32(Session["UserID"]));
             return View(log.GetUserImages(Convert.ToInt32(Session["UserID"])));
         }
+
+        //Adds Image to User
         [HttpGet]
         public ActionResult AddImage()
         {
@@ -82,6 +87,8 @@ namespace MyCheerBook.Controllers
             ViewBag.Upload = "Image Uploaded";
             return RedirectToAction("Images");
         }
+
+        //Deletes Image from User's Images
         public ActionResult DeleteImage(int imageID)
         {
             AccountServices log = new AccountServices();
@@ -119,5 +126,12 @@ namespace MyCheerBook.Controllers
             }
             return View();
         }
+        
+        //Team Page
+        public ActionResult TeamPage(TeamVM team)
+        {
+            return View(team);
+        }
+
     }
 }

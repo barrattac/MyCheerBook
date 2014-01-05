@@ -9,12 +9,7 @@ namespace MyCheerBook.Controllers
 {
     public class AccountsController : Controller
     {
-        //
-        // GET: /Accounts/
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //registration Page
         [HttpGet]
         public ActionResult Register()
         {
@@ -39,6 +34,8 @@ namespace MyCheerBook.Controllers
             }
             return View();
         }
+        
+        //Login Page
         [HttpGet]
         public ActionResult Login()
         {
@@ -61,6 +58,8 @@ namespace MyCheerBook.Controllers
             ViewBag.ErrorMessage = "Login Credentials Not Valid.";
             return View();
         }
+
+        //Logout
         public ActionResult Logout()
         {
             Session["UserID"] = null;
@@ -68,6 +67,8 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
+        //Change Password
         [HttpGet]
         public ActionResult ChangePassword()
         {
