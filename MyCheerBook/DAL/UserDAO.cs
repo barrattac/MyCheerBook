@@ -9,6 +9,7 @@ namespace DAL
 {
     public class UserDAO
     {
+        //Writes to database
         public void Write(string statement, SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))
@@ -22,6 +23,8 @@ namespace DAL
                 }
             }
         }
+        
+        //Reads database users
         public List<User> ReadUsers(string statement, SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))
@@ -58,6 +61,8 @@ namespace DAL
                 }
             }
         }
+
+        //Add user to database
         public void CreateUser(User user)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -71,10 +76,14 @@ namespace DAL
             };
             Write("CreateUser", parameters);
         }
+        
+        //Get list of users
         public List<User> GetAllUsers()
         {
             return ReadUsers("ActiveUsers", null);
         }
+        
+        //Gets user by email
         public User GetUserByEmail(string email)
         {
             List<User> users = GetAllUsers();
@@ -87,6 +96,8 @@ namespace DAL
             }
             return null;
         }
+        
+        //Gets user by ID
         public User GetUserByID(int ID)
         {
             List<User> users = GetAllUsers();
@@ -99,6 +110,8 @@ namespace DAL
             }
             return null;
         }
+        
+        //Updates user's information
         public void UpdateUser(User user)
         {
             SqlParameter[] parameters = new SqlParameter[]
