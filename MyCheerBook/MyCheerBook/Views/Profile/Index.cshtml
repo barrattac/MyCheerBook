@@ -1,12 +1,10 @@
-﻿@using MyCheerBook.Controllers
-
-@{
+﻿@{
     ViewBag.Title = Session["UserName"];
 }
 
 <div>
     <div class="profileLeft">
-        <div class="profileImage">
+        <div class="imageBox">
             @Html.Action("ProfileImage")
         </div>
         <div class="leftNav scroll">
@@ -14,21 +12,26 @@
         </div>
     </div>
     <div class="profileRight scroll">
-
-        Some Content
+        <h4>News Feed</h4>
+        <p>Lorem ipsum magna lacinia nam eget, quisque tempor dolor curabitur taciti, accumsan sem lacus elementum.</p>
+        <p>Risus etiam duis odio nulla.</p>
+        <p>Eget nisl bibendum suscipit hendrerit vivamus lacinia sodales in, quisque suscipit eros arcu quam tristique etiam, himenaeos netus sapien praesent tempor sodales aliquam.</p>
+        <p>Leo molestie rhoncus torquent vel nisi sapien tincidunt cursus fermentum.</p>
+        <p>Fringilla non laoreet orci vulputate maecenas nisi conubia turpis habitant egestas himenaeos lectus.</p>
+        <p>Erat lorem gravida augue orci lectus mollis in, ligula quis venenatis aptent diam quis ad a, curabitur duis curabitur arcu dolor faucibus.</p>
+        <p>Tristique in fringilla hac nostra luctus convallis rhoncus dictum a iaculis praesent, donec condimentum vitae felis consequat et velit egestas tellus.</p>
+        <p>Phasellus leo varius taciti conubia fermentum suspendisse, rutrum inceptos fringilla vestibulum aptent, erat purus aliquet varius litora.</p>
+        <p>Inceptos dapibus lacus.</p>
+        <p>Curabitur sem etiam cursus purus condimentum, curabitur habitasse id risus scelerisque vehicula, risus arcu non placerat eleifend lectus pharetra malesuada aptent consequat netus condimentum cras.</p>
+        <p>Congue ante ipsum id congue tortor curabitur varius, dolor lobortis pretium consequat blandit eros varius, velit iaculis libero quisque ullamcorper eros.</p>
+        <p>Orci commodo pulvinar lobortis conubia nisi imperdiet ligula eu tempor malesuada lacus malesuada tincidunt.</p>
+        <p>Auctor lorem leo magna rhoncus venenatis feugiat facilisis porta, sollicitudin felis aliquam fermentum dolor et at, ornare nec mauris dolor malesuada nibh risus.</p>
+        <p>Vitae ut lacus nisi metus conubia mauris taciti sollicitudin eu sapien odio.</p>
+        <p>Donec eu orci mattis sollicitudin donec nisl interdum, varius nibh litora ac torquent placerat, curae dictumst massa ut rutrum integer.</p>
+        <p>Est tortor facilisis.</p>
+        <p>Vulputate arcu libero tincidunt nam nec interdum habitasse egestas pretium, himenaeos ut netus vitae lobortis senectus himenaeos.</p>
+        <p>Suspendisse faucibus dictum etiam orci iaculis quam odio tortor et.</p>
+        <p>Turpis sit lorem.</p>
+        <p>Convallis etiam fames.</p>
     </div>
-
-    @*<div class="profile">
-
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts")</li>
-                <li>@Html.ActionLink("Edit Profile", "Edit", "Profile")</li>
-                <li>@Html.ActionLink("Create Team Page", "CreatePage", "Team")</li>
-            </ul>
-            <div class="status">
-                <p>News Feed</p>
-            </div>
-        </div>
-    </div>*@
 </div>

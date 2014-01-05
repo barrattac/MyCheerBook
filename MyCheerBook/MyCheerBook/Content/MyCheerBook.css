@@ -102,9 +102,19 @@ p{
     height: 480px;
 }
 
-.profileImage {
+.imageBox{
     height: 210px;
     width: 210px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: black;
+}
+
+.image {
+    max-height: 210px;
+    max-width: 210px;
+    height: auto;
+    width: auto;
 }
 
 .leftNav{
