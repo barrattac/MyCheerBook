@@ -9,11 +9,14 @@ namespace DAL
 {
     public class TeamDAO
     {
+        //Writes to database
         public void Write(string statement, SqlParameter[] parameters)
         {
             UserDAO userDao = new UserDAO();
             userDao.Write(statement, parameters);
         }
+
+        //Reads database for teams
         public List<Teams> ReadTeams(string statement, SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))
@@ -54,10 +57,14 @@ namespace DAL
                 }
             }
         }
+
+        //Gets list of all teams
         public List<Teams> GetAllTeams()
         {
             return ReadTeams("ActiveTeams", null);
         }
+
+        //Gets team by team name
         public Teams GetTeamByName(string teamName)
         {
             List<Teams> teams = GetAllTeams();
@@ -70,6 +77,8 @@ namespace DAL
             }
             return null;
         }
+
+        //Add team to database
         public void CreateTeam(Teams team)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -87,6 +96,8 @@ namespace DAL
             };
             Write("CreateTeam", parameters);
         }
+
+        //Updates team information
         public void UpdateTeam(Teams team)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -104,6 +115,8 @@ namespace DAL
             };
             Write("UpdateTeam", parameters);
         }
+
+        //Add teams to user's teams
         public void AddUserTeam(int userID, int teamID)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -113,6 +126,8 @@ namespace DAL
             };
             Write("AddUserTeam", parameters);
         }
+
+        //Gets list of user's teams
         public List<Teams> GetUserTeams(int userID)
         {
             SqlParameter[] parameters = new SqlParameter[]
