@@ -57,7 +57,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            return PartialView();
         }
         [HttpPost]
         public ActionResult AddImage(HttpPostedFileBase file, ImageFM image)
@@ -71,16 +71,20 @@ namespace MyCheerBook.Controllers
                     ViewBag.Upload = "Upload failed.  Wrong file type. File must be in GIF, JPG or PNG format.";
                     return RedirectToAction("Images");
                 }
-                image.Location = ("~/Uploads/Images/" + log.RngString() + ext);
-                while (System.IO.File.Exists(Server.MapPath(image.Location)))
+                image.Location = ("Uploads/Images/" + log.RngString() + ext);
+                while (System.IO.File.Exists(Server.MapPath("~/" + image.Location)))
                 {
-                    image.Location = ("~/Uploads/Images/" + log.RngString() + ext);
+                    image.Location = ("Uploads/Images/" + log.RngString() + ext);
                 }
-                file.SaveAs(Server.MapPath(image.Location));
+                file.SaveAs(Server.MapPath("~/" + image.Location));
                 log.AddImage(Convert.ToInt32(Session["UserID"]), image);
             }
             ViewBag.Upload = "Image Uploaded";
             return RedirectToAction("Images");
+        }
+        public ActionResult DeleteImage(ImageVM image)
+        {
+            return View();
         }
 
 

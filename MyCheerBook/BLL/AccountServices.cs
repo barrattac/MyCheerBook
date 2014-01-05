@@ -126,22 +126,22 @@ namespace BLL
             vm.Images = images;
             return vm;
         }
-        //return a random string, possible 1,572,120,576 unquie strings
+        //return a random string, possible 15,721,205,760 unquie strings
         //used for producing rng fileName for uploads
         public string RngString()
         {
             {
                 Random rng = new Random();
-                string rngString = "" + Convert.ToChar(rng.Next(97, 123));
+                string rngString = "" + Convert.ToChar(rng.Next(97, 123)) + Convert.ToChar(rng.Next(48,58));
                 for (int i = 0; i < 5; i++)
                 {
                     int dec = rng.Next(2);
                     switch (dec)
                     {
-                        case 1: // number
+                        case 0: // number
                             rngString = rngString + Convert.ToChar(rng.Next(48, 58));
                             break;
-                        case 3:  // lower case
+                        case 1:  // lower case
                             rngString = rngString + Convert.ToChar(rng.Next(97, 123));
                             break;
                     }

@@ -6,27 +6,34 @@
     ViewBag.Title = "Images";
 }
 
-<h2>Images</h2>
-<div class="right">
+<div class="left" style="width: 79%">
+    <h2>Images</h2>
+
+    @if (Model.Images == null)
+    {
+        <p>You have not added any images yet.</p>
+    }
+    else
+    {
+        <div>
+            @for (int i = 0; i < Model.Images.Count(); i++ )
+            {
+                <div class="images">
+                    @if (Model.Images[i].Location[0].ToString() + Model.Images[i].Location[1].ToString() == "ht")
+                    {
+                        <img src=@Url.Content(Model.Images[i].Location) class="image" /><br />
+                    }
+                    @if (Model.Images[i].Location[0].ToString() != "h")
+                    {
+                        <img src=@Url.Content("~/" + Model.Images[i].Location) class="image" /><br />
+                    }
+                    @Model.Images[i].Title<br />
+                    @Html.ActionLink("Delete", "DeleteImage", new { Model.Images[i].Location }, new { @class = "red" })
+                </div>
+            }
+        </div>
+    }
+</div>
+<div class="right" style="position: absolute; width: 16%">
     @Html.Action("AddImage")
 </div>
-
-
-@if (Model.Images == null)
-{
-    <p>You have not added any images yet.</p>
-}
-else
-{
-    <link href="~/Content/Profile.css" rel="stylesheet" />
-    <div>
-        @for (int i = 0; i < Model.Images.Count(); i++)
-        {
-            <div class="img-thumbnail">
-                <img src="@Url.Content(Model.Images[i].Location)" height="220" width="150" hspace="5px" vspace="5px" /><br />
-                @Model.Images[i].Title<br />
-                @Html.ActionLink("Delete", "Delete", new { Model.Images[i].Location })
-            </div>
-        }
-    </div>
-}
