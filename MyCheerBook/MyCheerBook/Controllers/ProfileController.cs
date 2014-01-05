@@ -82,9 +82,11 @@ namespace MyCheerBook.Controllers
             ViewBag.Upload = "Image Uploaded";
             return RedirectToAction("Images");
         }
-        public ActionResult DeleteImage(ImageVM image)
+        public ActionResult DeleteImage(int imageID)
         {
-            return View();
+            AccountServices log = new AccountServices();
+            log.DeleteUserImage(Convert.ToInt32(Session["UserID"]), imageID);
+            return RedirectToAction("Images");
         }
 
 

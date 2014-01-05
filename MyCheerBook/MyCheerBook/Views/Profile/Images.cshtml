@@ -16,19 +16,19 @@
     else
     {
         <div>
-            @for (int i = 0; i < Model.Images.Count(); i++ )
+            @for (int i = 0; i < Model.Images.Count(); i++)
             {
                 <div class="images">
                     @if (Model.Images[i].Location[0].ToString() + Model.Images[i].Location[1].ToString() == "ht")
                     {
                         <img src=@Url.Content(Model.Images[i].Location) class="image" /><br />
                     }
-                    @if (Model.Images[i].Location[0].ToString() != "h")
+                    @if (Model.Images[i].Location[0].ToString() + Model.Images[i].Location[1].ToString() != "ht")
                     {
                         <img src=@Url.Content("~/" + Model.Images[i].Location) class="image" /><br />
                     }
                     @Model.Images[i].Title<br />
-                    @Html.ActionLink("Delete", "DeleteImage", new { Model.Images[i].Location }, new { @class = "red" })
+                    @Html.ActionLink("Delete", "DeleteImage", new { imageID = Model.Images[i].ID }, new { @class = "red" })
                 </div>
             }
         </div>

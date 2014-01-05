@@ -99,5 +99,14 @@ namespace DAL
             };
             Write("AddUserImage", parameters);
         }
+        public void DeleteUserImage(int userID, int imageID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@ImageID", imageID)
+            };
+            Write("DeleteUserImages", parameters);
+        }
     }
 }

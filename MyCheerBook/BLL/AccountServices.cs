@@ -170,5 +170,10 @@ namespace BLL
             image.Title = fm.Title;
             return image;
         }
+        public void DeleteUserImage(int userID, int imageID)
+        {
+            ImageDAO dao = new ImageDAO();
+            dao.DeleteUserImage(userID, imageID);
+        }
     }
 }
