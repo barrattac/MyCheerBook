@@ -9,6 +9,7 @@ namespace BLL
 {
     public class TeamServices
     {
+        //Checks to see if a team with that name already exist in database
         public bool IsExistingTeam(string teamName)
         {
             TeamDAO dao = new TeamDAO();
@@ -18,12 +19,16 @@ namespace BLL
             }
             return true;
         }
+
+        //Creates Team and adds to User's Teams
         public void CreateTeam(TeamFM teamFM, int UserID)
         {
             TeamDAO dao = new TeamDAO();
             dao.CreateTeam(ConvertTeam(teamFM));
             dao.AddUserTeam(UserID, dao.GetTeamByName(teamFM.TeamName).ID); 
         }
+
+        //Converts From into Team
         public Teams ConvertTeam(TeamFM teamFM)
         {
             Teams team = new Teams();
@@ -39,6 +44,8 @@ namespace BLL
             team.Web = teamFM.Web;
             return team;
         }
+
+        //Converts Team into View Model
         public TeamVM ConvertTeam(Teams team)
         {
             TeamVM vm = new TeamVM();
@@ -55,6 +62,8 @@ namespace BLL
             vm.Web = team.Web;
             return vm;
         }
+
+        //Gets list of user's teams
         public TeamsVM GetUserTeams(int userID)
         {
             TeamDAO dao = new TeamDAO();
