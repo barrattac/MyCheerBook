@@ -8,9 +8,10 @@
 }
 
 .profileImage {
-    height: 250px;
-    width: 180px;
-    background-size: contain;
+    max-height: 210px;
+    max-width: 210px;
+    background-color: purple;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 

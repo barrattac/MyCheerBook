@@ -25,7 +25,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(log.GetProfileImage((log.GetUserByID(Convert.ToInt32(Session["UserID"])))));
+            return PartialView(log.GetProfileImage((log.GetUserByID(Convert.ToInt32(Session["UserID"])))));
         }
         public ActionResult Links()
         {
@@ -34,7 +34,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(log.GetUserTeams(Convert.ToInt32(Session["UserID"])));
+            return PartialView(log.GetUserTeams(Convert.ToInt32(Session["UserID"])));
         }
         public ActionResult TeamPage(TeamVM team)
         {

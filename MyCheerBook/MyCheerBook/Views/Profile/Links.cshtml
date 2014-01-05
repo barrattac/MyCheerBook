@@ -2,14 +2,19 @@
 
 @using BLL
 
-@if (Model != null)
-{
-    foreach (TeamVM vm in Model.Teams)
+<ul>
+    @if (Model != null)
     {
-        <p>@Html.ActionLink(vm.TeamName, "TeamPage", vm)</p>
+        foreach (TeamVM vm in Model.Teams)
+        {
+            <li>@Html.ActionLink(vm.TeamName, "TeamPage", vm, new { @class = "purple" })</li>
+        }
     }
-}
-<p>@Html.ActionLink("Add Team", "CreatePage", "Team")</p>
-<p>@Html.ActionLink("View Images", "Images", "Profile")</p>
-<p>@Html.ActionLink("View Videos", "Videos", "Profile")</p>
-<p>@Html.ActionLink("View Friends", "Friends", "Profile")</p>
+    <li>@Html.ActionLink("Add Team", "CreatePage", "Team", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("View Images", "Images", "Profile", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("View Videos", "Videos", "Profile", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("View Friends", "Friends", "Profile", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("Edit Profile", "Edit", "Profile", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("Create Team Page", "CreatePage", "Team", new { }, new { @class = "purple" })</li>
+</ul>

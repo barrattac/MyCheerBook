@@ -1,26 +1,34 @@
-﻿@{
+﻿@using MyCheerBook.Controllers
+
+@{
     ViewBag.Title = Session["UserName"];
 }
 
-<link href="~/Content/Profile.css" rel="stylesheet" />
-<div class="profile">
-    <div class="left">
+<div>
+    <div class="profileLeft">
         <div class="profileImage">
             @Html.Action("ProfileImage")
         </div>
-        <div class="links">
+        <div class="leftNav scroll">
             @Html.Action("Links")
         </div>
     </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts")</li>
-            <li>@Html.ActionLink("Edit Profile", "Edit", "Profile")</li>
-            <li>@Html.ActionLink("Create Team Page", "CreatePage", "Team")</li>
-        </ul>
-        <div class="status">
-            <p>News Feed</p>
-        </div>
+    <div class="profileRight scroll">
+
+        Some Content
     </div>
+
+    @*<div class="profile">
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts")</li>
+                <li>@Html.ActionLink("Edit Profile", "Edit", "Profile")</li>
+                <li>@Html.ActionLink("Create Team Page", "CreatePage", "Team")</li>
+            </ul>
+            <div class="status">
+                <p>News Feed</p>
+            </div>
+        </div>
+    </div>*@
 </div>
-<div class="container body-content"></div>
