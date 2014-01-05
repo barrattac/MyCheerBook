@@ -9,6 +9,7 @@ namespace BLL
 {
     public class AccountServices
     {
+        //Checks Users to see if email is already in use
         public bool IsExistingUser(string email)
         {
             UserDAO dao = new UserDAO();
@@ -18,6 +19,7 @@ namespace BLL
             }
             return true;
         }
+        
         //Checks if it is an valid Email
         public bool ValidEmail(string email)
         {
@@ -35,11 +37,15 @@ namespace BLL
             }
             return false;
         }
+        
+        //Creates a User when Registrating
         public void CreateUser(UserFM userFM)
         {
             UserDAO dao = new UserDAO();
             dao.CreateUser(ConvertUser(userFM));
         }
+        
+        //Converts Registration From into a user
         public User ConvertUser(UserFM userFM)
         {
             User user = new User();
@@ -49,6 +55,8 @@ namespace BLL
             user.Password = userFM.Password;
             return user;
         }
+
+        //Logs User In
         public UserVM Login(UserFM userFM)
         {
             UserDAO dao = new UserDAO();
@@ -60,6 +68,8 @@ namespace BLL
             }
             return null;
         }
+        
+        //Converts User to a View Model
         public UserVM ConvertUser(User user)
         {
             UserVM userVM = new UserVM();
@@ -70,6 +80,7 @@ namespace BLL
             userVM.ProfileImage = user.ProfileImage;
             return userVM;
         }
+        
         //Checks Password Requirements
         public bool ValidPassword(string pass)
         {
@@ -79,6 +90,8 @@ namespace BLL
             }
             return false;
         }
+        
+        //Makes sure password and confirm match and that they meet requirements
         public bool ValidPasswords(PasswordFM pass)
         {
             UserDAO dao = new UserDAO();
@@ -89,6 +102,8 @@ namespace BLL
             }
             return false;
         }
+
+        //Changes User's Password
         public void ChangePassword(PasswordFM pass)
         {
             UserDAO dao = new UserDAO();
@@ -96,11 +111,15 @@ namespace BLL
             user.Password = pass.NewPass;
             dao.UpdateUser(user);
         }
+
+        //Returns a user when ID is input
         public UserVM GetUserByID(int userID)
         {
             UserDAO dao = new UserDAO();
             return ConvertUser(dao.GetUserByID(userID));
         }
+
+        //Converts Image to a View Model
         public ImageVM ConvertImage(Image image)
         {
             ImageVM vm = new ImageVM();
@@ -109,11 +128,15 @@ namespace BLL
             vm.Title = image.Title;
             return vm;
         }
+
+        //Gets View Model for User Profile Image
         public ImageVM GetProfileImage(UserVM vm)
         {
             ImageDAO dao = new ImageDAO();
             return ConvertImage(dao.GetProfileImage(vm.ProfileImage));
         }
+
+        //Gets Images for User
         public ImagesVM GetUserImages(int userID)
         {
             ImageDAO dao = new ImageDAO();
@@ -126,6 +149,7 @@ namespace BLL
             vm.Images = images;
             return vm;
         }
+
         //return a random string, possible 15,721,205,760 unquie strings
         //used for producing rng fileName for uploads
         public string RngString()
@@ -149,6 +173,8 @@ namespace BLL
                 return rngString;
             }
         }
+
+        //Makes sure Uploaded Image is a valid image extention
         public bool ValidImageExt(string ext)
         {
             if(ext == ".gif" | ext == ".jpg" | ext == ".png")
@@ -157,12 +183,16 @@ namespace BLL
             }
             return false;
         }
+
+        //Add Images to database(images and userImages)
         public void AddImage(int userID, ImageFM fm)
         {
             ImageDAO dao = new ImageDAO();
             dao.AddImage(ConvertImage(fm));
             dao.CreateUserImage(userID, dao.GetImageByLocation(fm.Location).ID);
         }
+        
+        //Converts Image From into a Image
         public Image ConvertImage(ImageFM fm)
         {
             Image image = new Image();
@@ -170,6 +200,8 @@ namespace BLL
             image.Title = fm.Title;
             return image;
         }
+
+        //Deletes Image from User
         public void DeleteUserImage(int userID, int imageID)
         {
             ImageDAO dao = new ImageDAO();
