@@ -101,5 +101,16 @@ namespace DAL
             };
             Write("AddUserVideo", parameters);
         }
+
+        //Deletes video from user's videos
+        public void DeleteUserVideo(int userID, int videoID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@VideoID", videoID)
+            };
+            Write("DeleteUserVideos", parameters);
+        }
     }
 }

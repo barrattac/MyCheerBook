@@ -140,6 +140,14 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Videos");
         }
 
+        //Deletes Video from User's Videos
+        public ActionResult DeleteVideo(int videoID)
+        {
+            AccountServices log = new AccountServices();
+            log.DeleteUserVideo(Convert.ToInt32(Session["UserID"]), videoID);
+            return RedirectToAction("Videos");
+        }
+
 
 
         //Needs View

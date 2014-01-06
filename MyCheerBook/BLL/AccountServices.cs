@@ -258,5 +258,13 @@ namespace BLL
             video.Title = fm.Title;
             return video;
         }
+
+        //Deletes Video from User
+        public void DeleteUserVideo(int userID, int videoID)
+        {
+            VideoDAO dao = new VideoDAO();
+            dao.DeleteUserVideo(userID, videoID);
+        }
+
     }
 }
