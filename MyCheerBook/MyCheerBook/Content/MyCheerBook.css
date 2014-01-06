@@ -68,6 +68,10 @@ h2{
     text-align: center;
 }
 
+h5{
+    text-align: center;
+}
+
 p{
     padding-left: 25px;
     padding-right: 25px;
@@ -126,6 +130,13 @@ p{
 }
 
 .image {
+    max-height: 210px;
+    max-width: 210px;
+    height: auto;
+    width: auto;
+}
+
+.video{
     max-height: 210px;
     max-width: 210px;
     height: auto;
