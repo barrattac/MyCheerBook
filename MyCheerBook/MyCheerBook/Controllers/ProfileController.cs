@@ -63,6 +63,7 @@ namespace MyCheerBook.Controllers
             }
             return PartialView();
         }
+        //Adds Image from File
         [HttpPost]
         public ActionResult AddImage(HttpPostedFileBase file, ImageFM image)
         {
@@ -72,7 +73,6 @@ namespace MyCheerBook.Controllers
                 string ext = Path.GetExtension(file.FileName);
                 if (!log.ValidImageExt(ext))
                 {
-                    ViewBag.Upload = "Upload failed.  Wrong file type. File must be in GIF, JPG or PNG format.";
                     return RedirectToAction("Images");
                 }
                 image.Location = ("Uploads/Images/" + log.RngString() + ext);
@@ -81,9 +81,12 @@ namespace MyCheerBook.Controllers
                     image.Location = ("Uploads/Images/" + log.RngString() + ext);
                 }
                 file.SaveAs(Server.MapPath("~/" + image.Location));
+            }
+            if(image.Location != null)
+            {
+                
                 log.AddImage(Convert.ToInt32(Session["UserID"]), image);
             }
-            ViewBag.Upload = "Image Uploaded";
             return RedirectToAction("Images");
         }
 
@@ -147,7 +150,6 @@ namespace MyCheerBook.Controllers
             log.DeleteUserVideo(Convert.ToInt32(Session["UserID"]), videoID);
             return RedirectToAction("Videos");
         }
-
 
 
         //Needs View

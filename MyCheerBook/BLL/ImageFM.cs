@@ -9,7 +9,11 @@ namespace BLL
 {
     public class ImageFM
     {
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "URL")]
         public string Location { get; set; }
+
+        [Display(Name = "Caption")]
         public string Title { get; set; }
     }
 }

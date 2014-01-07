@@ -10,3 +10,14 @@
     @Html.TextBoxFor(m => m.Title, new { @placeholder = "Video Title" })<br />
     <input type="submit" name="submit" value="Add Video">
 }
+
+@*<div>
+    <h4>Add Video By URL</h4>
+
+    @using (Html.BeginForm("AddVideo", "Profile", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.Location, new { @placeholder = "URL" })
+        @Html.TextBoxFor(m => m.Title, new { @placeholder = "Video Title" })
+        <input type="submit" name="submit" value="Add Video">
+    }
+</div>*@
