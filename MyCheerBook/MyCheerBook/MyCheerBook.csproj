@@ -177,6 +177,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\Body.jpg" />
+    <Content Include="Resources\DefaultImage.jpg" />
     <Content Include="Resources\Logo.gif" />
     <Content Include="Resources\ZebraStripes.jpg" />
     <Content Include="Scripts\bootstrap.js" />
