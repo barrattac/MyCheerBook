@@ -13,7 +13,12 @@
         </a>
     </div>
     <div class="topNav">
-        @Html.Partial("_LoginPartial")
+        <div style="float: right; display: inline-block;">
+            @Html.Action("Index", "Search")
+        </div>
+        <div style="float: right; display: inline-block;">
+            @Html.Partial("_LoginPartial")
+        </div>
     </div>
     <div class="body">
         @RenderBody()

@@ -161,6 +161,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,7 +211,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Accounts\Register.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
@@ -222,6 +222,7 @@
     <Content Include="Views\Profile\AddImage.cshtml" />
     <Content Include="Views\Profile\Videos.cshtml" />
     <Content Include="Views\Profile\AddVideo.cshtml" />
+    <Content Include="Views\Search\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

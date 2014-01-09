@@ -1,0 +1,9 @@
+﻿@using (Html.BeginForm("Search", "Search", FormMethod.Post))
+{
+    <div>
+        @Html.TextBox("word", "", new { @placeholder = "Search" })
+    </div>
+    <div>
+        <input type="submit" value="Search" />
+    </div>
+}
