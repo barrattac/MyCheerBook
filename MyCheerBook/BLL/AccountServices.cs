@@ -265,5 +265,11 @@ namespace BLL
             VideoDAO dao = new VideoDAO();
             dao.DeleteUserVideo(userID, videoID);
         }
+
+        public UserVM GetUserByEmail(string email)
+        {
+            UserDAO dao = new UserDAO();
+            return ConvertUser(dao.GetUserByEmail(email));
+        }
     }
 }

@@ -5,7 +5,7 @@
     width: 1316px;
     height: 610px;
     overflow: hidden;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO_OQ3TD8SL8uz7Z3VDTwMxehEOJ05ZUWlSwuwVmti8rb-lzG2SA");
+    background-image: url("/Resources/ZebraStripes.jpg");
     background-size: cover;
 }
 
@@ -32,8 +32,10 @@
     clear: both;
     height: 480px;
     width: 1316px;
-    background-color: white;
+    background-image: url("/Resources/Body.jpg");
+    background-size: cover;
     overflow: auto;
+    color: #FF7DBD;
 }
 
 .footer {
@@ -44,6 +46,7 @@
     padding-top: 10px;
     font-size: 15px;
     color: white;
+    text-align: right;
 }
 
 .purple {
@@ -52,6 +55,10 @@
 
 .red{
     color: red;
+}
+
+.pink{
+    color: #FF7DBD;
 }
 
 .scroll{

@@ -9,12 +9,7 @@ namespace MyCheerBook.Controllers
 {
     public class AccountsController : Controller
     {
-        //registration Page
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
+        //Registration Code
         [HttpPost]
         public ActionResult Register(UserFM user)
         {
@@ -24,15 +19,17 @@ namespace MyCheerBook.Controllers
                 if (log.ValidPassword(user.Password) && user.Password == user.ConfirmPassword)
                 {
                     log.CreateUser(user);
-                    return RedirectToAction("Index", "Home");
+                    Session["UserID"] = log.GetUserByEmail(user.Email).ID;
+                    Session["UserName"] = user.FirstName + " " + user.LastName;
+                    return RedirectToAction("Index", "Profile");
                 }
-                ViewBag.ErrorMessage = "Passwords are not valid.  Password must be atleast 8 characters and match.";
+                ViewBag.RegisterError = "Passwords are not valid.  Password must be atleast 8 characters and match.";
             }
             if (log.IsExistingUser(user.Email))
             {
-                ViewBag.ErrorMessage = "Email Address already in use.";
+                ViewBag.RegisterError = "Email Address already in use.";
             }
-            return View();
+            return View("Login");
         }
         
         //Login Page
@@ -55,7 +52,7 @@ namespace MyCheerBook.Controllers
                     return RedirectToAction("Index", "Profile");
                 }
             }
-            ViewBag.ErrorMessage = "Login Credentials Not Valid.";
+            ViewBag.LoginError = "Login Credentials Not Valid.";
             return View();
         }
 
@@ -84,6 +81,15 @@ namespace MyCheerBook.Controllers
                 return RedirectToAction("Index", "Profile");
             }
             ViewBag.ErrorMessage = "Your password was not changed.  Try again.";
+            return View();
+        }
+
+
+        //Needs Code
+        //Forgot Password
+        public ActionResult ForgotPass()
+        {
+            //Add code for requesting new password and email user
             return View();
         }
     }

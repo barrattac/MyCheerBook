@@ -9,8 +9,12 @@
 else
 {
     <p>
-        @Html.ActionLink("Sign Up", "Register", "Accounts", new { }, new { @class = "purple" })
+        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "purple" })
         &nbsp;&nbsp;&nbsp;&nbsp;
-        @Html.ActionLink("Log In", "Login", "Accounts", new { }, new { @class = "purple" })
+        @Html.ActionLink("About", "About", "Home", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Sign In", "Login", "Accounts", new { }, new { @class = "purple" })
     </p>
 }
