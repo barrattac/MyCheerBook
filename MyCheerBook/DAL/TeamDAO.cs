@@ -136,5 +136,15 @@ namespace DAL
             };
             return ReadTeams("GetUserTeams", parameters);
         }
+
+        //Search Teams
+        public List<Teams> SearchTeams(string word)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Word", word)
+            };
+            return ReadTeams("SearchTeams", parameters);
+        }
     }
 }

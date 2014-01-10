@@ -223,6 +223,7 @@
     <Content Include="Views\Profile\Videos.cshtml" />
     <Content Include="Views\Profile\AddVideo.cshtml" />
     <Content Include="Views\Search\_Search.cshtml" />
+    <Content Include="Views\Search\_Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

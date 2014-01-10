@@ -1,0 +1,30 @@
+﻿@model List<BLL.UserVM>
+
+<h2>Search Results</h2>
+
+@if (Model == null)
+{
+    <h3>Sorry but, there are no users that match that search.</h3>
+    <p>Try shorter names or more words to recieve more results.</p>
+}
+else
+{
+    <h3>@Model.Count users matched your search.</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th style="margin-left: 5px;">First Name</th>
+            </tr>
+        </thead>
+        <tbody style="height: 250px; overflow: scroll;">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="searchResultsImage"><img class="searchResultsImage" src=@Url.Content("~/" + Model[i].LastName) /></td>
+                    <td style="margin-left: 5px;">@Model[i].FirstName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
 
 namespace MyCheerBook.Controllers
 {
@@ -15,9 +16,10 @@ namespace MyCheerBook.Controllers
             return PartialView("_Search");
         }
         [HttpPost]
-        public ActionResult Search(string word)
+        public ActionResult SearchUsers(string word)
         {
-            return View();
+            SearchServices log = new SearchServices();
+            return View("_Results", log.SearchUsers(word));
         }
 	}
 }

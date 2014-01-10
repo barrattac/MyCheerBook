@@ -126,5 +126,15 @@ namespace DAL
             };
             Write("UpdateUser", parameters);
         }
+
+        //Search Users
+        public List<User> SearchUsers(string word)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Word", word)
+            };
+            return ReadUsers("SearchUsers", parameters);
+        }
     }
 }
