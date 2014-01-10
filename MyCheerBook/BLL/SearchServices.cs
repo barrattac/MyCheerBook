@@ -12,22 +12,36 @@ namespace BLL
         //Searchs for users
         public List<UserVM> SearchUsers(string words)
         {
-            List<string> wordList = SplitWords(words);
-            if (wordList != null)
+            UserDAO dao = new UserDAO();
+            List<string> wordList = SplitWords(words.ToLower());
+            List<UserVM> results = new List<UserVM>();
+            List<User> users = dao.GetAllUsers();
+            for (int i = 0; i < wordList.Count; i++)
             {
-                return SearchUsers(wordList);
+                for(int j = 0; j < users.Count; j++)
+                {
+                    if (Contains(wordList[i], users[j].FirstName) || Contains(wordList[i], users[j].LastName) || Contains(wordList[i], users[j].Email))
+                    {
+                        results.Add(ConvertForSearch(users[j]));
+                        users.RemoveAt(j);
+                        j--;
+                    }
+                }
             }
-            return null;
+            return results;
         }
-        //Searchs for team
-        public List<string> SearchTeams(string words)
+        //Determines if first string is in second string
+        private bool Contains(string part, string word)
         {
-            List<string> wordList = SplitWords(words);
-            if (wordList != null)
+            if (word.ToLower() == part.ToLower())
             {
-                return SearchTeams(wordList);
+                return true;
             }
-            return null;
+            if(word.Length > part.Length && word.ToLower().Contains(part.ToLower()))
+            {
+                return true;
+            }
+            return false;
         }
         //Takes a string of words and returns a list of words
         private List<string> SplitWords(string words)
@@ -55,58 +69,15 @@ namespace BLL
             }
             return wordList;
         }
-        //Search through users
-        private List<UserVM> SearchUsers(List<string> wordList)
-        {
-            UserDAO dao = new UserDAO();
-            List<List<User>> results = new List<List<User>>();
-            foreach (string word in wordList)
-            {
-                results.Add(dao.SearchUsers("%" + word + "%"));
-            }
-            return ConvertData(results);
-        }
-        //Search through teams
-        private List<string> SearchTeams(List<string> wordList)
-        {
-            TeamDAO dao = new TeamDAO();
-            List<List<Teams>> results = new List<List<Teams>>();
-            foreach (string word in wordList)
-            {
-                results.Add(dao.SearchTeams("%" + word + "%"));
-            }
-            return ConvertData(results);
-        }
-        //Converts Users into a UserVM(FirstName = first name and LastName = ProfileImageLocation)
-        private List<UserVM> ConvertData(List<List<User>> users)
+        //Converts Users into a UserVM(ID = ID, FirstName = first name, LastName = ProfileImageLocation)
+        private UserVM ConvertForSearch(User user)
         {
             ImageDAO dao = new ImageDAO();
-            List<UserVM> results = new List<UserVM>();
-            for(int i = 0; i < users.Count; i++)
-            {
-                for(int j = 0; j < users[i].Count; j++)
-                {
-                    UserVM vm = new UserVM();
-                    vm.ID = users[i][j].ID;
-                    vm.FirstName = users[i][j].FirstName;
-                    vm.LastName = dao.GetProfileImage(users[i][j].ProfileImage).Location;
-                    results.Add(vm);
-                }
-            }
-            return results;
-        }
-        //Converts Teams into a string list
-        private List<string> ConvertData(List<List<Teams>> teams)
-        {
-            List<string> results = new List<string>();
-            foreach (List<Teams> list in teams)
-            {
-                foreach (Teams team in list)
-                {
-                    results.Add(team.TeamName);
-                }
-            }
-            return results;
+            UserVM vm = new UserVM();
+            vm.ID = user.ID;
+            vm.FirstName = user.FirstName;
+            vm.LastName = dao.GetProfileImage(user.ProfileImage).Location;
+            return vm;
         }
     }
 }
