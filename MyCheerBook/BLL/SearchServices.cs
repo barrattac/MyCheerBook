@@ -87,6 +87,7 @@ namespace BLL
                 for(int j = 0; j < users[i].Count; j++)
                 {
                     UserVM vm = new UserVM();
+                    vm.ID = users[i][j].ID;
                     vm.FirstName = users[i][j].FirstName;
                     vm.LastName = dao.GetProfileImage(users[i][j].ProfileImage).Location;
                     results.Add(vm);
