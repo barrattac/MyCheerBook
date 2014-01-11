@@ -10,11 +10,16 @@
             <li>@Html.ActionLink(vm.TeamName, "TeamPage", vm, new { @class = "purple" })</li>
         }
     }
-    <li>@Html.ActionLink("Add Team", "CreatePage", "Team", new { }, new { @class = "purple" })</li>
+    @if (Session["UserID"] == Session["ProfileID"])
+    {
+        <li>@Html.ActionLink("Add Team", "CreatePage", "Team", new { }, new { @class = "purple" })</li>
+    }
     <li>@Html.ActionLink("View Images", "Images", "Profile", new { }, new { @class = "purple" })</li>
     <li>@Html.ActionLink("View Videos", "Videos", "Profile", new { }, new { @class = "purple" })</li>
     <li>@Html.ActionLink("View Friends", "Friends", "Profile", new { }, new { @class = "purple" })</li>
-    <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts", new { }, new { @class = "purple" })</li>
-    <li>@Html.ActionLink("Edit Profile", "Edit", "Profile", new { }, new { @class = "purple" })</li>
-    <li>@Html.ActionLink("Create Team Page", "CreatePage", "Team", new { }, new { @class = "purple" })</li>
+    @if (Session["UserID"] == Session["ProfileID"])
+    {
+        <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts", new { }, new { @class = "purple" })</li>
+        <li>@Html.ActionLink("Edit Profile", "Edit", "Profile", new { }, new { @class = "purple" })</li>
+    }
 </ul>

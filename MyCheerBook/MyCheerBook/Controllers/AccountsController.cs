@@ -21,6 +21,7 @@ namespace MyCheerBook.Controllers
                     log.CreateUser(user);
                     Session["UserID"] = log.GetUserByEmail(user.Email).ID;
                     Session["UserName"] = user.FirstName + " " + user.LastName;
+                    Session["ProfileID"] = Session["UserID"];
                     return RedirectToAction("Index", "Profile");
                 }
                 ViewBag.RegisterError = "Passwords are not valid.  Password must be atleast 8 characters and match.";
@@ -49,6 +50,7 @@ namespace MyCheerBook.Controllers
                 {
                     Session["UserID"] = user.ID;
                     Session["UserName"] = user.FirstName + " " + user.LastName;
+                    Session["ProfileID"] = Session["UserID"];
                     return RedirectToAction("Index", "Profile");
                 }
             }
@@ -61,8 +63,8 @@ namespace MyCheerBook.Controllers
         {
             Session["UserID"] = null;
             Session["UserName"] = null;
+            Session["ProfileID"] = null;
             return RedirectToAction("Index", "Home");
-
         }
 
         //Change Password
@@ -81,15 +83,6 @@ namespace MyCheerBook.Controllers
                 return RedirectToAction("Index", "Profile");
             }
             ViewBag.ErrorMessage = "Your password was not changed.  Try again.";
-            return View();
-        }
-
-
-        //Needs Code
-        //Forgot Password
-        public ActionResult ForgotPass()
-        {
-            //Add code for requesting new password and email user
             return View();
         }
     }

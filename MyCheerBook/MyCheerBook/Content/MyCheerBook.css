@@ -1,9 +1,9 @@
-﻿﻿body {
+﻿body {
     border: 1px solid black;
     margin: 25px;
     padding: 0px;
     width: 1316px;
-    height: 610px;
+    height: 625px;
     overflow: hidden;
     background-image: url("/Resources/ZebraStripes.jpg");
     background-size: cover;

@@ -28,12 +28,19 @@
                         <img src=@Url.Content("~/" + Model.Images[i].Location) class="image" /><br />
                     }
                     @Model.Images[i].Title<br />
-                    @Html.ActionLink("Delete", "DeleteImage", new { imageID = Model.Images[i].ID }, new { @class = "red" })
+                    @if (Session["UserID"] == Session["ProfileID"])
+                    {
+                        @Html.ActionLink("Delete", "DeleteImage", new { imageID = Model.Images[i].ID }, new { @class = "red" })
+                    }
                 </div>
             }
         </div>
     }
 </div>
-<div class="right" style="position: absolute; width: 16%">
-    @Html.Action("AddImage")
-</div>
+
+@if (Session["UserID"] == Session["ProfileID"])
+{
+    <div class="right" style="position: absolute; width: 16%">
+        @Html.Action("AddImage")
+    </div>
+}

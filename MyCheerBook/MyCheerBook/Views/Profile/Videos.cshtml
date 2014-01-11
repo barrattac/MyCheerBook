@@ -31,12 +31,20 @@
                         }
                         Your browser does not support the this video
                     </video>
-                    @Html.ActionLink("Delete", "DeleteVideo", new { videoID = Model.Videos[i].ID }, new { @class = "red" })
+                    @if (Session["UserID"] == Session["ProfileID"])
+                    {
+
+                        @Html.ActionLink("Delete", "DeleteVideo", new { videoID = Model.Videos[i].ID }, new { @class = "red" })
+                    }
                 </div>
             }
         </div>
     }
 </div>
-<div class="right" style="position: absolute; width: 16%">
-    @Html.Action("AddVideo")
-</div>
+
+@if (Session["UserID"] == Session["ProfileID"])
+{
+    <div class="right" style="position: absolute; width: 16%">
+        @Html.Action("AddVideo")
+    </div>
+}

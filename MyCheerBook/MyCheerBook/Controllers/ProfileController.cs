@@ -17,7 +17,19 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            Session["UserID"] = Session["ProfileID"];
             return View();
+        }
+
+        //Friend's Profile
+        public ActionResult FriendsPage(int ID)
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Session["ProfileID"] = ID;
+            return View("Index");
         }
 
         //Gets Profile Image for Profile
@@ -28,7 +40,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return PartialView(log.GetProfileImage((log.GetUserByID(Convert.ToInt32(Session["UserID"])))));
+            return PartialView(log.GetProfileImage((log.GetUserByID(Convert.ToInt32(Session["ProfileID"])))));
         }
 
         //Puts links on left side of Profile
@@ -39,7 +51,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return PartialView(log.GetUserTeams(Convert.ToInt32(Session["UserID"])));
+            return PartialView(log.GetUserTeams(Convert.ToInt32(Session["ProfileID"])));
         }
 
         //Image Page for User's Profile
@@ -50,7 +62,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(log.GetUserImages(Convert.ToInt32(Session["UserID"])));
+            return View(log.GetUserImages(Convert.ToInt32(Session["ProfileID"])));
         }
 
         //Adds Image to User
@@ -106,7 +118,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(log.GetUserVideos(Convert.ToInt32(Session["UserID"])));
+            return View(log.GetUserVideos(Convert.ToInt32(Session["ProfileID"])));
         }
 
         //Adds Video to User
@@ -150,7 +162,6 @@ namespace MyCheerBook.Controllers
             log.DeleteUserVideo(Convert.ToInt32(Session["UserID"]), videoID);
             return RedirectToAction("Videos");
         }
-
 
         //Needs View
         public ActionResult Friends()
