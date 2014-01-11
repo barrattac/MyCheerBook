@@ -17,7 +17,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Login", "Accounts");
             }
-            Session["UserID"] = Session["ProfileID"];
+            Session["ProfileID"] = Session["UserID"];
             return View();
         }
 
