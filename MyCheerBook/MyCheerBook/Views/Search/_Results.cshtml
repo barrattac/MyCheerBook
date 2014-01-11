@@ -4,8 +4,8 @@
 
 @if (Model == null)
 {
-    <h3>Sorry but, there are no users that match that search.</h3>
-    <p>Try shorter names or more words to recieve more results.</p>
+    <h3>Your friend has not started using MyCheerBook yet.</h3>
+    <p>Try shorter names, nicknames, or more names.</p>
 }
 else
 {
@@ -15,6 +15,7 @@ else
             <tr>
                 <th>Picture</th>
                 <th style="margin-left: 5px;">First Name</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@ else
                 <tr>
                     <td class="searchResultsImage"><img class="searchResultsImage" src=@Url.Content("~/" + Model[i].LastName) /></td>
                     <td style="margin-left: 5px;">@Model[i].FirstName</td>
+                    <td>@Html.ActionLink("Visit Friend", "Index", "Friend", new { Model[i].ID }, new { @class = "pink" })</td>
                 </tr>
             }
         </tbody>
