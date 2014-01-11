@@ -107,7 +107,7 @@ namespace BLL
         {
             MailFM mail = ToFrom(user);
             mail.Subject = "MyCheerBook";
-            mail.Body = "<p>" + user.FirstName + " " + user.LastName + ",</p><p>Someone tired to reset your password, but was unsessful.  If this was you try using</br>First Name: " + user.FirstName + "</br>Last Name: " + user.LastName + "</p><p>MyCheerBook Team</p>";
+            mail.Body = "<p>" + user.FirstName + " " + user.LastName + ",</p><p>Someone tired to reset your password, but was unsessful.  If this was you, try using</br>First Name: " + user.FirstName + "</br>Last Name: " + user.LastName + "</p><p>MyCheerBook Team</p>";
             SendMail(mail);
         }
     }
