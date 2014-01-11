@@ -32,6 +32,13 @@ namespace MyCheerBook.Controllers
             return View("Index");
         }
 
+        //Nav Bar for Friends Profile(add request and such)
+        public ActionResult TopProfileNav()
+        {
+            AccountServices log = new AccountServices();
+            return PartialView("_TopProfileNav");
+        }
+
         //Gets Profile Image for Profile
         public ActionResult ProfileImage()
         {

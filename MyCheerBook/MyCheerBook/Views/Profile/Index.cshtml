@@ -12,6 +12,10 @@
         </div>
     </div>
     <div class="profileRight scroll">
+        @if (Session["UserID"] != Session["ProfileID"])
+        {
+            @Html.Action("TopProfileNav");
+        }
         <h4>News Feed</h4>
         <p>Lorem ipsum magna lacinia nam eget, quisque tempor dolor curabitur taciti, accumsan sem lacus elementum.</p>
         <p>Risus etiam duis odio nulla.</p>
