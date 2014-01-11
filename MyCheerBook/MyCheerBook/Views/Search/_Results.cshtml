@@ -24,7 +24,7 @@ else
                 <tr>
                     <td class="searchResultsImage"><img class="searchResultsImage" src=@Url.Content("~/" + Model[i].LastName) /></td>
                     <td style="margin-left: 5px;">@Model[i].FirstName</td>
-                    <td>@Html.ActionLink("Visit Friend", "Index", "Friend", new { Model[i].ID }, new { @class = "pink" })</td>
+                    <td>@Html.ActionLink("Visit Friend", "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
                 </tr>
             }
         </tbody>

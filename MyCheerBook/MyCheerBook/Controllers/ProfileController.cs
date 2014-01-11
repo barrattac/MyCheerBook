@@ -15,7 +15,7 @@ namespace MyCheerBook.Controllers
         {
             if (Session["UserID"] == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Accounts");
             }
             Session["UserID"] = Session["ProfileID"];
             return View();
@@ -26,7 +26,7 @@ namespace MyCheerBook.Controllers
         {
             if (Session["UserID"] == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Accounts");
             }
             Session["ProfileID"] = ID;
             return View("Index");
