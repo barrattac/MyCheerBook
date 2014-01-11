@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +23,7 @@ namespace DAL
                 }
             }
         }
-        
+
         //Reads database users
         public List<User> ReadUsers(string statement, SqlParameter[] parameters)
         {
@@ -76,13 +76,13 @@ namespace DAL
             };
             Write("CreateUser", parameters);
         }
-        
+
         //Get list of users
         public List<User> GetAllUsers()
         {
             return ReadUsers("ActiveUsers", null);
         }
-        
+
         //Gets user by email
         public User GetUserByEmail(string email)
         {
@@ -96,7 +96,7 @@ namespace DAL
             }
             return null;
         }
-        
+
         //Gets user by ID
         public User GetUserByID(int ID)
         {
@@ -110,7 +110,7 @@ namespace DAL
             }
             return null;
         }
-        
+
         //Updates user's information
         public void UpdateUser(User user)
         {

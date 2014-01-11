@@ -43,6 +43,8 @@
     <Compile Include="AccountServices.cs" />
     <Compile Include="ImageFM.cs" />
     <Compile Include="ImagesVM.cs" />
+    <Compile Include="MailFM.cs" />
+    <Compile Include="MailServices.cs" />
     <Compile Include="PasswordFM.cs" />
     <Compile Include="ImageVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
