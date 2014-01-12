@@ -226,6 +226,8 @@
     <Content Include="Views\Search\_Search.cshtml" />
     <Content Include="Views\Search\_Results.cshtml" />
     <Content Include="Views\Mail\ForgotPass.cshtml" />
+    <Content Include="Views\Profile\_TopProfileNav.cshtml" />
+    <Content Include="Views\Profile\_FriendRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

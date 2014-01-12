@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices.cs" />
+    <Compile Include="FriendServices.cs" />
     <Compile Include="ImageFM.cs" />
     <Compile Include="ImagesVM.cs" />
     <Compile Include="MailFM.cs" />

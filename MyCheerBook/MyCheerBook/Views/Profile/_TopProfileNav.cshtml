@@ -1,0 +1,10 @@
+﻿@model BLL.UserVM
+
+<div style="text-align: center;">
+    <div style="display: inline-block; margin-left: 5px;">
+        <h1 class="pink">Welcome to @Model.FirstName  @Model.LastName's Profile.</h1>
+    </div>
+    <div style="display: inline-block; margin-left: 5px;">
+        @Html.Action("FriendRequest")
+    </div>
+</div>

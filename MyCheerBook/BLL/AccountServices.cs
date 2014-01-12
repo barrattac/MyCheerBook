@@ -266,6 +266,7 @@ namespace BLL
             dao.DeleteUserVideo(userID, videoID);
         }
 
+        //Gets a user by email
         public UserVM GetUserByEmail(string email)
         {
             UserDAO dao = new UserDAO();

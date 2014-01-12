@@ -36,7 +36,7 @@ namespace MyCheerBook.Controllers
         public ActionResult TopProfileNav()
         {
             AccountServices log = new AccountServices();
-            return PartialView("_TopProfileNav");
+            return PartialView("_TopProfileNav", log.GetUserByID(Convert.ToInt32(Session["ProfileID"])));
         }
 
         //Gets Profile Image for Profile
@@ -169,6 +169,15 @@ namespace MyCheerBook.Controllers
             log.DeleteUserVideo(Convert.ToInt32(Session["UserID"]), videoID);
             return RedirectToAction("Videos");
         }
+
+        //Friend or UnFriend
+        public ActionResult FriendRequest()
+        {
+            FriendServices log = new FriendServices();
+            return PartialView("_FriendRequest", log.Friends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+        }
+
+
 
         //Needs View
         public ActionResult Friends()

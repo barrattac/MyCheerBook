@@ -136,5 +136,15 @@ namespace DAL
             };
             return ReadUsers("SearchUsers", parameters);
         }
+
+        //Gets a list of friends for a user
+        public List<User> GetAllFriends(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadUsers("GetFriends", parameters);
+        }
     }
 }
