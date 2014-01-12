@@ -228,6 +228,5 @@ namespace MyCheerBook.Controllers
         {
             return View(team);
         }
-
     }
 }
