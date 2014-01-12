@@ -170,11 +170,27 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Videos");
         }
 
-        //Friend or UnFriend
+        //Button for adding or deleting friends
         public ActionResult FriendRequest()
         {
             FriendServices log = new FriendServices();
             return PartialView("_FriendRequest", log.Friends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+        }
+
+        //Unfriend someone and redirect to Profile
+        public ActionResult UnFriend()
+        {
+            FriendServices fs = new FriendServices();
+            fs.UnFriend(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+            return View("Index");
+        }
+
+        //Friend someone and redirect to Profile
+        public ActionResult SendRequest()
+        {
+            FriendServices fs = new FriendServices();
+            fs.MakeFriends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+            return View("Index");
         }
 
 

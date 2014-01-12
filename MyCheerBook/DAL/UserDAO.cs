@@ -146,5 +146,27 @@ namespace DAL
             };
             return ReadUsers("GetFriends", parameters);
         }
+
+        //UnFriends someone
+        public void UnFriend(int userID, int friendID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@FriendID", friendID)
+            };
+            Write("UnFriend", parameters);
+        }
+
+        //Friends someone
+        public void MakeFriends(int userID, int friendID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@FriendID", friendID)
+            };
+            Write("MakeFriends", parameters);
+        }
     }
 }

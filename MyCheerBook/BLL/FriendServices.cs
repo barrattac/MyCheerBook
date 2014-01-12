@@ -22,5 +22,19 @@ namespace BLL
             }
             return false;
         }
+
+        //UnFriends someone
+        public void UnFriend(int userID, int friendID)
+        {
+            UserDAO dao = new UserDAO();
+            dao.UnFriend(userID, friendID);
+        }
+
+        //Friends someone
+        public void MakeFriends(int userID, int friendID)
+        {
+            UserDAO dao = new UserDAO();
+            dao.MakeFriends(userID, friendID);
+        }
     }
 }
