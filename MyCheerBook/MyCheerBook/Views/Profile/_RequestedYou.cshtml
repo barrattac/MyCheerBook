@@ -2,13 +2,14 @@
 
 <h3>You are waiting on @Model.Count users to accept your friend request.</h3>
 <table>
-    <thead style="display: block; ">
+    <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
+            <th></th>
         </tr>
     </thead>
-    <tbody class="scroll" style="display: block; ">
+    <tbody>
         @for (int i = 0; i < Model.Count; i++)
         {
             <tr>

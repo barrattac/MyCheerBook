@@ -1,20 +1,21 @@
 ﻿@model List<BLL.UserVM>
 
 <h3>@Model.Count users are waiting on you to accept thier friend request.</h3>
-<table>
-    <thead style="display: block; ">
+<table style="margin-right: 15px;">
+    <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th class="rightPadding">First Name</th>
+            <th class="rightPadding">Last Name</th>
+            <th></th>
         </tr>
     </thead>
-    <tbody class="scroll" style="display: block; ">
+    <tbody>
         @for (int i = 0; i < Model.Count; i++)
         {
-            <tr>
-                <td>@Html.ActionLink(@Model[i].FirstName, "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
-                <td>@Html.ActionLink(@Model[i].LastName, "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
-                <td>@Html.ActionLink("Deny Friend Request", "CancelRequest", "Friends", new { Model[i].ID }, new { @class = "pink", onclick = "return confirm('Are you sure you want to cancel this friend request?');" })</td>
+        <tr>
+            <td class="rightPadding">@Html.ActionLink(@Model[i].FirstName, "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
+            <td class="rightPadding">@Html.ActionLink(@Model[i].LastName, "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
+            <td>@Html.ActionLink("Deny Friend Request", "CancelRequest", "Friends", new { Model[i].ID }, new { @class = "pink", onclick = "return confirm('Are you sure you want to cancel this friend request?');" })</td>
             </tr>
         }
     </tbody>

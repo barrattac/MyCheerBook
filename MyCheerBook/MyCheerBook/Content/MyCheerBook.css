@@ -9,6 +9,10 @@
     background-size: cover;
 }
 
+.rightPadding{
+    padding-right: 25px;
+}
+
 .logo {
     display: inline-block;
     float: left;
