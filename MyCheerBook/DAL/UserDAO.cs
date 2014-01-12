@@ -147,6 +147,26 @@ namespace DAL
             return ReadUsers("GetFriends", parameters);
         }
 
+        //Get a list of friends that requested you(request not accept or denied)
+        public List<User> GetFriendRequest(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadUsers("GetFriendRequest", parameters);
+        }
+
+        //Get a list of friends that you requested(request not accept or denied)
+        public List<User> FriendsYouRequested(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadUsers("FriendsYouRequested", parameters);
+        }
+
         //UnFriends someone
         public void UnFriend(int userID, int friendID)
         {
@@ -158,7 +178,18 @@ namespace DAL
             Write("UnFriend", parameters);
         }
 
-        //Friends someone
+        //Sends a friend request
+        public void SendRequest(int userID, int friendID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@FriendID", friendID)
+            };
+            Write("RequestFriends", parameters);
+        }
+
+        //Accept friend request
         public void MakeFriends(int userID, int friendID)
         {
             SqlParameter[] parameters = new SqlParameter[]

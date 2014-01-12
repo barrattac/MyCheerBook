@@ -9,11 +9,46 @@ namespace BLL
 {
     public class FriendServices
     {
+        //Determines friend status (0 not friends, 1 requested, 2 friends)
+        public int Friends(int userID, int friendID)
+        {
+            if (AlreadyFriends(userID, friendID))
+            {
+                return 2;
+            }
+            if (Requested(userID, friendID))
+            {
+                return 1;
+            }
+            return 0;
+        }
+
         //Determines if two IDs are Friends
-        public bool Friends(int userID, int friendID)
+        public bool AlreadyFriends(int userID, int friendID)
         {
             UserDAO dao = new UserDAO();
             foreach (User user in dao.GetAllFriends(userID))
+            {
+                if (user.ID == friendID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //Determines if friend request was already sent
+        public bool Requested(int userID, int friendID)
+        {
+            UserDAO dao = new UserDAO();
+            foreach (User user in dao.GetFriendRequest(userID))
+            {
+                if (user.ID == friendID)
+                {
+                    return true;
+                }
+            }
+            foreach (User user in dao.FriendsYouRequested(userID))
             {
                 if (user.ID == friendID)
                 {
@@ -30,11 +65,11 @@ namespace BLL
             dao.UnFriend(userID, friendID);
         }
 
-        //Friends someone
-        public void MakeFriends(int userID, int friendID)
+        //Sends a friend request someone
+        public void SendRequest(int userID, int friendID)
         {
             UserDAO dao = new UserDAO();
-            dao.MakeFriends(userID, friendID);
+            dao.SendRequest(userID, friendID);
         }
     }
 }

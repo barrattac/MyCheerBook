@@ -185,15 +185,23 @@ namespace MyCheerBook.Controllers
             return View("Index");
         }
 
-        //Friend someone and redirect to Profile
+        //Request Friend and redirect to Profile
         public ActionResult SendRequest()
         {
             FriendServices fs = new FriendServices();
-            fs.MakeFriends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+            fs.SendRequest(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
             return View("Index");
         }
 
+        //Cancel Friend Request
+        public ActionResult CancelRequest()
+        {
+            FriendServices fs = new FriendServices();
+            fs.UnFriend(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+            return View("Index");
+        }
 
+        
 
         //Needs View
         public ActionResult Friends()

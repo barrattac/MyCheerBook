@@ -1,10 +1,14 @@
-﻿@model bool
+﻿@model int
 
-@if (Model)
+@if (Model == 2)
 {
     @Html.ActionLink("Click to UnFriend", "UnFriend", new { }, new { @class = "pink", onclick = "return confirm('Are you sure you wish to unfriend them?');" })
 }
-else
+else if(Model == 0)
 {
     @Html.ActionLink("Send Friend Request", "SendRequest", new { }, new { @class = "pink", onclick = "return confirm('Are you sure you to send a friend request them?');" })
+}
+else
+{
+    @Html.ActionLink("Cancel Friend Request", "CancelRequest", new { }, new { @class = "pink", onclick = "return confirm('Are you sure you want to cancel this friend request?');" })
 }
