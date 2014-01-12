@@ -174,9 +174,34 @@ namespace MyCheerBook.Controllers
         public ActionResult FriendRequest()
         {
             FriendServices log = new FriendServices();
-            return PartialView("_FriendRequest", log.Friends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+            if (Session["UserID"] != Session["ProfileID"])
+            {
+                return PartialView("_FriendRequest", log.Friends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+            }
+            return PartialView("_FriendRequest", log.PendingRequest(Convert.ToInt32(Session["UserID"])));
         }
 
+        //Link to page for viewing friend request
+        public ActionResult ViewPendingRequest()
+        {
+            return View("PendingRequest");
+        }
+
+        //People that you requested as a friend
+        public ActionResult YourRequest()
+        {
+            FriendServices fs = new FriendServices();
+            return PartialView("_YourRequest", fs.YourRequest(Convert.ToInt32(Session["UserID"])));
+        }
+
+        //People that requested you as a friend
+        public ActionResult RequestedYou()
+        {
+            FriendServices fs = new FriendServices();
+            return PartialView("_RequestedYou", fs.WaitingResponse(Convert.ToInt32(Session["UserID"])));
+        }
+        
+        
         //Unfriend someone and redirect to Profile
         public ActionResult UnFriend()
         {
@@ -194,14 +219,16 @@ namespace MyCheerBook.Controllers
         }
 
         //Cancel Friend Request
-        public ActionResult CancelRequest()
+        public ActionResult CancelRequest(int friendID)
         {
             FriendServices fs = new FriendServices();
-            fs.UnFriend(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+            fs.UnFriend(Convert.ToInt32(Session["UserID"]), friendID);
             return View("Index");
         }
 
-        
+
+
+
 
         //Needs View
         public ActionResult Friends()

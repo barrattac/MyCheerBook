@@ -71,5 +71,38 @@ namespace BLL
             UserDAO dao = new UserDAO();
             dao.SendRequest(userID, friendID);
         }
+
+        //Returns number of pending friend request (Just the one's waiting on your response)
+        public int PendingRequest(int userID)
+        {
+            UserDAO dao = new UserDAO();
+            return dao.GetFriendRequest(userID).Count();
+        }
+
+        //Returns list of friends waiting on a response from you
+        public List<UserVM> YourRequest(int userID)
+        {
+            UserDAO dao = new UserDAO();
+            return ConvertUsers(dao.GetFriendRequest(userID));
+        }
+
+        //Returns list of friends your waiting on a response from
+        public List<UserVM> WaitingResponse(int userID)
+        {
+            UserDAO dao = new UserDAO();
+            return ConvertUsers(dao.FriendsYouRequested(userID));
+        }
+
+        //Converts a list of users to VM
+        public List<UserVM> ConvertUsers(List<User> users)
+        {
+            List<UserVM> vm = new List<UserVM>();
+            AccountServices log = new AccountServices();
+            foreach (User user in users)
+            {
+                vm.Add(log.ConvertUser(user));
+            }
+            return vm;
+        }
     }
 }

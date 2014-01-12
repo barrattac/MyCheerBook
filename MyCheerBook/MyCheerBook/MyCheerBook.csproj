@@ -228,6 +228,9 @@
     <Content Include="Views\Mail\ForgotPass.cshtml" />
     <Content Include="Views\Profile\_TopProfileNav.cshtml" />
     <Content Include="Views\Profile\_FriendRequest.cshtml" />
+    <Content Include="Views\Profile\PendingRequest.cshtml" />
+    <Content Include="Views\Profile\_YourRequest.cshtml" />
+    <Content Include="Views\Profile\_RequestedYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
