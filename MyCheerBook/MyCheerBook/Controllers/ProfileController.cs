@@ -28,6 +28,10 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Login", "Accounts");
             }
+            if (ID == Convert.ToInt32(Session["UserID"]))
+            {
+                return RedirectToAction("Index");
+            }
             Session["ProfileID"] = ID;
             return View("Index");
         }
@@ -174,7 +178,7 @@ namespace MyCheerBook.Controllers
         public ActionResult FriendRequest()
         {
             FriendServices log = new FriendServices();
-            if (Session["UserID"] != Session["ProfileID"])
+            if (Convert.ToInt32(Session["UserID"]) != Convert.ToInt32(Session["ProfileID"]))
             {
                 return PartialView("_FriendRequest", log.Friends(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
             }

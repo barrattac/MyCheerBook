@@ -175,6 +175,16 @@ p{
     width: auto;
 }
 
+.friends{
+    float: left;
+    display: inline-block;
+    height: 125px;
+    width: 75px;
+    text-align: center;
+    vertical-align:middle;
+    margin: 5px; 
+}
+
 .friendPic{
     max-height: 75px;
     max-width: 75px;

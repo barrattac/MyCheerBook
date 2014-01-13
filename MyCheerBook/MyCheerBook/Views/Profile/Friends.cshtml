@@ -4,24 +4,23 @@
     ViewBag.Title = "Friends";
 }
 
-<h2>Friends</h2>
+<div class="left" style="width: 79%">
+    <h2>Friends</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th class="rightPadding">Picture</th>
-            <th class="rightPadding">First Name</th>
-            <th>Last Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td class="rightpadding">@Html.Action("FriendPic", new { friendID = @Model[i].ID })</td>
-                <td class="rightPadding">@Html.ActionLink(Model[i].FirstName, "FriendsPage", "Profile", new { ID = @Model[i].ID }, new { @class = "pink" })</td>
-                <td>@Html.ActionLink(Model[i].LastName, "FriendsPage", "Profile", new { ID = @Model[i].ID }, new { @class = "pink" })</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    @if (Model == null)
+    {
+        <p>You have not added any friends yet.</p>
+    }
+    else
+    {
+        <div>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="friends">
+                    @Html.Action("FriendPic", new { friendID = @Model[i].ID })
+                    @Html.ActionLink(Model[i].FirstName + " " + Model[i].LastName, "FriendsPage", "Profile", new { ID = @Model[i].ID }, new { @class = "pink" })
+                </div>
+            }
+        </div>
+    }
+</div>
