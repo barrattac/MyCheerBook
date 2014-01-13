@@ -278,7 +278,12 @@ namespace MyCheerBook.Controllers
             return PartialView("_Status", ss.GetStatus(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
         }
 
-
+        //Convert Date for better viewing
+        public string ConvertDate(DateTime dt)
+        {
+            StatusServices ss = new StatusServices();
+            return ss.ConvertDate(dt);
+        }
 
 
         //Needs View

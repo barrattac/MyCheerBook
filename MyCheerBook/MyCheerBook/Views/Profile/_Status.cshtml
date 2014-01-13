@@ -16,7 +16,7 @@ else
             </div>
             <div class="statusUpdate">
                 <p>@Model[i].Message</p>
-                <p>@Model[i].Date</p>
+                <p>@Html.Action("ConvertDate", new { dt = Model[i].Date })</p>
             </div>
         </div>
     }
