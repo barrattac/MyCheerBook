@@ -19,7 +19,7 @@ namespace MyCheerBook.Controllers
         public ActionResult SearchUsers(string word)
         {
             SearchServices log = new SearchServices();
-            return View("_Results", log.SearchUsers(word));
+            return View("_Results", log.SearchUsers(word, Convert.ToInt32(Session["UserID"])));
         }
 	}
 }

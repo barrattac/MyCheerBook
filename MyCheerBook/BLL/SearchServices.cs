@@ -10,7 +10,7 @@ namespace BLL
     public class SearchServices
     {
         //Searchs for users
-        public List<UserVM> SearchUsers(string words)
+        public List<UserVM> SearchUsers(string words, int userID)
         {
             UserDAO dao = new UserDAO();
             List<string> wordList = SplitWords(words.ToLower());
@@ -18,7 +18,7 @@ namespace BLL
             List<User> users = dao.GetAllUsers();
             for (int i = 0; i < wordList.Count; i++)
             {
-                for(int j = 0; j < users.Count; j++)
+                for (int j = 0; j < users.Count; j++)
                 {
                     if (Contains(wordList[i], users[j].FirstName) || Contains(wordList[i], users[j].LastName) || Contains(wordList[i], users[j].Email))
                     {
@@ -26,6 +26,19 @@ namespace BLL
                         users.RemoveAt(j);
                         j--;
                     }
+                }
+            }
+            return RemoveSelf(results, userID);
+        }
+        //Removers user from search results
+        private List<UserVM> RemoveSelf(List<UserVM> results, int userID)
+        {
+            foreach (UserVM vm in results)
+            {
+                if (vm.ID == userID)
+                {
+                    results.Remove(vm);
+                    return results;
                 }
             }
             return results;
