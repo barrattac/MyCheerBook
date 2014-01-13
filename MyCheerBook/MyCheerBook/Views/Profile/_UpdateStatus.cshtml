@@ -1,0 +1,17 @@
+﻿@model BLL.StatusFM
+
+@if (Session["UserID"] == Session["ProfileID"])
+{
+    using (Html.BeginForm("UpdateStatus", "Profile", FormMethod.Post))
+    {
+        <div class="statusUpdate">
+            @Html.LabelFor(m => m.Message)
+        </div>
+        <div class="statusUpdate">
+            @Html.TextBoxFor(m => m.Message, new { @placeholder = "Type your Status here", size = 120 })<br />
+        </div>
+        <div class="statusUpdate">
+            <input type="submit" name="submit" value="Update Status">
+        </div>
+    }
+}

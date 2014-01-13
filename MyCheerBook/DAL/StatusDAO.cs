@@ -36,7 +36,7 @@ namespace DAL
                         Status status = new Status();
                         status.ID = Convert.ToInt32(data["ID"]);
                         status.UserID = Convert.ToInt32(data["UserID"]);
-                        status.Status = data["Status"].ToString();
+                        status.Message = data["Status"].ToString();
                         status.Date = Convert.ToDateTime(data["Date"]);
                         statuses.Add(status);
                     }
@@ -50,6 +50,18 @@ namespace DAL
                     }
                 }
             }
+        }
+
+        //Add status for a user
+        public void AddStatus(Status status)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", status.UserID),
+                new SqlParameter("@Status", status.Message),
+                new SqlParameter("@Date", status.Date)
+            };
+            Write("AddStatus", parameters);
         }
     }
 }

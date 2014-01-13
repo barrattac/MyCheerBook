@@ -9,8 +9,8 @@ namespace BLL
     public class StatusVM
     {
         public int ID { get; set; }
-        public int userID { get; set; }
-        public string status { get; set; }
-        public DateTime date { get; set; }
+        public int UserID { get; set; }
+        public string Message { get; set; }
+        public DateTime Date { get; set; }
     }
 }

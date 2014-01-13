@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BLL
 {
     public class StatusFM
     {
-        public int userID { get; set; }
-        public string status { get; set; }
-        public DateTime date { get; set; }
+        public int UserID { get; set; }
+
+        [Display(Name = "Current Status:")]
+        public string Message { get; set; }
     }
 }

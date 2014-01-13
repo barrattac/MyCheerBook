@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchServices.cs" />
     <Compile Include="StatusFM.cs" />
+    <Compile Include="StatusServices.cs" />
     <Compile Include="StatusVM.cs" />
     <Compile Include="TeamFM.cs" />
     <Compile Include="TeamServices.cs" />

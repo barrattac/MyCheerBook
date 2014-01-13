@@ -12,8 +12,10 @@
         </div>
     </div>
     <div class="profileRight scroll">
-        @Html.Action("TopProfileNav");
-        <h4>News Feed</h4>
+        @Html.Action("TopProfileNav")
+        @Html.Action("UpdateStatus")
+
+        <h3 style="clear: both; text-align: left; padding: 25px;">News Feed</h3>
         <p>Lorem ipsum magna lacinia nam eget, quisque tempor dolor curabitur taciti, accumsan sem lacus elementum.</p>
         <p>Risus etiam duis odio nulla.</p>
         <p>Eget nisl bibendum suscipit hendrerit vivamus lacinia sodales in, quisque suscipit eros arcu quam tristique etiam, himenaeos netus sapien praesent tempor sodales aliquam.</p>

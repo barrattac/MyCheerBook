@@ -191,3 +191,9 @@ p{
     height: auto;
     width: auto;
 }
+
+.statusUpdate{
+    float: left;
+    display: inline-block;
+    padding-left: 25px;
+}

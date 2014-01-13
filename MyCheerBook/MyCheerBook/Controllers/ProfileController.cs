@@ -256,6 +256,23 @@ namespace MyCheerBook.Controllers
             return PartialView("_FriendPic", vm.Location);
         }
 
+        //For add a user status
+        [HttpGet]
+        public ActionResult UpdateStatus()
+        {
+            return PartialView("_UpdateStatus");
+        }
+        [HttpPost]
+        public ActionResult UpdateStatus(StatusFM fm)
+        {
+            StatusServices ss = new StatusServices();
+            fm.UserID = Convert.ToInt32(Session["UserID"]);
+            ss.AddStatus(fm);
+            return RedirectToAction("Index");
+        }
+
+
+
 
 
         //Needs View
