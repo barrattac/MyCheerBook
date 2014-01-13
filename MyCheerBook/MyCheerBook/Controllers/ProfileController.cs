@@ -200,8 +200,7 @@ namespace MyCheerBook.Controllers
             FriendServices fs = new FriendServices();
             return PartialView("_RequestedYou", fs.WaitingResponse(Convert.ToInt32(Session["UserID"])));
         }
-        
-        
+          
         //Unfriend someone and redirect to Profile
         public ActionResult UnFriend()
         {
@@ -226,19 +225,34 @@ namespace MyCheerBook.Controllers
             return View("Index");
         }
 
+        //Accepts Friend Request
+        public ActionResult MakeFriends(int friendID)
+        {
+            FriendServices fs = new FriendServices();
+            fs.MakeFriends(Convert.ToInt32(Session["UserID"]), friendID);
+            return View("Index");
+        }
 
-
-
-
-        //Needs View
+        //View for Friends
         public ActionResult Friends()
         {
             if (Session["UserID"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            FriendServices fs = new FriendServices();
+            return View(fs.GetFriends(Convert.ToInt32(Session["ProfileID"])));
         }
+
+        //Friends Profile Pic for Friends View
+        public ActionResult FriendPic(int ID)
+        {
+            AccountServices log = new AccountServices();
+            ImageVM vm = log.GetProfileImage(log.GetUserByID(ID));
+            return PartialView("_FriendPic", vm.Location);
+        }
+
+
 
         //Needs View
         public ActionResult StatusFeed()
@@ -249,7 +263,9 @@ namespace MyCheerBook.Controllers
             }
             return View();
         }
-        
+       
+ 
+
         //Team Page
         public ActionResult TeamPage(TeamVM team)
         {

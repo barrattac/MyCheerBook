@@ -174,3 +174,10 @@ p{
     height: auto;
     width: auto;
 }
+
+.friendPic{
+    max-height: 75px;
+    max-width: 75px;
+    height: auto;
+    width: auto;
+}

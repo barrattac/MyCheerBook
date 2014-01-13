@@ -231,6 +231,8 @@
     <Content Include="Views\Profile\PendingRequest.cshtml" />
     <Content Include="Views\Profile\_YourRequest.cshtml" />
     <Content Include="Views\Profile\_RequestedYou.cshtml" />
+    <Content Include="Views\Profile\Friends.cshtml" />
+    <Content Include="Views\Profile\_FriendPic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

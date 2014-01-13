@@ -72,6 +72,13 @@ namespace BLL
             dao.SendRequest(userID, friendID);
         }
 
+        //Accepts Friend Request
+        public void MakeFriends(int userID, int friendID)
+        {
+            UserDAO dao = new UserDAO();
+            dao.MakeFriends(userID, friendID);
+        }
+
         //Returns number of pending friend request (Just the one's waiting on your response)
         public int PendingRequest(int userID)
         {
@@ -103,6 +110,13 @@ namespace BLL
                 vm.Add(log.ConvertUser(user));
             }
             return vm;
+        }
+        
+        //Gets a list of all your friends
+        public List<UserVM> GetFriends(int userID)
+        {
+            UserDAO dao = new UserDAO();
+            return ConvertUsers(dao.GetAllFriends(userID));
         }
     }
 }
