@@ -237,7 +237,7 @@ namespace MyCheerBook.Controllers
             return View("Index");
         }
 
-        //View for Friends
+        //View for user's Friends
         public ActionResult Friends()
         {
             if (Session["UserID"] == null)
@@ -248,7 +248,7 @@ namespace MyCheerBook.Controllers
             return View(fs.GetFriends(Convert.ToInt32(Session["ProfileID"])));
         }
 
-        //Friends Profile Pic for Friends View
+        //Friends Profile Pic for List of Friends
         public ActionResult FriendPic(int friendID)
         {
             AccountServices log = new AccountServices();
