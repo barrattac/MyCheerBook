@@ -18,9 +18,9 @@
         @for (int i = 0; i < Model.Count; i++)
         {
             <tr>
-                <td class="rightpadding">@Html.Action("FriendPic", Model[i].ID)</td>
-                <td class="rightPadding">@Html.ActionLink(Model[i].FirstName, "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
-                <td>@Html.ActionLink(Model[i].LastName, "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
+                <td class="rightpadding">@Html.Action("FriendPic", new { friendID = @Model[i].ID })</td>
+                <td class="rightPadding">@Html.ActionLink(Model[i].FirstName, "FriendsPage", "Profile", new { ID = @Model[i].ID }, new { @class = "pink" })</td>
+                <td>@Html.ActionLink(Model[i].LastName, "FriendsPage", "Profile", new { ID = @Model[i].ID }, new { @class = "pink" })</td>
             </tr>
         }
     </tbody>
