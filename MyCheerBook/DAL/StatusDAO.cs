@@ -63,5 +63,35 @@ namespace DAL
             };
             Write("AddStatus", parameters);
         }
+
+        //Get user's status
+        public List<Status> GetStatus(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadStatus("GetUserStatus", parameters);
+        }
+
+        //Part1/2 Get status for user's friends
+        public List<Status> GetFriendStatus(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadStatus("GetFriendStatus", parameters);
+        }
+
+        //Part2/2 Get status for user's friends
+        public List<Status> GetFriendStatus2(int userID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID)
+            };
+            return ReadStatus("GetFriendStatus2", parameters);
+        }
     }
 }

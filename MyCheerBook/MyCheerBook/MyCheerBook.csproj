@@ -234,6 +234,7 @@
     <Content Include="Views\Profile\Friends.cshtml" />
     <Content Include="Views\Profile\_FriendPic.cshtml" />
     <Content Include="Views\Profile\_UpdateStatus.cshtml" />
+    <Content Include="Views\Profile\_Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

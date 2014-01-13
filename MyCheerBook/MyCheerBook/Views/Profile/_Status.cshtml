@@ -1,0 +1,24 @@
+﻿@model List<BLL.StatusVM>
+
+@using BLL
+
+@if (Model == null || Model.Count == 0)
+{
+    <h5>There are no status to view.</h5>
+}
+else
+{
+    for (int i = 0; i < Model.Count; i++)
+    {
+        <div class="status">
+            <div class="statusUpdate">
+                @Html.Action("FriendPic", "Profile", new { friendID = Model[i].UserID })
+            </div>
+            <div class="statusUpdate">
+                <p>@Model[i].Message</p>
+                <p>@Model[i].Date</p>
+            </div>
+        </div>
+    }
+}
+

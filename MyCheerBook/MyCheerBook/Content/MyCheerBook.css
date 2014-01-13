@@ -197,3 +197,8 @@ p{
     display: inline-block;
     padding-left: 25px;
 }
+
+.status{
+    clear: both;
+    padding: 25px; 
+}

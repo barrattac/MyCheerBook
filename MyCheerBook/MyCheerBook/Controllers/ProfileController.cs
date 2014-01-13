@@ -271,6 +271,12 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Index");
         }
 
+        //For viewing status
+        public ActionResult Status()
+        {
+            StatusServices ss = new StatusServices();
+            return PartialView("_Status", ss.GetStatus(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+        }
 
 
 
