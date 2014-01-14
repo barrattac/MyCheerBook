@@ -238,6 +238,8 @@
     <Content Include="Views\Team\_RandomPic.cshtml" />
     <Content Include="Views\Team\_TopProfileNav.cshtml" />
     <Content Include="Views\Team\UpdateTeamNews.cshtml" />
+    <Content Include="Views\Team\Images.cshtml" />
+    <Content Include="Views\Team\_TeamName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

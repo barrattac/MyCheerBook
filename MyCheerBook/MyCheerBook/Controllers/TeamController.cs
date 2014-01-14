@@ -67,6 +67,25 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Index", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
 
+        //Team Name to be displayed
+        public ActionResult TeamName()
+        {
+            TeamServices ts = new TeamServices();
+            return PartialView("_TeamName", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])).TeamName);
+        }
+
+        //View for Images
+        public ActionResult Images()
+        {
+            TeamServices ts = new TeamServices();
+            if (ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                return View(ts.GetTeamImages(Convert.ToInt32(Session["ProfileID"])));
+            }
+            return View();
+        }
+
+
 
 
         //Needs View for following
