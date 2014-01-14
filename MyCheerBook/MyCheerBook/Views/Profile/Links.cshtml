@@ -1,13 +1,11 @@
-﻿@model BLL.TeamsVM
-
-@using BLL
+﻿@model List<BLL.TeamVM>
 
 <ul>
     @if (Model != null)
     {
-        foreach (TeamVM vm in Model.Teams)
+        for (int i = 0; i < Model.Count; i++ )
         {
-            <li>@Html.ActionLink(vm.TeamName, "Index", "Team", new { vm }, new { @class = "purple" })</li>
+            <li>@Html.ActionLink(Model[i].TeamName, "Index", "Team", Model[i], new { @class = "purple" })</li>
         }
     }
     @if (Session["UserID"] == Session["ProfileID"])

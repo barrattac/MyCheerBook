@@ -97,11 +97,11 @@ namespace BLL
             return GetTeamImages(teamID)[number].Location;
         }
 
-
-
-        //Needs View for following
-        //Images
-        //Videos
-        //Members
+        //Gets team by team ID
+        public TeamVM GetTeamByID(int teamID)
+        {
+            TeamDAO dao = new TeamDAO();
+            return ConvertTeam(dao.GetTeamByID(teamID));
+        }
     }
 }

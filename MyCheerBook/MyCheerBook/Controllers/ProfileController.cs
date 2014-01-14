@@ -62,7 +62,7 @@ namespace MyCheerBook.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return PartialView(log.GetUserTeams(Convert.ToInt32(Session["ProfileID"])));
+            return PartialView(log.GetUserTeams(Convert.ToInt32(Session["ProfileID"])).Teams);
         }
 
         //Image Page for User's Profile

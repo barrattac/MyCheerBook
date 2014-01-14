@@ -10,10 +10,11 @@ namespace MyCheerBook.Controllers
     public class TeamController : Controller
     {
         //Team Home Page
-        public ActionResult Index(TeamVM team)
+        public ActionResult Index(TeamVM vm)
         {
-            Session["ProfileID"] = team.ID;
-            return View(team.TeamName);
+            TeamServices log = new TeamServices();
+            Session["ProfileID"] = vm.ID;
+            return View(vm);
         }
 
         //Creates a Team Page
@@ -42,5 +43,24 @@ namespace MyCheerBook.Controllers
             return PartialView("_RandomPic", log.RandomImage(Convert.ToInt32(Session["ProfileID"])));
         }
 
+        //For putting news on team page
+        [HttpGet]
+        public ActionResult UpdateTeamNew()
+        {
+            //Create view for updating team new
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult UpdateTeamNew(StatusFM news)
+        {
+            //Insert Code for adding team news
+            return RedirectToAction("Index");
+        }
+
+
+        //Needs View for following
+        //Images
+        //Videos
+        //Members
     }
 }

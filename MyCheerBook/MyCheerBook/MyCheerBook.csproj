@@ -217,7 +217,6 @@
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
     <Content Include="Views\Team\CreatePage.cshtml" />
     <Content Include="Views\Profile\Links.cshtml" />
-    <Content Include="Views\Team\TeamPage.cshtml" />
     <Content Include="Views\Profile\ProfileImage.cshtml" />
     <Content Include="Views\Profile\Images.cshtml" />
     <Content Include="Views\Profile\AddImage.cshtml" />
@@ -237,6 +236,7 @@
     <Content Include="Views\Profile\_Status.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\_RandomPic.cshtml" />
+    <Content Include="Views\Team\_TopProfileNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

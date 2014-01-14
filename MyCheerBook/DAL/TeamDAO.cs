@@ -146,5 +146,18 @@ namespace DAL
             };
             return ReadTeams("SearchTeams", parameters);
         }
+
+        //Gets Team by TeamID
+        public Teams GetTeamByID(int teamID)
+        {
+            foreach (Teams team in GetAllTeams())
+            {
+                if (team.ID == teamID)
+                {
+                    return team;
+                }
+            }
+            return null;
+        }
     }
 }
