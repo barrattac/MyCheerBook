@@ -138,5 +138,18 @@ namespace BLL
             StatusDAO dao = new StatusDAO();
             dao.UpdateTeamNews(teamID, ConvertStatus(news));
         }
+
+        //Gets a list of Status(Team News) for a team if the user is part of the team
+        public List<StatusVM> GetTeamNews(int userID, int teamID)
+        {
+            List<StatusVM> vm = new List<StatusVM>();
+            TeamServices log = new TeamServices();
+            StatusDAO dao = new StatusDAO();
+            if(log.IsExistingTeamMember(userID, teamID))
+            {
+                return ConvertStatus(dao.GetTeamNews(teamID));
+            }
+            return vm;
+        }
     }
 }

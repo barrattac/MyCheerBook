@@ -106,5 +106,15 @@ namespace DAL
             };
             Write("AddTeamNews", parameters);
         }
+
+        //Gets news for the team
+        public List<Status> GetTeamNews(int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID)
+            };
+            return ReadStatus("GetTeamNews", parameters);
+        }
     }
 }

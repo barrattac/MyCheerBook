@@ -284,5 +284,12 @@ namespace MyCheerBook.Controllers
             StatusServices ss = new StatusServices();
             return ss.ConvertDate(dt);
         }
+
+        //Code for viewing news on team page
+        public ActionResult TeamNews()
+        {
+            StatusServices ss = new StatusServices();
+            return PartialView("_Status", ss.GetTeamNews(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+        }
     }
 }

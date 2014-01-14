@@ -43,7 +43,7 @@ namespace MyCheerBook.Controllers
             return PartialView("_RandomPic", log.RandomImage(Convert.ToInt32(Session["ProfileID"])));
         }
 
-        //For putting news on team page
+        //For putting adding news on team page
         [HttpGet]
         public ActionResult UpdateTeamNews()
         {
@@ -66,6 +66,7 @@ namespace MyCheerBook.Controllers
             log.UpdateTeamNews(Convert.ToInt32(Session["ProfileID"]), news);
             return RedirectToAction("Index", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
+
 
 
         //Needs View for following
