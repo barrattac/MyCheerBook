@@ -13,11 +13,7 @@ namespace BLL
         public void AddStatus(StatusFM fm)
         {
             StatusDAO dao = new StatusDAO();
-            Status status = new Status();
-            status.UserID = fm.UserID;
-            status.Message = fm.Message;
-            status.Date = DateTime.Now;
-            dao.AddStatus(status);
+            dao.AddStatus(ConvertStatus(fm));
         }
 
         //Gets a list of status to display (returns null if not friends)
@@ -81,6 +77,17 @@ namespace BLL
             return combinedList;
         }
 
+        //Converts fm into Status
+        public Status ConvertStatus(StatusFM fm)
+        {
+            StatusDAO dao = new StatusDAO();
+            Status status = new Status();
+            status.UserID = fm.UserID;
+            status.Message = fm.Message;
+            status.Date = DateTime.Now;
+            return status;
+        }
+
         //Converts a list of status into list of vm
         public List<StatusVM> ConvertStatus(List<Status> list)
         {
@@ -123,6 +130,13 @@ namespace BLL
                 return Convert.ToInt32(passed.TotalHours) + " hrs ago. ";
             }
             return Convert.ToInt32(passed.TotalDays) + " days ago. ";
+        }
+
+        //Upadates News for a Team
+        public void UpdateTeamNews(int teamID, StatusFM news)
+        {
+            StatusDAO dao = new StatusDAO();
+            dao.UpdateTeamNews(teamID, ConvertStatus(news));
         }
     }
 }

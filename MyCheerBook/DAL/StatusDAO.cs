@@ -93,5 +93,18 @@ namespace DAL
             };
             return ReadStatus("GetFriendStatus2", parameters);
         }
+
+        //Adds News to Teams Page
+        public void UpdateTeamNews(int teamID, Status status)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", status.UserID),
+                new SqlParameter("@Status", status.Message),
+                new SqlParameter("@Date", status.Date),
+                new SqlParameter("@TeamID", teamID)
+            };
+            Write("AddTeamNews", parameters);
+        }
     }
 }

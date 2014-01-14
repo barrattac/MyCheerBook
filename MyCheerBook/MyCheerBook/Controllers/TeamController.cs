@@ -29,8 +29,8 @@ namespace MyCheerBook.Controllers
             TeamServices log = new TeamServices();
             if (!log.IsExistingTeam(team.Email))
             {
-                    log.CreateTeam(team, Convert.ToInt32(Session["UserID"]));
-                    return RedirectToAction("Index", "Profile");
+                log.CreateTeam(team, Convert.ToInt32(Session["UserID"]));
+                return RedirectToAction("Index", "Profile");
             }
             ViewBag.ErrorMessage = "Team already exist.";
             return View();
@@ -60,7 +60,11 @@ namespace MyCheerBook.Controllers
         public ActionResult UpdateTeamNews(StatusFM news)
         {
             //Insert Code for adding team news
-            return RedirectToAction("Index");
+            StatusServices log = new StatusServices();
+            TeamServices ts = new TeamServices();
+            news.UserID = Convert.ToInt32(Session["UserID"]);
+            log.UpdateTeamNews(Convert.ToInt32(Session["ProfileID"]), news);
+            return RedirectToAction("Index", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
 
 
