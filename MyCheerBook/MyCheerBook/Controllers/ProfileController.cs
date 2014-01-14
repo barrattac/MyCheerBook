@@ -105,9 +105,9 @@ namespace MyCheerBook.Controllers
                 }
                 file.SaveAs(Server.MapPath("~/" + image.Location));
             }
-            if(image.Location != null)
+            if (image.Location != null)
             {
-                
+
                 log.AddImage(Convert.ToInt32(Session["UserID"]), image);
             }
             return RedirectToAction("Images");
@@ -204,7 +204,7 @@ namespace MyCheerBook.Controllers
             FriendServices fs = new FriendServices();
             return PartialView("_RequestedYou", fs.YourRequest(Convert.ToInt32(Session["UserID"])));
         }
-          
+
         //Unfriend someone and redirect to Profile
         public ActionResult UnFriend()
         {
@@ -283,14 +283,6 @@ namespace MyCheerBook.Controllers
         {
             StatusServices ss = new StatusServices();
             return ss.ConvertDate(dt);
-        }
-       
- 
-        //Need to Style TeamPage
-        //Team Page
-        public ActionResult TeamPage(TeamVM team)
-        {
-            return View(team);
         }
     }
 }

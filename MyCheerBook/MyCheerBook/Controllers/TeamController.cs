@@ -27,5 +27,13 @@ namespace MyCheerBook.Controllers
             ViewBag.ErrorMessage = "Team already exist.";
             return View();
         }
+
+
+        //Need to Style TeamPage
+        //Team Page
+        public ActionResult TeamPage(TeamVM team)
+        {
+            return View(team);
+        }
     }
 }
