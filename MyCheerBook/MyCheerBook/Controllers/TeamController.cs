@@ -45,13 +45,19 @@ namespace MyCheerBook.Controllers
 
         //For putting news on team page
         [HttpGet]
-        public ActionResult UpdateTeamNew()
+        public ActionResult UpdateTeamNews()
         {
-            //Create view for updating team new
-            return PartialView();
+            StatusFM fm = new StatusFM();
+            TeamServices log = new TeamServices();
+            //Determines if the user is part of the team
+            if (log.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                fm.UserID = Convert.ToInt32(Session["UserID"]);
+            }
+            return PartialView("UpdateTeamNews", fm);
         }
         [HttpPost]
-        public ActionResult UpdateTeamNew(StatusFM news)
+        public ActionResult UpdateTeamNews(StatusFM news)
         {
             //Insert Code for adding team news
             return RedirectToAction("Index");

@@ -199,5 +199,15 @@ namespace DAL
             };
             Write("MakeFriends", parameters);
         }
+
+        //Gets a list of team members for a team
+        public List<User> GetTeamMembers(int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID)
+            };
+            return ReadUsers("GetTeamMembers", parameters);
+        }
     }
 }

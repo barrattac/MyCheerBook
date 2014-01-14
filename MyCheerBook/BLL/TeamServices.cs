@@ -103,5 +103,26 @@ namespace BLL
             TeamDAO dao = new TeamDAO();
             return ConvertTeam(dao.GetTeamByID(teamID));
         }
+
+        //Gets a list of team members for a team
+        public List<UserVM> GetTeamMembers(int teamID)
+        {
+            UserDAO dao = new UserDAO();
+            AccountServices log = new AccountServices();
+            return log.ConvertUsers(dao.GetTeamMembers(teamID));
+        }
+
+        //Determines if a user is part of a team
+        public bool IsExistingTeamMember(int userID, int teamID)
+        {
+            foreach (UserVM vm in GetTeamMembers(teamID))
+            {
+                if (vm.ID == userID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

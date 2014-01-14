@@ -1,0 +1,17 @@
+﻿@model BLL.StatusFM
+
+@if (Model.UserID != null && Model.UserID != 0)
+{
+    using (Html.BeginForm("UpdateTeamNews", "Team", FormMethod.Post))
+    {
+        <div class="statusUpdate">
+            Team News:
+        </div>
+        <div class="statusUpdate">
+            @Html.TextBoxFor(m => m.Message, new { @placeholder = "Type your News for this team here.", size = 120 })<br />
+        </div>
+        <div class="statusUpdate">
+            <input type="submit" name="submit" value="Update Team News">
+        </div>
+    }
+}

@@ -56,6 +56,29 @@ namespace BLL
             return user;
         }
 
+        //Converts User to a View Model
+        public UserVM ConvertUser(User user)
+        {
+            UserVM userVM = new UserVM();
+            userVM.ID = user.ID;
+            userVM.FirstName = user.FirstName;
+            userVM.LastName = user.LastName;
+            userVM.Email = user.Email;
+            userVM.ProfileImage = user.ProfileImage;
+            return userVM;
+        }
+
+        //Convers a list of users into View Model
+        public List<UserVM> ConvertUsers(List<User> list)
+        {
+            List<UserVM> vm = new List<UserVM>();
+            foreach (User user in list)
+            {
+                vm.Add(ConvertUser(user));
+            }
+            return vm;
+        }
+
         //Logs User In
         public UserVM Login(UserFM userFM)
         {
@@ -67,18 +90,6 @@ namespace BLL
                 return userVM;
             }
             return null;
-        }
-        
-        //Converts User to a View Model
-        public UserVM ConvertUser(User user)
-        {
-            UserVM userVM = new UserVM();
-            userVM.ID = user.ID;
-            userVM.FirstName = user.FirstName;
-            userVM.LastName = user.LastName;
-            userVM.Email = user.Email;
-            userVM.ProfileImage = user.ProfileImage;
-            return userVM;
         }
         
         //Checks Password Requirements

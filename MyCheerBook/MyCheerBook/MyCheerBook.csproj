@@ -237,6 +237,7 @@
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\_RandomPic.cshtml" />
     <Content Include="Views\Team\_TopProfileNav.cshtml" />
+    <Content Include="Views\Team\UpdateTeamNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
