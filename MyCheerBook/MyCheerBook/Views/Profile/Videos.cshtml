@@ -34,7 +34,7 @@
                     @if (Session["UserID"] == Session["ProfileID"])
                     {
 
-                        @Html.ActionLink("Delete", "DeleteVideo", new { videoID = Model.Videos[i].ID }, new { @class = "red" })
+                        @Html.ActionLink("Delete", "DeleteVideo", new { videoID = Model.Videos[i].ID }, new { @class = "red", onclick = "return confirm('Are you sure you wish to delete video?');" })
                     }
                 </div>
             }
