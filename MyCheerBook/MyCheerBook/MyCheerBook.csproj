@@ -241,6 +241,7 @@
     <Content Include="Views\Team\Images.cshtml" />
     <Content Include="Views\Team\_TeamName.cshtml" />
     <Content Include="Views\Team\DeleteImages.cshtml" />
+    <Content Include="Views\Team\AddImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

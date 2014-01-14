@@ -25,7 +25,7 @@ namespace BLL
         {
             TeamDAO dao = new TeamDAO();
             dao.CreateTeam(ConvertTeam(teamFM));
-            dao.AddUserTeam(UserID, dao.GetTeamByName(teamFM.TeamName).ID); 
+            dao.AddUserTeam(UserID, dao.GetTeamByName(teamFM.TeamName).ID);
         }
 
         //Converts From into Team
@@ -125,10 +125,14 @@ namespace BLL
             return false;
         }
 
-        //Determines if the user and team email match
+        //Determines if the user and team email match(if no team email exist, it returns if they are a team member)
         public bool Permissions(int userID, int teamID)
         {
             UserDAO dao = new UserDAO();
+            if (GetTeamByID(teamID).Email == null)
+            {
+                return IsExistingTeamMember(userID, teamID);
+            }
             if (dao.GetUserByID(userID).Email == GetTeamByID(teamID).Email)
             {
                 return true;
@@ -141,6 +145,15 @@ namespace BLL
         {
             ImageDAO dao = new ImageDAO();
             dao.DeleteTeamImage(imageID, teamID);
+        }
+
+        //Add Images to database(images and userImages)
+        public void AddImage(int teamID, ImageFM fm)
+        {
+            ImageDAO dao = new ImageDAO();
+            AccountServices log = new AccountServices();
+            dao.AddImage(log.ConvertImage(fm));
+            dao.CreateTeamImage(teamID, dao.GetImageByLocation(fm.Location).ID);
         }
     }
 }

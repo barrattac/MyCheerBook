@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL;
+using System.IO;
 
 namespace MyCheerBook.Controllers
 {
@@ -85,7 +86,7 @@ namespace MyCheerBook.Controllers
             return View();
         }
 
-        //Determines if a user has creditials to Edit team page
+        //Determines if a user has creditials to Delete things on team page
         public ActionResult Permissions(string view, int ID)
         {
             TeamServices ts = new TeamServices();
@@ -105,12 +106,50 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Images");
         }
 
-        //
+        //Determines if a user has creditials to Add things on team page
+        public ActionResult AddImage(string view)
+        {
+            TeamServices ts = new TeamServices();
+            ImageFM fm = new ImageFM();
+            if (!ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                fm.Location = "No Premissions";
+                return PartialView(view, fm);
+            }
+            return PartialView(view, fm);
+        }
+
+        //For Adding Images
+        [HttpPost]
+        public ActionResult AddImage(HttpPostedFileBase file, ImageFM image)
+        {
+            AccountServices log = new AccountServices();
+            TeamServices ts = new TeamServices();
+            if (file != null && file.ContentLength > 0)
+            {
+                string ext = Path.GetExtension(file.FileName);
+                if (!log.ValidImageExt(ext))
+                {
+                    return RedirectToAction("Images");
+                }
+                image.Location = ("Uploads/Images/" + log.RngString() + ext);
+                while (System.IO.File.Exists(Server.MapPath("~/" + image.Location)))
+                {
+                    image.Location = ("Uploads/Images/" + log.RngString() + ext);
+                }
+                file.SaveAs(Server.MapPath("~/" + image.Location));
+            }
+            if (image.Location != null && image.Location != "No Premissions")
+            {
+                ts.AddImage(Convert.ToInt32(Session["ProfileID"]), image);
+            }
+            return RedirectToAction("Images");
+        }
+
 
 
 
         //Needs View for following
-        //Images
         //Videos
         //Members
     }

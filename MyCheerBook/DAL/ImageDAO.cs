@@ -114,6 +114,17 @@ namespace DAL
             };
             Write("AddUserImage", parameters);
         }
+
+        //Add image to team's images
+        public void CreateTeamImage(int teamID, int imageID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID),
+                new SqlParameter("@ImageID", imageID)
+            };
+            Write("AddTeamImage", parameters);
+        }
         
         //Deletes image from user's images
         public void DeleteUserImage(int userID, int imageID)
