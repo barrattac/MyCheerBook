@@ -6,7 +6,8 @@
     height: 625px;
     overflow: hidden;
     background-image: url("/Resources/ZebraStripes.jpg");
-    background-size: cover;
+    background-size: 1366px, 675px;
+    background-repeat: no-repeat;
 }
 
 .rightPadding{

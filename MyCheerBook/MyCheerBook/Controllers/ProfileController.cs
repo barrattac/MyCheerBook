@@ -284,20 +284,9 @@ namespace MyCheerBook.Controllers
             StatusServices ss = new StatusServices();
             return ss.ConvertDate(dt);
         }
-
-
-        //Needs View
-        public ActionResult StatusFeed()
-        {
-            if (Session["UserID"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
        
  
-
+        //Need to Style TeamPage
         //Team Page
         public ActionResult TeamPage(TeamVM team)
         {

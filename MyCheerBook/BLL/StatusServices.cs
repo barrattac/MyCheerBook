@@ -107,7 +107,22 @@ namespace BLL
         public string ConvertDate(DateTime dt)
         {
             string format = "ddd MMM d HH:mm yyyy";
-            return dt.ToString(format);
+            TimeSpan passed = (DateTime.Now - dt);
+            return ConvertPassed(passed) + dt.ToString(format);
+        }
+        
+        //Convert Passed Time to a string
+        public string ConvertPassed(TimeSpan passed)
+        {
+            if (passed.TotalMinutes < 60)
+            {
+                return Convert.ToInt32(passed.TotalMinutes) + " mins ago. ";
+            }
+            else if (passed.TotalHours < 24)
+            {
+                return Convert.ToInt32(passed.TotalHours) + " hrs ago. ";
+            }
+            return Convert.ToInt32(passed.TotalDays) + " days ago. ";
         }
     }
 }
