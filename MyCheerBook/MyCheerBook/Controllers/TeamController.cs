@@ -85,6 +85,27 @@ namespace MyCheerBook.Controllers
             return View();
         }
 
+        //Determines if a user has creditials to Edit team page
+        public ActionResult Permissions(string view, int ID)
+        {
+            TeamServices ts = new TeamServices();
+            if (ts.Permissions(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                return PartialView(view, ID);
+            }
+            return PartialView(view, 0);
+        }
+
+        //For Deleting Images from teams
+        public ActionResult DeleteImage(int imageID)
+        {
+            //Code for deleting Images
+            TeamServices ts = new TeamServices();
+            ts.DeleteImage(imageID, Convert.ToInt32(Session["ProfileID"]));
+            return RedirectToAction("Images");
+        }
+
+
 
 
 

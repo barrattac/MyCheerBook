@@ -124,5 +124,23 @@ namespace BLL
             }
             return false;
         }
+
+        //Determines if the user and team email match
+        public bool Permissions(int userID, int teamID)
+        {
+            UserDAO dao = new UserDAO();
+            if (dao.GetUserByID(userID).Email == GetTeamByID(teamID).Email)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //Deletes Image from a team
+        public void DeleteImage(int imageID, int teamID)
+        {
+            ImageDAO dao = new ImageDAO();
+            dao.DeleteTeamImage(imageID, teamID);
+        }
     }
 }

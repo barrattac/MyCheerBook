@@ -26,7 +26,7 @@
                         <img src=@Url.Content("~/" + Model[i].Location) class="image" /><br />
                     }
                     @Model[i].Title<br />
-                    @*@Html.Action("DeleteImage")*@
+                    @Html.Action("Permissions", "Team", new {view = "DeleteImages", ID = Model[i].ID })
                 </div>
             }
         </div>
