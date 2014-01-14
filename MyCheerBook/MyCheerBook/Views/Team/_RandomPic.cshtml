@@ -1,0 +1,10 @@
+﻿@model string
+
+@if (Model != null)
+{
+    <img src=@Model class="image">
+}
+else
+{
+    <img src="~/Resources/DefaultImage.jpg" class="image" />
+}

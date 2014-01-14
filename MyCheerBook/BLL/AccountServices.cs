@@ -140,9 +140,15 @@ namespace BLL
         public ImagesVM GetUserImages(int userID)
         {
             ImageDAO dao = new ImageDAO();
+            return ConvertImages(dao.GetUserImages(userID));
+        }
+
+        //Converts a list of Images to vm
+        public ImagesVM ConvertImages(List<Image> list)
+        {
             ImagesVM vm = new ImagesVM();
             List<ImageVM> images = new List<ImageVM>();
-            foreach (Image image in dao.GetUserImages(userID))
+            foreach (Image image in list)
             {
                 images.Add(ConvertImage(image));
             }

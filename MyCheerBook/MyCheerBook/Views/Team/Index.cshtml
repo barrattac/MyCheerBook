@@ -1,0 +1,26 @@
+﻿@model string
+
+@{
+    ViewBag.Title = Model;
+}
+
+<div>
+    <div class="profileLeft">
+        <div class="imageBox">
+            @Html.Action("RandomPic")
+        </div>
+        <div class="leftNav scroll">
+            <ul>
+                <li>@Html.ActionLink("View Images", "Images", "Team", new { }, new { @class = "purple" })</li>
+                <li>@Html.ActionLink("View Videos", "Videos", "Team", new { }, new { @class = "purple" })</li>
+                <li>@Html.ActionLink("View Team Members", "Members", "Team", new { }, new { @class = "purple" })</li>
+            </ul>
+        </div>
+    </div>
+    <div class="profileRight scroll">
+        @*@Html.Action("TopProfileNav")
+        @Html.Action("UpdateStatus")
+        <h3 style="clear: both; text-align: left; padding: 25px;">Team News Feed</h3>
+        @Html.Action("TeamNews")*@
+    </div>
+</div>

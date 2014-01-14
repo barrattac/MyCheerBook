@@ -125,5 +125,15 @@ namespace DAL
             };
             Write("DeleteUserImages", parameters);
         }
+
+        //Gets All Images for a team
+        public List<Image> GetTeamImages(int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID)
+            };
+            return ReadImages("GetTeamImages", parameters);
+        }
     }
 }

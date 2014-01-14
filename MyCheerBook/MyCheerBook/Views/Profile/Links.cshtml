@@ -7,7 +7,7 @@
     {
         foreach (TeamVM vm in Model.Teams)
         {
-            <li>@Html.ActionLink(vm.TeamName, "TeamPage", "Team", vm, new { @class = "purple" })</li>
+            <li>@Html.ActionLink(vm.TeamName, "Index", "Team", new { vm }, new { @class = "purple" })</li>
         }
     }
     @if (Session["UserID"] == Session["ProfileID"])

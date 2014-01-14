@@ -26,6 +26,10 @@ namespace MyCheerBook.Controllers
                 }
                 ViewBag.RegisterError = "Passwords are not valid.  Password must be atleast 8 characters and match.";
             }
+            else
+            {
+                ViewBag.RegisterError = "Email not valid.";
+            }
             if (log.IsExistingUser(user.Email))
             {
                 ViewBag.RegisterError = "Email Address already in use.";

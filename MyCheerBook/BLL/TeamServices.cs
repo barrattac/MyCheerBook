@@ -76,5 +76,32 @@ namespace BLL
             list.Teams = vm;
             return list;
         }
+
+        //Gets team's images
+        public List<ImageVM> GetTeamImages(int teamID)
+        {
+            ImageDAO dao = new ImageDAO();
+            AccountServices log = new AccountServices();
+            return log.ConvertImages(dao.GetTeamImages(teamID)).Images;
+        }
+
+        //Gets a random location for a team image
+        public string RandomImage(int teamID)
+        {
+            if (GetTeamImages(teamID) == null || GetTeamImages(teamID).Count == 0)
+            {
+                return null;
+            }
+            Random rng = new Random();
+            int number = rng.Next(GetTeamImages(teamID).Count);
+            return GetTeamImages(teamID)[number].Location;
+        }
+
+
+
+        //Needs View for following
+        //Images
+        //Videos
+        //Members
     }
 }

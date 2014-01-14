@@ -9,6 +9,13 @@ namespace MyCheerBook.Controllers
 {
     public class TeamController : Controller
     {
+        //Team Home Page
+        public ActionResult Index(TeamVM team)
+        {
+            Session["ProfileID"] = team.ID;
+            return View(team.TeamName);
+        }
+
         //Creates a Team Page
         [HttpGet]
         public ActionResult CreatePage()
@@ -28,12 +35,12 @@ namespace MyCheerBook.Controllers
             return View();
         }
 
-
-        //Need to Style TeamPage
-        //Team Page
-        public ActionResult TeamPage(TeamVM team)
+        //Picks a random pic from team's images
+        public ActionResult RandomPic()
         {
-            return View(team);
+            TeamServices log = new TeamServices();
+            return PartialView("_RandomPic", log.RandomImage(Convert.ToInt32(Session["ProfileID"])));
         }
+
     }
 }
