@@ -147,7 +147,7 @@ namespace BLL
             dao.DeleteTeamImage(imageID, teamID);
         }
 
-        //Add Images to database(images and userImages)
+        //Add Images to database(images and teamImages)
         public void AddImage(int teamID, ImageFM fm)
         {
             ImageDAO dao = new ImageDAO();
@@ -169,6 +169,15 @@ namespace BLL
         {
             VideoDAO dao = new VideoDAO();
             dao.DeleteTeamVideo(videoID, teamID);
+        }
+
+        //Add Video to database(videos and teamVideos)
+        public void AddVideo(int teamID, VideoFM fm)
+        {
+            VideoDAO dao = new VideoDAO();
+            AccountServices log = new AccountServices();
+            dao.AddVideo(log.ConvertVideo(fm));
+            dao.CreateTeamVideo(teamID, dao.GetVideoByLocation(fm.Location).ID);
         }
     }
 }

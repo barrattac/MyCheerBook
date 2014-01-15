@@ -244,6 +244,7 @@
     <Content Include="Views\Team\AddImages.cshtml" />
     <Content Include="Views\Team\Videos.cshtml" />
     <Content Include="Views\Team\DeleteVideo.cshtml" />
+    <Content Include="Views\Team\AddVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -105,7 +105,7 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Images");
         }
 
-        //Determines if a user has creditials to Add things on team page
+        //Determines if a user has creditials to Add images on team page
         public ActionResult AddImage(string view)
         {
             TeamServices ts = new TeamServices();
@@ -165,12 +165,50 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Videos");
         }
 
+        //Determines if a user has creditials to Add video on team page
+        public ActionResult AddVideo(string view)
+        {
+            TeamServices ts = new TeamServices();
+            VideoFM fm = new VideoFM();
+            if (!ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                fm.Location = "No Premissions";
+                return PartialView(view, fm);
+            }
+            return PartialView(view, fm);
+        }
+
+        //For Adding Images
+        [HttpPost]
+        public ActionResult AddVideo(HttpPostedFileBase file, VideoFM video)
+        {
+            AccountServices log = new AccountServices();
+            TeamServices ts = new TeamServices();
+            if (file != null && file.ContentLength > 0)
+            {
+                string ext = Path.GetExtension(file.FileName);
+                if (!log.ValidVideoExt(ext))
+                {
+                    return RedirectToAction("Videos");
+                }
+                video.Location = ("Uploads/Videos/" + log.RngString() + ext);
+                while (System.IO.File.Exists(Server.MapPath("~/" + video.Location)))
+                {
+                    video.Location = ("Uploads/Videos/" + log.RngString() + ext);
+                }
+                file.SaveAs(Server.MapPath("~/" + video.Location));
+            }
+            if (video.Location != null && video.Location != "No Premissions")
+            {
+                ts.AddVideo(Convert.ToInt32(Session["ProfileID"]), video);
+            }
+            return RedirectToAction("Videos");
+        }
 
 
 
 
         //Needs View for following
-        //Videos
         //Members
     }
 }

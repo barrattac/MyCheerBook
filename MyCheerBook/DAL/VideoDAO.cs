@@ -133,5 +133,16 @@ namespace DAL
             };
             Write("DeleteTeamVideos", parameters);
         }
+
+        //Add video to team's video
+        public void CreateTeamVideo(int teamID, int videoID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID),
+                new SqlParameter("@VideoID", videoID)
+            };
+            Write("AddTeamVideo", parameters);
+        }
     }
 }
