@@ -20,7 +20,7 @@
             {
                 <div class="images">
                     <h4>@Model.Videos[i].Title</h4>
-                    <video class="video" controls>
+                    <video class="video">
                         @if (Model.Videos[i].Location[0].ToString() + Model.Videos[i].Location[1].ToString() == "ht")
                         {
                             <source src=@Url.Content(Model.Videos[i].Location) />
