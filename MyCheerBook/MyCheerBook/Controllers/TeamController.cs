@@ -72,7 +72,7 @@ namespace MyCheerBook.Controllers
         public ActionResult TeamName()
         {
             TeamServices ts = new TeamServices();
-            return PartialView("_TeamName", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])).TeamName);
+            return PartialView("_TeamName", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
 
         //View for Images
@@ -211,9 +211,5 @@ namespace MyCheerBook.Controllers
             TeamServices ts = new TeamServices();
             return View(ts.GetTeamMembers(Convert.ToInt32(Session["ProfileID"])));
         }
-
-
-        //Needs View for following
-        //Members
     }
 }
