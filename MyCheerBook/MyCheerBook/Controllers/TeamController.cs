@@ -100,7 +100,6 @@ namespace MyCheerBook.Controllers
         //For Deleting Images from teams
         public ActionResult DeleteImage(int imageID)
         {
-            //Code for deleting Images
             TeamServices ts = new TeamServices();
             ts.DeleteImage(imageID, Convert.ToInt32(Session["ProfileID"]));
             return RedirectToAction("Images");
@@ -145,6 +144,27 @@ namespace MyCheerBook.Controllers
             }
             return RedirectToAction("Images");
         }
+
+        //View for Videos
+        public ActionResult Videos()
+        {
+            TeamServices ts = new TeamServices();
+            if (ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                return View(ts.GetTeamVideos(Convert.ToInt32(Session["ProfileID"])));
+            }
+            return View();
+        }
+
+        //For Deleting Video from teams
+        public ActionResult DeleteVideo(int videoID)
+        {
+            //Code for deleting Images
+            TeamServices ts = new TeamServices();
+            ts.DeleteVideo(videoID, Convert.ToInt32(Session["ProfileID"]));
+            return RedirectToAction("Videos");
+        }
+
 
 
 

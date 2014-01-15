@@ -155,5 +155,20 @@ namespace BLL
             dao.AddImage(log.ConvertImage(fm));
             dao.CreateTeamImage(teamID, dao.GetImageByLocation(fm.Location).ID);
         }
+
+        //Gets team's videos
+        public List<VideoVM> GetTeamVideos(int teamID)
+        {
+            VideoDAO dao = new VideoDAO();
+            AccountServices log = new AccountServices();
+            return log.ConvertVideos(dao.GetTeamVideos(teamID));
+        }
+
+        //Deletes Video from a team
+        public void DeleteVideo(int videoID, int teamID)
+        {
+            VideoDAO dao = new VideoDAO();
+            dao.DeleteTeamVideo(videoID, teamID);
+        }
     }
 }

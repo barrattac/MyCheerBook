@@ -112,5 +112,26 @@ namespace DAL
             };
             Write("DeleteUserVideos", parameters);
         }
+
+        //Gets a list of team's videos
+        public List<Video> GetTeamVideos(int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID)
+            };
+            return ReadVideos("GetTeamVideos", parameters);
+        }
+
+        //Deletes video from user's images
+        public void DeleteTeamVideo(int videoID, int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID),
+                new SqlParameter("@VideoID", videoID)
+            };
+            Write("DeleteTeamVideos", parameters);
+        }
     }
 }

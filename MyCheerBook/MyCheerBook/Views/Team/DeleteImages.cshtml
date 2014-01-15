@@ -2,5 +2,5 @@
 
 @if (Model > 0)
 {
-    @Html.ActionLink("Delete Image", "DeleteImage", new { imageID = Model }, new { @class = "red", onclick = "return confirm('Are you sure you wish to delete image?');" })
+    @Html.ActionLink("Delete Image", "DeleteImage", new { imageID = Model }, new { @class = "red", onclick = "return confirm('Are you sure you wish to delete this image?');" })
 }

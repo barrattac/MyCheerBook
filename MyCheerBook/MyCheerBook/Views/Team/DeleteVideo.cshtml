@@ -1,0 +1,6 @@
+﻿@model int
+
+@if (Model > 0)
+{
+    @Html.ActionLink("Delete Video", "DeleteVideo", new { videoID = Model }, new { @class = "red", onclick = "return confirm('Are you sure you wish to delete this video?');" })
+}

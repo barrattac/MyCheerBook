@@ -249,6 +249,17 @@ namespace BLL
             return vm;
         }
 
+        //Converts a list of videos into a list of View Models
+        public List<VideoVM> ConvertVideos(List<Video> list)
+        {
+            List<VideoVM> vm = new List<VideoVM>();
+            foreach (Video video in list)
+            {
+                vm.Add(ConvertVideo(video));
+            }
+            return vm;
+        }
+
         //Makes sure Uploaded Video is a valid video extention
         public bool ValidVideoExt(string ext)
         {
