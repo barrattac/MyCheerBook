@@ -178,7 +178,7 @@ namespace MyCheerBook.Controllers
             return PartialView(view, fm);
         }
 
-        //For Adding Images
+        //For Adding Videos
         [HttpPost]
         public ActionResult AddVideo(HttpPostedFileBase file, VideoFM video)
         {
@@ -205,7 +205,12 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Videos");
         }
 
-
+        //A view of all the Members of a team
+        public ActionResult Members()
+        {
+            TeamServices ts = new TeamServices();
+            return View(ts.GetTeamMembers(Convert.ToInt32(Session["ProfileID"])));
+        }
 
 
         //Needs View for following
