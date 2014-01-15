@@ -7,6 +7,20 @@ var playing = false;
 var zoom = false;
 var overButtons = false;
 
+$("#play").click(function (){
+    $(".zoom video").get(0).play();
+    $("#play").hide();
+    playing = true;
+    $("#pause").show();
+});
+
+$("#pause").click(function () {
+    $(".zoom video").get(0).pause();
+    $("#pause").hide();
+    playing = false;
+    $("#play").show();
+});
+
 $(".images").click(function () {
     if (!zoom) {
         movie = this;
@@ -23,10 +37,12 @@ function showControls() {
     $(".videoControls").show();
     if (zoom) {
         if (playing) {
-            $("#play").show();
+            $("#play").hide();
+            $("#pause").show();
         }
         else {
-            $("#pause").show();
+            $("#pause").hide();
+            $("#play").show();
         }
         $("#seek").show();
         $("#mute").show();
