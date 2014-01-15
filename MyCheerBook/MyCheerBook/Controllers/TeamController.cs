@@ -68,7 +68,7 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Index", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
 
-        //Team Name to be displayed
+        //Team Name to be displayed(click links to team home page)
         public ActionResult TeamName()
         {
             TeamServices ts = new TeamServices();

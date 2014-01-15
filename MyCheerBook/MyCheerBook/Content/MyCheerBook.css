@@ -149,6 +149,18 @@ p{
     margin: 5px; 
 }
 
+.zoom{
+    position: absolute;
+    left: 433px;
+    top: 62.5px;
+    max-height: 500px; 
+    max-width: 500px; 
+    height: auto; 
+    width: auto;
+    align-content: center;
+    vertical-align: middle;
+}
+
 .image {
     max-height: 210px;
     max-width: 210px;
@@ -204,8 +216,7 @@ p{
     padding: 25px; 
 }
 
-.teamName{
+.teamName {
     color: #FF7DBD;
     text-decoration: none;
 }
-

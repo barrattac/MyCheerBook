@@ -23,7 +23,7 @@
                     }
                     @if (Model.Images[i].Location[0].ToString() + Model.Images[i].Location[1].ToString() != "ht")
                     {
-                        <img src=@Url.Content("~/" + Model.Images[i].Location) class="image" /><br />
+                        <img src=@Url.Content("~/" + Model.Images[i].Location) class="image"/><br />
                     }
                     @Model.Images[i].Title<br />
                     @if (Session["UserID"] == Session["ProfileID"])
@@ -42,3 +42,5 @@
         @Html.Action("AddImage")
     </div>
 }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/imageZoom.js"></script>
