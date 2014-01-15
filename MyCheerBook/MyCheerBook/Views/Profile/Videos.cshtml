@@ -11,7 +11,7 @@
 
     @if (Model.Videos == null)
     {
-        <p>You have not added any videos yet.</p>
+        <p>This user has not added any videos yet.</p>
     }
     else
     {
@@ -20,7 +20,7 @@
             {
                 <div class="images">
                     <h4>@Model.Videos[i].Title</h4>
-                    <video class="video">
+                    <video loop class="video">
                         @if (Model.Videos[i].Location[0].ToString() + Model.Videos[i].Location[1].ToString() == "ht")
                         {
                             <source src=@Url.Content(Model.Videos[i].Location) />
@@ -48,3 +48,5 @@
         @Html.Action("AddVideo")
     </div>
 }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/videoPlayer.js"></script>
