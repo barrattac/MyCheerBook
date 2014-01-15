@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
 }
 
-.rightPadding{
+.rightPadding {
     padding-right: 25px;
 }
 
@@ -58,107 +58,144 @@
     color: #a34386;
 }
 
-.red{
+.red {
     color: red;
 }
 
-.pink{
+.pink {
     color: #FF7DBD;
 }
 
-.scroll{
+.scroll {
     overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-h3{
+h3 {
     text-align: center;
 }
 
-h4{
+h4 {
     text-align: center;
 }
 
-h5{
+h5 {
     text-align: center;
 }
 
-p{
+p {
     padding-left: 25px;
     padding-right: 25px;
 }
 
-.left{
+.left {
     float: left;
     display: inline-block;
     width: 31%;
 }
 
-.middle{
-    float: left;
-    display: inline-block;
-    width: 31%;
-    margin-left: 3%;
-}
-
-.right{
+.middle {
     float: left;
     display: inline-block;
     width: 31%;
     margin-left: 3%;
 }
 
-.profileLeft{
+.right {
+    float: left;
+    display: inline-block;
+    width: 31%;
+    margin-left: 3%;
+}
+
+.profileLeft {
     float: left;
     display: inline-block;
     width: 210px;
     height: 480px;
 }
 
-.profileRight{
+.profileRight {
     float: left;
     display: inline-block;
     width: 1106px;
     height: 480px;
 }
 
-.imageBox{
+.imageBox {
     height: 210px;
     width: 210px;
     text-align: center;
-    vertical-align:middle;
+    vertical-align: middle;
     background-color: black;
 }
 
-.images{
+.images {
     float: left;
     display: inline-block;
     height: 260px;
     width: 210px;
     text-align: center;
-    vertical-align:middle;
-    margin: 5px; 
+    vertical-align: middle;
+    margin: 5px;
 }
 
-.zoom{
+.zoom {
     position: absolute;
     left: 433px;
     top: 62.5px;
-    max-height: 500px; 
-    max-width: 500px; 
-    height: auto; 
+    max-height: 500px;
+    max-width: 500px;
+    height: auto;
     width: auto;
     align-content: center;
     vertical-align: middle;
+}
+
+.videoControls {
+    position: absolute;
+    width: 500px;
+    left: 433px;
+    top: 462.5px;
+}
+
+#play {
+    float: left;
+    display: inline-block;
+}
+
+#pause {
+    float: left;
+    display: inline-block;
+}
+
+#seek {
+    float: left;
+    display: inline-block;
+}
+
+#mute {
+    float: left;
+    display: inline-block;
+}
+
+#volume {
+    float: left;
+    display: inline-block;
+}
+
+#full {
+    float: left;
+    display: inline-block;
 }
 
 .image {
@@ -168,14 +205,14 @@ p{
     width: auto;
 }
 
-.video{
+.video {
     max-height: 210px;
     max-width: 210px;
     height: auto;
     width: auto;
 }
 
-.leftNav{
+.leftNav {
     height: 270px;
     width: 210px;
     background-color: black;
@@ -188,32 +225,32 @@ p{
     width: auto;
 }
 
-.friends{
+.friends {
     float: left;
     display: inline-block;
     height: 125px;
     width: 75px;
     text-align: center;
-    vertical-align:middle;
-    margin: 5px; 
+    vertical-align: middle;
+    margin: 5px;
 }
 
-.friendPic{
+.friendPic {
     max-height: 75px;
     max-width: 75px;
     height: auto;
     width: auto;
 }
 
-.statusUpdate{
+.statusUpdate {
     float: left;
     display: inline-block;
     padding-left: 25px;
 }
 
-.status{
+.status {
     clear: both;
-    padding: 25px; 
+    padding: 25px;
 }
 
 .teamName {
