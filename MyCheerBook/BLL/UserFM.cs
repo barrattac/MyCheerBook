@@ -9,6 +9,8 @@ namespace BLL
 {
     public class UserFM
     {
+        public int ID { get; set; }
+
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]

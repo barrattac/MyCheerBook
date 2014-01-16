@@ -5,6 +5,7 @@
     $("#oldPass").hide();
     $("#newPass").hide();
     $("#confirmPass").hide();
+    $("#button").hide();
 });
 
 $("#name").click(function () {
