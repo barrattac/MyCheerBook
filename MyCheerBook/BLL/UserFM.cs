@@ -25,6 +25,10 @@ namespace BLL
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
+        public string NewPass { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]

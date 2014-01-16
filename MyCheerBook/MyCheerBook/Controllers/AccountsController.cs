@@ -91,10 +91,20 @@ namespace MyCheerBook.Controllers
         }
 
         //Manage Account/Profile
+        [HttpGet]
         public ActionResult Edit()
         {
             AccountServices log = new AccountServices();
-            return View(log.GetUserByID(Convert.ToInt32(Session["UserID"])));
+            UserFM fm = new UserFM();
+            fm.FirstName = log.GetUserByID(Convert.ToInt32(Session["UserID"])).FirstName;
+            fm.LastName = log.GetUserByID(Convert.ToInt32(Session["UserID"])).LastName;
+            fm.Email = log.GetUserByID(Convert.ToInt32(Session["UserID"])).Email;
+            return View(fm);
+        }
+        [HttpPost]
+        public ActionResult Edit(UserFM fm)
+        {
+            return View(fm);
         }
     }
 }

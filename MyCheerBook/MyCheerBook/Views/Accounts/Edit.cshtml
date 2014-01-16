@@ -1,4 +1,4 @@
-﻿@model BLL.UserVM
+﻿@model BLL.UserFM
 
 @{
     ViewBag.Title = "Manage Account";
@@ -10,11 +10,12 @@
     @ViewBag.Error
 </div>
 
-<div id="editForm">
+@using (Html.BeginForm("Edit", "Accounts", FormMethod.Post))
+{
     <table>
         <tbody>
             <tr id="name">
-                <td id="firstName name">
+                <td id="name">
                     First Name:
                 </td>
                 <td id="name">
@@ -23,8 +24,11 @@
                 <td class="green" id="name">
                     Edit
                 </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FirstName, new { @id = "firstName" })
+                </td>
             </tr>
-            <tr id="lastName name">
+            <tr id="name">
                 <td id="name">
                     Last Name:
                 </td>
@@ -33,6 +37,9 @@
                 </td>
                 <td class="green" id="name">
                     Edit
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.LastName, new { @id = "lastName" })
                 </td>
             </tr>
             <tr id="email">
@@ -45,17 +52,28 @@
                 <td class="green" id="email">
                     Edit
                 </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Email, new { @id = "emailBox" })
+                </td>
             </tr>
             <tr id="password">
                 <td id="password">
                     Password:
                 </td>
-                <td id="password">
-                </td>
+                <td id="password"></td>
                 <td class="green" id="password">
                     Edit
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.Password, new { @placeholder = "Current Password", @id = "oldPass" })
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.NewPass, new { @placeholder = "New Password", @id = "newPass" })
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @id = "confirmPass" })
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
+}
