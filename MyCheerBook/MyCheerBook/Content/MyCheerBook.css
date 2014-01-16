@@ -161,43 +161,6 @@ p {
     vertical-align: middle;
 }
 
-.videoControls {
-    position: absolute;
-    width: 500px;
-    left: 433px;
-    top: 462.5px;
-}
-
-#play {
-    float: left;
-    display: inline-block;
-}
-
-#pause {
-    float: left;
-    display: inline-block;
-}
-
-#seek {
-    float: left;
-    display: inline-block;
-}
-
-#mute {
-    float: left;
-    display: inline-block;
-}
-
-#volume {
-    float: left;
-    display: inline-block;
-}
-
-#full {
-    float: left;
-    display: inline-block;
-}
-
 .image {
     max-height: 210px;
     max-width: 210px;

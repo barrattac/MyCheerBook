@@ -1,99 +1,37 @@
-﻿$(document).ready(function () {
-    $(".videoControls").hide();
-});
+﻿//movie = clicked area(container for video)
+//startHeight, and startWidth = screen size in full screen.
+var movie, startHeight, startWidth;
 
-var movie;
-var playing = false;
-var zoom = false;
-var overButtons = false;
-
-$("#play").click(function (){
-    $(".zoom video").get(0).play();
-    $("#play").hide();
-    playing = true;
-    $("#pause").show();
-});
-
-$("#pause").click(function () {
-    $(".zoom video").get(0).pause();
-    $("#pause").hide();
-    playing = false;
-    $("#play").show();
-});
-
+//Determines which video was clicked and enters full screen
 $(".images").click(function () {
-    if (!zoom) {
-        movie = this;
-        $(movie).removeClass("images");
-        $(movie).addClass("zoom");
-        $(".zoom video").removeClass("video");
-        $(".zoom video").get(0).play();
-        playing = true;
-        zoom = true;
+    movie = this;
+    $(movie).addClass("videoFull");    //class used for identification of selected video
+    $(movie).removeClass("images")    //Next 2 lines, Removes classes that limits video size and location
+    $(".videoFull video").removeClass("video")
+    if ($(".videoFull video").get(0).requestFullscreen) {
+        $(".videoFull video").get(0).requestFullscreen();   //IE
+    } else if ($(".videoFull video").get(0).mozRequestFullScreen) {
+        $(".videoFull video").get(0).mozRequestFullScreen(); // Firefox
+    } else if ($(".videoFull video").get(0).webkitRequestFullscreen) {
+        $(".videoFull video").get(0).webkitRequestFullscreen(); // Chrome and Safari
     }
+    $(".videoFull video").get(0).play();    //plays video
+    setTimeout(windowResize, 1000);
 });
 
-function showControls() {
-    $(".videoControls").show();
-    if (zoom) {
-        if (playing) {
-            $("#play").hide();
-            $("#pause").show();
-        }
-        else {
-            $("#pause").hide();
-            $("#play").show();
-        }
-        $("#seek").show();
-        $("#mute").show();
-        $("#volume").show();
-        $("#full").show();
-        $("#close").show();
+//Determines if fullscreeen is exited and resizes video
+function windowResize() {
+    if (startHeight == null) {  //set full screen size
+        startHeight = window.innerHeight;
+        startWidth = window.innerWidth;
+        setTimeout(windowResize, 30);
+    }
+    else if (window.innerHeight != startHeight || window.innerWidth != startWidth) {    //checks screen size against full screen size
+        $(".videoFull video").addClass("video");         //Next 2 lines, add classes that limit video size and location
+        $(movie).addClass("images");
+        $(movie).removeClass("videoFull");        //removes class that identifies selected video
+    }
+    else {
+        setTimeout(windowResize, 30);
     }
 }
-
-$(".images").mouseenter(function () {
-    showControls();
-});
-
-$(".videoControls").mouseenter(function () {
-    overButtons = true;
-    showControls();
-});
-
-function hideButtons() {
-    $(".videoControls").hide();
-    $("#play").hide();
-    $("#pause").hide();
-    $("#seek").hide();
-    $("#mute").hide();
-    $("#volume").hide();
-    $("#full").hide();
-    $("#close").hide();
-}
-
-$(".images").mouseleave(function () {
-    if (!overButtons) {
-        hideButtons();
-    }
-
-});
-
-$(".videoControls").mouseenter(function () {
-    overButtons = true;
-    showControls();
-});
-
-$(".videoControls").mouseleave(function () {
-    overButtons = false;
-    hideButtons();
-});
-
-$("#close").click(function () {
-    $(".zoom video").get(0).pause();
-    $(".zoom video").addClass("video");
-    $(movie).removeClass("zoom");
-    $(movie).addClass("video");
-    playing = false;
-    zoom = false;
-});

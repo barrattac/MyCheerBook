@@ -20,7 +20,7 @@
             {
                 <div class="images">
                     <h4>@Model.Videos[i].Title</h4>
-                    <video loop class="video">
+                    <video class="video">
                         @if (Model.Videos[i].Location[0].ToString() + Model.Videos[i].Location[1].ToString() == "ht")
                         {
                             <source src=@Url.Content(Model.Videos[i].Location) />
@@ -48,14 +48,6 @@
         @Html.Action("AddVideo")
     </div>
 }
-<div class="videoControls">
-    <button type="button" id="play">Play</button>
-    <button type="button" id="pause">Pause</button>
-    <input type="range" id="seek" value="0">
-    <button type="button" id="mute">Mute</button>
-    <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
-    <button type="button" id="full">Full Screen</button>
-    <button type="button" id="close">Close</button>
-</div>
+
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/videoPlayer.js"></script>
