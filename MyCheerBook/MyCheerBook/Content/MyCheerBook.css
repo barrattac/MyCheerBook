@@ -220,3 +220,15 @@ p {
     color: #FF7DBD;
     text-decoration: none;
 }
+
+.green{
+    color: #00FF33;
+}
+
+table{
+    border-spacing: 10px;
+}
+
+.error{
+    color: red;
+}

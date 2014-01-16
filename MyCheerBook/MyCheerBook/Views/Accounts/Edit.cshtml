@@ -1,0 +1,61 @@
+﻿@model BLL.UserVM
+
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+<h2>Manage Account</h2>
+
+<div class="error">
+    @ViewBag.Error
+</div>
+
+<div id="editForm">
+    <table>
+        <tbody>
+            <tr id="name">
+                <td id="firstName name">
+                    First Name:
+                </td>
+                <td id="name">
+                    @Model.FirstName
+                </td>
+                <td class="green" id="name">
+                    Edit
+                </td>
+            </tr>
+            <tr id="lastName name">
+                <td id="name">
+                    Last Name:
+                </td>
+                <td id="name">
+                    @Model.LastName
+                </td>
+                <td class="green" id="name">
+                    Edit
+                </td>
+            </tr>
+            <tr id="email">
+                <td id="email">
+                    Email:
+                </td>
+                <td id="email">
+                    @Model.Email
+                </td>
+                <td class="green" id="email">
+                    Edit
+                </td>
+            </tr>
+            <tr id="password">
+                <td id="password">
+                    Password:
+                </td>
+                <td id="password">
+                </td>
+                <td class="green" id="password">
+                    Edit
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

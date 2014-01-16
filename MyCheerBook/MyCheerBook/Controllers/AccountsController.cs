@@ -89,5 +89,12 @@ namespace MyCheerBook.Controllers
             ViewBag.ErrorMessage = "Your password was not changed.  Try again.";
             return View();
         }
+
+        //Manage Account/Profile
+        public ActionResult Edit()
+        {
+            AccountServices log = new AccountServices();
+            return View(log.GetUserByID(Convert.ToInt32(Session["UserID"])));
+        }
     }
 }

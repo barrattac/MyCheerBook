@@ -182,6 +182,7 @@
     <Content Include="Resources\DefaultImage.jpg" />
     <Content Include="Resources\Logo.gif" />
     <Content Include="Resources\ZebraStripes.jpg" />
+    <Content Include="Scripts\accountManager.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -250,6 +251,7 @@
     <Content Include="Views\Team\DeleteVideo.cshtml" />
     <Content Include="Views\Team\AddVideo.cshtml" />
     <Content Include="Views\Team\Members.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
