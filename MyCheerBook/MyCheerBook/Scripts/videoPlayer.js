@@ -15,6 +15,7 @@ $(".images").click(function () {
     } else if ($(".videoFull video").get(0).webkitRequestFullscreen) {
         $(".videoFull video").get(0).webkitRequestFullscreen(); // Chrome and Safari
     }
+    $(".videoFull video").get(0).currentTime = 0;   //sets the video back to the beginning of the movie
     $(".videoFull video").get(0).play();    //plays video
     setTimeout(windowResize, 1000);
 });
@@ -27,6 +28,7 @@ function windowResize() {
         setTimeout(windowResize, 30);
     }
     else if (window.innerHeight != startHeight || window.innerWidth != startWidth) {    //checks screen size against full screen size
+        $(".videoFull video").get(0).pause();   //pauses the video
         $(".videoFull video").addClass("video");         //Next 2 lines, add classes that limit video size and location
         $(movie).addClass("images");
         $(movie).removeClass("videoFull");        //removes class that identifies selected video
