@@ -251,6 +251,8 @@
     <Content Include="Views\Team\AddVideo.cshtml" />
     <Content Include="Views\Team\Members.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Search\_SearchTeams.cshtml" />
+    <Content Include="Views\Search\_TeamResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

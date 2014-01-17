@@ -1,0 +1,36 @@
+﻿@model List<BLL.TeamVM>
+
+<div class="left;" style="margin: 25px;">
+    <h2>Search Results</h2>
+
+    @if (Model == null)
+    {
+        <h3>That team has not started using MyCheerBook yet.</h3>
+        <p>Try searching more keywords.</p>
+    }
+    else
+    {
+        <h3>@Model.Count teams matched your search.</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="rightPadding">Team Name</th>
+                    <th class="rightPadding">Coach Name</th>
+                    <th class="rightPadding">Location</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td class="rightPadding">@Model[i].TeamName</td>
+                        <td class="rightPadding">@Model[i].Coach</td>
+                        <td class="rightPadding">@Model[i].City, @Model[i].State</td>
+                        <td>@Html.ActionLink("Visit Team Page", "Index", "Team", Model[i], new { @class = "pink" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

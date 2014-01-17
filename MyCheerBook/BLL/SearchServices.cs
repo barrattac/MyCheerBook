@@ -50,7 +50,7 @@ namespace BLL
             {
                 return true;
             }
-            if(word.Length > part.Length && word.ToLower().Contains(part.ToLower()))
+            if (word.Length > part.Length && word.ToLower().Contains(part.ToLower()))
             {
                 return true;
             }
@@ -91,6 +91,49 @@ namespace BLL
             vm.FirstName = user.FirstName;
             vm.LastName = dao.GetProfileImage(user.ProfileImage).Location;
             return vm;
+        }
+
+        //Search for teams
+        public List<TeamVM> SearchTeams(string words)
+        {
+            TeamDAO dao = new TeamDAO();
+            List<string> wordList = SplitWords(words.ToLower());
+            List<TeamVM> results = new List<TeamVM>();
+            for (int i = 0; i < wordList.Count; i++)
+            {
+                if (results == null || results.Count == 0)
+                {
+                    results = ConvertTeams(dao.SearchTeams("%" + wordList[i].ToLower() + "%"));
+                }
+                results = CombineTeams(results, ConvertTeams(dao.SearchTeams(wordList[i])));
+            }
+            return results;
+        }
+        //Converts a list of teams into a list of VMs
+        private List<TeamVM> ConvertTeams(List<Teams> list)
+        {
+            TeamServices log = new TeamServices();
+            List<TeamVM> teams = new List<TeamVM>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                teams.Add(log.ConvertTeam(list[i]));
+            }
+            return teams;
+        }
+        //Combines Results of Team Search and eliminates doubles
+        private List<TeamVM> CombineTeams(List<TeamVM> results, List<TeamVM> list)
+        {
+            TeamServices log = new TeamServices();
+            results.AddRange(list);
+            results.Sort((a, b) => a.TeamName.CompareTo(b.TeamName));
+            for (int i = 1; i < results.Count; i++)
+            {
+                while (results.Count > 1 && results.Count > i && results[i - 1].TeamName == results[i].TeamName)
+                {
+                    results.RemoveAt(i);
+                }
+            }
+            return results;
         }
     }
 }
