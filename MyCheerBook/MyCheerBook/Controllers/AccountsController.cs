@@ -38,7 +38,7 @@ namespace MyCheerBook.Controllers
         }
         
         //Login Page
-        [HttpGet]
+        [HttpGet] *+
         public ActionResult Login()
         {
             return View();
