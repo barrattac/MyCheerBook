@@ -211,5 +211,25 @@ namespace MyCheerBook.Controllers
             TeamServices ts = new TeamServices();
             return View(ts.GetTeamMembers(Convert.ToInt32(Session["ProfileID"])));
         }
+
+        //Button for joining team if not already on team
+        [HttpGet]
+        public ActionResult Join()
+        {
+            TeamServices ts = new TeamServices();
+            ViewBag.TeamMember = null;
+            return PartialView("_Join", ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
+        }
+        [HttpPost]
+        public ActionResult Join(bool join)
+        {
+            TeamServices ts = new TeamServices();
+            if (join)
+            {
+                ts.TeamRequest(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+                ViewBag.TeamMember = "Request Sent";
+            }
+            return PartialView("_Join", false);
+        }
     }
 }

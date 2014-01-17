@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Create Team Page";
 }
-<div class="left;" style="margin: 25px; width: 21%;">
+
+<div style="float: left; margin: 25px; width: 21%; display: inline-block;">
     <h2>Create Team Page</h2>
 
     @using (Html.BeginForm("CreatePage", "Team", FormMethod.Post))
@@ -72,5 +73,6 @@
         </div>
     }
 </div>
-
-@Html.Action("SearchTeams", "Search")
+<div style="float: right; margin: 25px; width: 16%; display: inline-block;">
+    @Html.Action("SearchTeams", "Search")
+</div>

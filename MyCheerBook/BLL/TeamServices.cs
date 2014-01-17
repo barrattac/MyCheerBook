@@ -179,5 +179,21 @@ namespace BLL
             dao.AddVideo(log.ConvertVideo(fm));
             dao.CreateTeamVideo(teamID, dao.GetVideoByLocation(fm.Location).ID);
         }
+
+        //Team Request
+        public void TeamRequest(int userID, int teamID)
+        {
+            TeamDAO dao = new TeamDAO();
+            AccountServices log = new AccountServices();            //  |   Checks to see if their is a user   
+            MailServices mail = new MailServices();                 //  V   to email the team request to.
+            if (dao.GetTeamByID(teamID).Email == null || dao.GetTeamByID(teamID).Email == "" || !log.IsExistingUser(dao.GetTeamByID(teamID).Email))
+            {
+                dao.AddUserTeam(userID, teamID);
+            }
+            else
+            {
+                mail.TeamRequest(userID, teamID);
+            }
+        }
     }
 }

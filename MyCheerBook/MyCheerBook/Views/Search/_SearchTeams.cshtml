@@ -1,9 +1,11 @@
-﻿@using (Html.BeginForm("SearchTeams", "Search", FormMethod.Post))
+﻿<h2>Search For a Team</h2>
+
+@using (Html.BeginForm("SearchTeams", "Search", FormMethod.Post))
 {
     <div>
-        @Html.TextBox("word", "", new { @placeholder = "Team Name, City, State(Abb), etc." })
+        @Html.TextBox("word", "", new { @placeholder = "Team Name, City, State(Abb), etc.", size=30 })
     </div>
     <div>
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search Teams" />
     </div>
 }

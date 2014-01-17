@@ -30,8 +30,7 @@ namespace MyCheerBook.Controllers
         public ActionResult SearchTeams(string word)
         {
             SearchServices log = new SearchServices();
-            return PartialView("_TeamResults", log.SearchTeams(word));
+            return View("_TeamResults", log.SearchTeams(word));
         }
-
 	}
 }
