@@ -19,7 +19,7 @@ namespace BLL
             }
             return true;
         }
-        
+
         //Checks if it is an valid Email
         public bool ValidEmail(string email)
         {
@@ -37,14 +37,14 @@ namespace BLL
             }
             return false;
         }
-        
+
         //Creates a User when Registrating
         public void CreateUser(UserFM userFM)
         {
             UserDAO dao = new UserDAO();
             dao.CreateUser(ConvertUser(userFM));
         }
-        
+
         //Converts Registration From into a user
         public User ConvertUser(UserFM userFM)
         {
@@ -91,7 +91,7 @@ namespace BLL
             }
             return null;
         }
-        
+
         //Checks Password Requirements
         public bool ValidPassword(string pass)
         {
@@ -101,7 +101,7 @@ namespace BLL
             }
             return false;
         }
-        
+
         //Makes sure password and confirm match and that they meet requirements
         public bool ValidPasswords(PasswordFM pass)
         {
@@ -173,7 +173,7 @@ namespace BLL
         {
             {
                 Random rng = new Random();
-                string rngString = "" + Convert.ToChar(rng.Next(97, 123)) + Convert.ToChar(rng.Next(48,58));
+                string rngString = "" + Convert.ToChar(rng.Next(97, 123)) + Convert.ToChar(rng.Next(48, 58));
                 for (int i = 0; i < 5; i++)
                 {
                     int dec = rng.Next(2);
@@ -194,7 +194,7 @@ namespace BLL
         //Makes sure Uploaded Image is a valid image extention
         public bool ValidImageExt(string ext)
         {
-            if(ext == ".gif" | ext == ".jpg" | ext == ".png")
+            if (ext == ".gif" | ext == ".jpg" | ext == ".png")
             {
                 return true;
             }
@@ -208,7 +208,7 @@ namespace BLL
             dao.AddImage(ConvertImage(fm));
             dao.CreateUserImage(userID, dao.GetImageByLocation(fm.Location).ID);
         }
-        
+
         //Converts From into a Image
         public Image ConvertImage(ImageFM fm)
         {
@@ -305,9 +305,12 @@ namespace BLL
         public string UpdateUser(UserFM fm)
         {
             UserDAO dao = new UserDAO();
-            if (fm.Email != GetUserByID(fm.ID).Email && !ValidEmail(fm.Email) && !IsExistingUser(fm.Email))   //user tried to changed email
+            if (fm.Email != GetUserByID(fm.ID).Email)   //user tried to changed email
             {
-                return "That email is not valid.";
+                if (!ValidEmail(fm.Email) || IsExistingUser(fm.Email))
+                {
+                    return "That email is not valid.";
+                }
             }
             if (fm.NewPass != null)     //user tried to change password
             {
