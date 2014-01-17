@@ -17,7 +17,7 @@ namespace BLL
         public string Coach { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Team or Coach's Email")]
+        [Display(Name = "Coach's Email")]
         public string Email { get; set; }
 
         [DataType(DataType.PhoneNumber)]
@@ -40,7 +40,7 @@ namespace BLL
         public int Zip { get; set; }
 
         [DataType(DataType.Url)]
-        [Display(Name = "Website Address")]
+        [Display(Name = "Website")]
         public string Web { get; set; }
     }
 }
