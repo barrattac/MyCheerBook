@@ -1,0 +1,40 @@
+﻿﻿@model BLL.UserFM
+
+@{
+    ViewBag.Title = "Forgot Pass";
+}
+
+<div class="right" style="float: right">
+    <h2 style="text-align: center">Forgot Pass</h2>
+
+    <p style="text-align: center">Fill out the below form to have an email with your password sent to you.</p>
+
+    @ViewBag.Error
+
+    @using (Html.BeginForm("ForgotPass", "Mail", FormMethod.Post))
+    {
+        <div style="float: left; display: inline-block;">
+            @Html.LabelFor(m => m.FirstName)
+            <div>
+                @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", size = 15 })
+            </div>
+        </div>
+        <div style="float: left; display: inline-block;">
+            @Html.LabelFor(m => m.LastName)
+            <div>
+                @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", size = 15 })
+            </div>
+        </div>
+        <div style="clear: both;">
+            @Html.LabelFor(m => m.Email)
+            <div>
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", size = 36 })
+            </div>
+        </div>
+        <div style="clear: both;">
+            <div>
+                <input type="submit" value="Reset Password" />
+            </div>
+        </div>
+    }
+</div>

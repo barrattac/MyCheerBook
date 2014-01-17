@@ -1,0 +1,14 @@
+﻿@model BLL.ImageFM
+
+<div>
+    <h4>Upload Image</h4>
+
+    @ViewBag.Upload
+
+    @using (Html.BeginForm("AddImage", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" accept="image/*" name="file"><br />
+        @Html.TextBoxFor(m => m.Title, new { @placeholder = "Image Caption" })<br />
+        <input type="submit" name="submit" value="Add Image">
+    }
+</div>

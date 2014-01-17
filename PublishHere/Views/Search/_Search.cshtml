@@ -1,0 +1,9 @@
+﻿@using (Html.BeginForm("SearchUsers", "Search", FormMethod.Post))
+{
+    <div>
+        @Html.TextBox("word", "", new { @placeholder = "Friend's Name or Email" })
+    </div>
+    <div>
+        <input type="submit" value="Search" />
+    </div>
+}

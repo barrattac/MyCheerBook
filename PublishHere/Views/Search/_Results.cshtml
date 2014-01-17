@@ -1,0 +1,32 @@
+﻿@model List<BLL.UserVM>
+
+<h2>Search Results</h2>
+
+@if (Model == null)
+{
+    <h3>Your friend has not started using MyCheerBook yet.</h3>
+    <p>Try shorter names, nicknames, or more names.</p>
+}
+else
+{
+    <h3>@Model.Count users matched your search.</h3>
+    <table>
+        <thead>
+            <tr>
+                <th class="rightPadding">Picture</th>
+                <th class="rightPadding">First Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="searchResultsImage rightpadding"><img class="searchResultsImage" src=@Url.Content("~/" + Model[i].LastName) /></td>
+                    <td class="rightPadding">@Model[i].FirstName</td>
+                    <td>@Html.ActionLink("Visit Friend", "FriendsPage", "Profile", new { Model[i].ID }, new { @class = "pink" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

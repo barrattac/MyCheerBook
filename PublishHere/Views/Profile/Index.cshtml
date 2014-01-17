@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = Session["UserName"];
+}
+
+<div>
+    <div class="profileLeft">
+        <div class="imageBox">
+            @Html.Action("ProfileImage")
+        </div>
+        <div class="leftNav scroll">
+            @Html.Action("Links")
+        </div>
+    </div>
+    <div class="profileRight scroll">
+        @Html.Action("TopProfileNav")
+        @Html.Action("UpdateStatus")
+        <h3 style="clear: both; text-align: left; padding: 25px;">News Feed</h3>
+        @Html.Action("Status")
+    </div>
+</div>

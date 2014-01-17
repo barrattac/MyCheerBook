@@ -1,0 +1,20 @@
+﻿@if (Session["UserID"] != null)
+{
+    <p>
+        @Html.ActionLink("" + Session["UserName"] + "", "Index", "Profile", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Log Out", "Logout", "Accounts", new { }, new { @class = "purple" })
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("About", "About", "Home", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "purple" })
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Get Started", "Login", "Accounts", new { }, new { @class = "purple" })
+    </p>
+}

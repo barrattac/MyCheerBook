@@ -1,0 +1,20 @@
+﻿@model BLL.UserVM
+
+
+<div style="text-align: center;">
+    @if (Session["UserID"] != Session["ProfileID"])
+    {
+        <div style="display: inline-block; margin-right: 10px;">
+            <h1 class="pink">Welcome to @Model.FirstName  @Model.LastName's Profile.</h1>
+        </div>
+    }
+    else
+    {
+        <div style="display: inline-block; margin-right: 10px;">
+            <h1 class="pink">Welcome  @Model.FirstName  @Model.LastName to your profile.</h1>
+        </div>
+    }        
+    <div style="display: inline-block; margin-left: 10px;">
+        @Html.Action("FriendRequest")
+    </div>
+</div>

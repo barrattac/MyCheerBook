@@ -1,0 +1,10 @@
+﻿@model BLL.ImageVM
+
+@if (Model != null)
+{
+    <img src=@Model.Location class="image">
+}
+else
+{
+    <img src="~/Resources/DefaultImage.jpg" class="image"/>
+}

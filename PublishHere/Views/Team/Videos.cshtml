@@ -1,0 +1,42 @@
+﻿@model List<BLL.VideoVM>
+
+@{
+    ViewBag.Title = "Team Videos";
+}
+
+<div class="left" style="width: 79%">
+    <h2>@Html.Action("TeamName")'s Videos</h2>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p style="text-align: center">@Html.Action("TeamName") has not added any videos yet.</p>
+    }
+    else
+    {
+        <div>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="images">
+                    <h4>@Model[i].Title</h4>
+                    <video class="video">
+                        @if (Model[i].Location[0].ToString() + Model[i].Location[1].ToString() == "ht")
+                        {
+                            <source src=@Url.Content(Model[i].Location) />
+                        }
+                        @if (Model[i].Location[0].ToString() + Model[i].Location[1].ToString() != "ht")
+                        {
+                            <source src=@Url.Content("~/" + Model[i].Location) />
+                        }
+                        Your browser does not support the this video
+                    </video>
+                    @Html.Action("Permissions", "Team", new { view = "DeleteVideo", ID = Model[i].ID })
+                </div>
+            }
+        </div>
+    }
+</div>
+<div class="right" style="position: absolute; width: 16%">
+    @Html.Action("AddVideo", "Team", new { view = "AddVideo" })
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/videoPlayer.js"></script>

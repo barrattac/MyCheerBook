@@ -1,0 +1,53 @@
+﻿@model BLL.VideosVM
+
+@using BLL
+
+@{
+    ViewBag.Title = "Videos";
+}
+
+<div class="left" style="width: 79%">
+    <h2>Videos</h2>
+
+    @if (Model.Videos == null)
+    {
+        <p>This user has not added any videos yet.</p>
+    }
+    else
+    {
+        <div>
+            @for (int i = 0; i < Model.Videos.Count(); i++)
+            {
+                <div class="images">
+                    <h4>@Model.Videos[i].Title</h4>
+                    <video class="video">
+                        @if (Model.Videos[i].Location[0].ToString() + Model.Videos[i].Location[1].ToString() == "ht")
+                        {
+                            <source src=@Url.Content(Model.Videos[i].Location) />
+                        }
+                        @if (Model.Videos[i].Location[0].ToString() + Model.Videos[i].Location[1].ToString() != "ht")
+                        {
+                            <source src=@Url.Content("~/" + Model.Videos[i].Location) />
+                        }
+                        Your browser does not support the this video
+                    </video>
+                    @if (Session["UserID"] == Session["ProfileID"])
+                    {
+
+                        @Html.ActionLink("Delete", "DeleteVideo", new { videoID = Model.Videos[i].ID }, new { @class = "red", onclick = "return confirm('Are you sure you wish to delete video?');" })
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@if (Session["UserID"] == Session["ProfileID"])
+{
+    <div class="right" style="position: absolute; width: 16%">
+        @Html.Action("AddVideo")
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/videoPlayer.js"></script>

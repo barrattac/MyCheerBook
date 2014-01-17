@@ -1,0 +1,26 @@
+﻿@model List<BLL.UserVM>
+
+@{
+    ViewBag.Title = "Team Members";
+}
+
+<div class="left" style="width: 79%">
+    <h2>Members of @Html.Action("TeamName")</h2>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>There are no members on this team.</p>
+    }
+    else
+    {
+        <div>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="friends">
+                    @Html.Action("FriendPic", "Profile", new { friendID = @Model[i].ID })
+                    @Html.ActionLink(Model[i].FirstName + " " + Model[i].LastName, "FriendsPage", "Profile", new { ID = @Model[i].ID }, new { @class = "pink" })
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,56 @@
+﻿@model BLL.TeamFM
+
+@{
+    ViewBag.Title = "Create Team Page";
+}
+
+@ViewBag.ErrorMessage
+
+<h2>Create Team Page</h2>
+
+@using (Html.BeginForm("CreatePage", "Team", FormMethod.Post))
+{
+        @Html.LabelFor(m => m.TeamName)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TeamName, new { @placeholder = "Team Name" })
+        </div>
+        @Html.LabelFor(m => m.Coach)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Coach, new { @placeholder = "Coach Name" })
+        </div>
+        @Html.LabelFor(m => m.Email)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email" })
+        </div>
+        @Html.LabelFor(m => m.Phone)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Phone, new { @placeholder = "Phone #" })
+        </div>
+        @Html.LabelFor(m => m.Line1)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Line1, new { @placeholder = "Address" })
+        </div>
+        @Html.LabelFor(m => m.Line2)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Line2, new { @placeholder = "Address Line 2" })
+        </div>
+        @Html.LabelFor(m => m.City)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.City, new { @placeholder = "City" })
+        </div>
+        @Html.LabelFor(m => m.State)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.State, new { @placeholder = "State" })
+        </div>
+        @Html.LabelFor(m => m.Zip)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Zip, new { @placeholder = "Zip Code" })
+        </div>
+        @Html.LabelFor(m => m.Web)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Web, new { @placeholder = "Website" })
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Create Page" />
+        </div>
+}

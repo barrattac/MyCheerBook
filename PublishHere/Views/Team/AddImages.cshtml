@@ -1,0 +1,17 @@
+﻿@model BLL.ImageFM
+
+@if (Model.Location != "No Premissions")
+{
+    <div>
+        <h4>Upload Team Image</h4>
+
+        @ViewBag.Upload
+
+        @using (Html.BeginForm("AddImage", "Team", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" accept="image/*" name="file"><br />
+            @Html.TextBoxFor(m => m.Title, new { @placeholder = "Image Caption" })<br />
+            <input type="submit" name="submit" value="Add Image">
+        }
+    </div>
+}

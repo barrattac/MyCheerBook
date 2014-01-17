@@ -1,0 +1,22 @@
+﻿@model List<BLL.TeamVM>
+
+<ul>
+    @if (Model != null)
+    {
+        for (int i = 0; i < Model.Count; i++ )
+        {
+            <li>@Html.ActionLink(Model[i].TeamName, "Index", "Team", Model[i], new { @class = "purple" })</li>
+        }
+    }
+    @if (Session["UserID"] == Session["ProfileID"])
+    {
+        <li>@Html.ActionLink("Add Team", "CreatePage", "Team", new { }, new { @class = "purple" })</li>
+    }
+    <li>@Html.ActionLink("View Images", "Images", "Profile", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("View Videos", "Videos", "Profile", new { }, new { @class = "purple" })</li>
+    <li>@Html.ActionLink("View Friends", "Friends", "Profile", new { }, new { @class = "purple" })</li>
+    @if (Session["UserID"] == Session["ProfileID"])
+    {
+        <li>@Html.ActionLink("Manage Account", "Edit", "Accounts", new { }, new { @class = "purple" })</li>
+    }
+</ul>

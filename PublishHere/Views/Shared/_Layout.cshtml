@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCheerBook - @ViewBag.Title</title>
+    <link href="~/Content/MyCheerBook.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="logo">
+        <a href=@Url.Action("Index", "Home" )>
+            <img class="logo" src=@Url.Content("/Resources/Logo.gif")>
+        </a>
+    </div>
+    <div class="topNav">
+        <div style="float: right; display: inline-block;">
+            @Html.Action("Index", "Search")
+        </div>
+        <div style="float: right; display: inline-block;">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div class="body">
+        @RenderBody()
+    </div>
+    <div class="footer">&copy; @DateTime.Now.Year - MyCheerBook</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

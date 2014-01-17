@@ -1,0 +1,235 @@
+﻿body {
+    border: 1px solid black;
+    margin: 25px;
+    padding: 0px;
+    width: 1316px;
+    height: 625px;
+    overflow: hidden;
+    background-image: url("/Resources/ZebraStripes.jpg");
+    background-size: 1366px, 675px;
+    background-repeat: no-repeat;
+}
+
+.rightPadding {
+    padding-right: 25px;
+}
+
+.logo {
+    display: inline-block;
+    float: left;
+    height: 105px;
+    width: 105px;
+}
+
+.topNav {
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    background-color: black;
+    color: #a34386;
+    height: 75px;
+    width: 1181px;
+    text-align: right;
+    font-size: 30px;
+}
+
+.body {
+    clear: both;
+    height: 480px;
+    width: 1316px;
+    background-image: url("/Resources/Body.jpg");
+    background-size: cover;
+    overflow: auto;
+    color: #FF7DBD;
+}
+
+.footer {
+    background-color: black;
+    width: 1306px;
+    height: 25px;
+    padding: 5px;
+    padding-top: 10px;
+    font-size: 15px;
+    color: white;
+    text-align: right;
+}
+
+.purple {
+    color: #a34386;
+}
+
+.red {
+    color: red;
+}
+
+.pink {
+    color: #FF7DBD;
+}
+
+.scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+}
+
+p {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.left {
+    float: left;
+    display: inline-block;
+    width: 31%;
+}
+
+.middle {
+    float: left;
+    display: inline-block;
+    width: 31%;
+    margin-left: 3%;
+}
+
+.right {
+    float: left;
+    display: inline-block;
+    width: 31%;
+    margin-left: 3%;
+}
+
+.profileLeft {
+    float: left;
+    display: inline-block;
+    width: 210px;
+    height: 480px;
+}
+
+.profileRight {
+    float: left;
+    display: inline-block;
+    width: 1106px;
+    height: 480px;
+}
+
+.imageBox {
+    height: 210px;
+    width: 210px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: black;
+}
+
+.images {
+    float: left;
+    display: inline-block;
+    height: 260px;
+    width: 210px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.zoom {
+    position: absolute;
+    left: 433px;
+    top: 62.5px;
+    max-height: 500px;
+    max-width: 500px;
+    height: auto;
+    width: auto;
+    align-content: center;
+    vertical-align: middle;
+}
+
+.image {
+    max-height: 210px;
+    max-width: 210px;
+    height: auto;
+    width: auto;
+}
+
+.video {
+    max-height: 210px;
+    max-width: 210px;
+    height: auto;
+    width: auto;
+}
+
+.leftNav {
+    height: 270px;
+    width: 210px;
+    background-color: black;
+}
+
+.searchResultsImage {
+    max-height: 50px;
+    max-width: 50px;
+    height: auto;
+    width: auto;
+}
+
+.friends {
+    float: left;
+    display: inline-block;
+    height: 125px;
+    width: 75px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.friendPic {
+    max-height: 75px;
+    max-width: 75px;
+    height: auto;
+    width: auto;
+}
+
+.statusUpdate {
+    float: left;
+    display: inline-block;
+    padding-left: 25px;
+}
+
+.status {
+    clear: both;
+    padding: 25px;
+}
+
+.teamName {
+    color: #FF7DBD;
+    text-decoration: none;
+}
+
+.green{
+    color: #00FF33;
+}
+
+table{
+    border-spacing: 10px;
+    
+}
+
+.error{
+    color: red;
+}

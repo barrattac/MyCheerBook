@@ -1,0 +1,30 @@
+﻿@model BLL.TeamVM
+
+@{
+    ViewBag.Title = Model.TeamName;
+}
+
+<div>
+    <div class="profileLeft">
+        <div class="imageBox">
+            @Html.Action("RandomPic")
+        </div>
+        <div class="leftNav scroll">
+            <ul>
+                <li>@Html.ActionLink("View Images", "Images", "Team", new { }, new { @class = "purple" })</li>
+                <li>@Html.ActionLink("View Videos", "Videos", "Team", new { }, new { @class = "purple" })</li>
+                <li>@Html.ActionLink("View Team Members", "Members", "Team", new { }, new { @class = "purple" })</li>
+            </ul>
+        </div>
+    </div>
+    <div class="profileRight scroll">
+        <div style="text-align: center;">
+            <div style="margin-right: 10px;">
+                <h1 class="pink">Welcome to @Html.Action("TeamName")'s Team Page.</h1>
+            </div>
+        </div>
+        @Html.Action("UpdateTeamNews")
+        <h3 style="clear: both; text-align: left; padding: 25px;">Team News Feed</h3>
+        @Html.Action("TeamNews", "Profile")
+    </div>
+</div>
