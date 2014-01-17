@@ -213,23 +213,19 @@ namespace MyCheerBook.Controllers
         }
 
         //Button for joining team if not already on team
-        [HttpGet]
         public ActionResult Join()
         {
             TeamServices ts = new TeamServices();
             ViewBag.TeamMember = null;
             return PartialView("_Join", ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
         }
-        [HttpPost]
-        public ActionResult Join(bool join)
+        //Request to join a team(sends an email if available)
+        public ActionResult JoinTeam()
         {
             TeamServices ts = new TeamServices();
-            if (join)
-            {
-                ts.TeamRequest(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
-                ViewBag.TeamMember = "Request Sent";
-            }
-            return PartialView("_Join", false);
+            ts.TeamRequest(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
+            ViewBag.TeamMember = "Request Sent";
+            return View("Index", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
     }
 }

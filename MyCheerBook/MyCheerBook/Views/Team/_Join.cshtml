@@ -1,8 +1,6 @@
 ﻿@model bool
 
-@ViewBag.TeamMember
-
 @if (!Model && ViewBag.TeamMember != "Request Sent")
 {
-    @Html.ActionLink("Join Team", "Join", true)
+    @Html.ActionLink("Join Team", "JoinTeam", new { }, new { @class="purple" })
 }

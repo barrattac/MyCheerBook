@@ -87,17 +87,17 @@ namespace BLL
             return false;
         }
         //Insert To and From
-        public MailFM ToFrom(User user)
+        public MailFM ToFrom(string email)
         {
             MailFM mail = new MailFM();
-            mail.To = user.Email;
+            mail.To = email;
             mail.From = "mycheerbook@gmail.com";
             return mail;
         }
         //Constructs Message for Password Reset
         public void SendPass(User user)
         {
-            MailFM mail = ToFrom(user);
+            MailFM mail = ToFrom(user.Email);
             mail.Subject = "MyCheerBook";
             mail.Body = "<p>" + user.FirstName + " " + user.LastName + ",</p><p>UserName: " + user.Email + "<br/>Password: " + user.Password + "</p><p>MyCheerBook Team</p>";
             SendMail(mail);
@@ -105,15 +105,26 @@ namespace BLL
         //Notifies user that someone tried to get thier password
         public void NotifyUser(User user)
         {
-            MailFM mail = ToFrom(user);
+            MailFM mail = ToFrom(user.Email);
             mail.Subject = "MyCheerBook";
             mail.Body = "<p>" + user.FirstName + " " + user.LastName + ",</p><p>Someone tired to reset your password, but was unsessful.  If this was you, try using</br>First Name: " + user.FirstName + "</br>Last Name: " + user.LastName + "</p><p>MyCheerBook Team</p>";
             SendMail(mail);
         }
 
-        internal void TeamRequest(int userID, int teamID)
+        //Request to join team(emailed to team address)
+        public void TeamRequest(int userID, int teamID)
         {
-            throw new NotImplementedException();
+            UserDAO dao = new UserDAO();
+            TeamDAO tdao = new TeamDAO();
+            MailFM fm = ToFrom(tdao.GetTeamByID(teamID).Email);
+            fm.Subject = "Team Request - MyCheerBook";
+            fm.Body = TeamRequestBody(dao.GetUserByID(userID), dao.GetUserByID(tdao.GetTeamByID(teamID).ID));
+            SendMail(fm);
+        }
+        //Constructs Message for Team Request
+        public string TeamRequestBody(User user, User coach)
+        {
+            return ("<p>" + coach.FirstName + " " + coach.LastName + ",</p></br><p>" + user.FirstName + " " + user.LastName + ", requeset to join your team.  If you would like them to join your team, please log into MyCheerBook and add them.</p><br/><p>MyCheerBook Team</p>");
         }
     }
 }
