@@ -17,7 +17,6 @@
     <li>@Html.ActionLink("View Friends", "Friends", "Profile", new { }, new { @class = "purple" })</li>
     @if (Session["UserID"] == Session["ProfileID"])
     {
-        <li>@Html.ActionLink("Change Password", "ChangePassword", "Accounts", new { }, new { @class = "purple" })</li>
         <li>@Html.ActionLink("Manage Account", "Edit", "Accounts", new { }, new { @class = "purple" })</li>
     }
 </ul>
