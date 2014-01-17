@@ -71,25 +71,6 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //Change Password
-        [HttpGet]
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ChangePassword(PasswordFM pass)
-        {
-            AccountServices log = new AccountServices();
-            if (log.ValidPasswords(pass))
-            {
-                log.ChangePassword(pass);
-                return RedirectToAction("Index", "Profile");
-            }
-            ViewBag.ErrorMessage = "Your password was not changed.  Try again.";
-            return View();
-        }
-
         //Manage Account Profile
         [HttpGet]
         public ActionResult Edit()
