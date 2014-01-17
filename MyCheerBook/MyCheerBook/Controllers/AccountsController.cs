@@ -90,7 +90,7 @@ namespace MyCheerBook.Controllers
             return View();
         }
 
-        //Manage Account/Profile
+        //Manage Account Profile
         [HttpGet]
         public ActionResult Edit()
         {
@@ -104,6 +104,9 @@ namespace MyCheerBook.Controllers
         [HttpPost]
         public ActionResult Edit(UserFM fm)
         {
+            AccountServices log = new AccountServices();
+            fm.ID = Convert.ToInt32(Session["UserID"]);
+            ViewBag.Error = log.UpdateUser(fm);
             return View(fm);
         }
     }

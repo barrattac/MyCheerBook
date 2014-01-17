@@ -11,27 +11,32 @@ $(document).ready(function () {
 
 //Add firstname field to form
 $("#name").click(function () {
-    var i = this;
-    $(i).addClass("i");
-    $(".i:nth-child(3)").hide();
-    $(".i:nth-child(2)").hide();
-    $(i).removeClass("i");
+    $("#name td:nth-child(3)").hide();
+    $("#name td:nth-child(2)").hide();
     $("#firstName").show();
     $("#button").show();
 });
 
+//Add lastname field to form
 $("#name2").click(function () {
+    $("#name2 td:nth-child(3)").hide();
+    $("#name2 td:nth-child(2)").hide();
     $("#lastName").show();
     $("#button").show();
 });
 
+//Add email field to form
 $("#email").click(function () {
+    $("#email td:nth-child(3)").hide();
+    $("#email td:nth-child(2)").hide();
     $("#emailBox").show();
     $("#button").show();
 });
 
+//Add password field to form
 $("#password").click(function () {
-    $("#oldPass").show();
+    $("#password td:nth-child(3)").hide();
+    $("#password td:nth-child(2)").hide();
     $("#newPass").show();
     $("#confirmPass").show();
     $("#button").show();

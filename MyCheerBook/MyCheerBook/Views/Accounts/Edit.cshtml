@@ -12,68 +12,65 @@
 
 @using (Html.BeginForm("Edit", "Accounts", FormMethod.Post))
 {
-    <table>
+    <table style="font-size: 30px; margin: 25px;">
         <tbody>
             <tr id="name">
-                <td id="name">
-                    First Name:
-                </td>
-                <td id="name">
-                    @Model.FirstName
-                </td>
-                <td class="green" id="name">
-                    Edit
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.FirstName, new { @id = "firstName" })
-                </td>
-            </tr>
-            <tr id="name2">
-                <td id="name2">
-                    Last Name:
-                </td>
-                <td id="name2">
-                    @Model.LastName
-                </td>
-                <td class="green" id="name2">
-                    Edit
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.LastName, new { @id = "lastName" })
-                </td>
-            </tr>
-            <tr id="email">
-                <td id="email">
-                    Email:
-                </td>
-                <td id="email">
-                    @Model.Email
-                </td>
-                <td class="green" id="email">
-                    Edit
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.Email, new { @id = "emailBox" })
-                </td>
-            </tr>
-            <tr id="password">
-                <td id="password">
-                    Password:
-                </td>
-                <td id="password"></td>
-                <td class="green" id="password">
-                    Edit
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.Password, new { @placeholder = "Current Password", @id = "oldPass" })
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.NewPass, new { @placeholder = "New Password", @id = "newPass" })
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @id = "confirmPass" })
-                </td>
-            </tr>
+        <td>
+            First Name:
+        </td>
+        <td>
+            @Model.FirstName
+        </td>
+        <td class="green">
+            Edit
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.FirstName, new { @id = "firstName" })
+        </td>
+        </tr>
+        <tr id="name2">
+            <td>
+                Last Name:
+            </td>
+            <td>
+                @Model.LastName
+            </td>
+            <td class="green">
+                Edit
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.LastName, new { @id = "lastName" })
+            </td>
+        </tr>
+        <tr id="email">
+            <td>
+                Email:
+            </td>
+            <td>
+                @Model.Email
+            </td>
+            <td class="green">
+                Edit
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Email, new { @id = "emailBox" })
+            </td>
+        </tr>
+        <tr id="password">
+            <td>
+                Password:
+            </td>
+            <td></td>
+            <td class="green">
+                Edit
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.NewPass, new { @placeholder = "New Password", @id = "newPass" })
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @id = "confirmPass" })
+            </td>
+        </tr>
         </tbody>
     </table>
     <input id="button" type="submit" value="Save Changes" />

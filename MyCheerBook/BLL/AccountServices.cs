@@ -300,5 +300,32 @@ namespace BLL
             UserDAO dao = new UserDAO();
             return ConvertUser(dao.GetUserByEmail(email));
         }
+
+        //Updates User and/or returns a error message
+        public string UpdateUser(UserFM fm)
+        {
+            UserDAO dao = new UserDAO();
+            if (fm.Email != GetUserByID(fm.ID).Email && !ValidEmail(fm.Email) && !IsExistingUser(fm.Email))   //user tried to changed email
+            {
+                return "That email is not valid.";
+            }
+            if (fm.NewPass != null)     //user tried to change password
+            {
+                if (!ValidPassword(fm.NewPass) || fm.NewPass != fm.ConfirmPassword)
+                {
+                    return "Password could not be changed to that.";
+                }
+            }
+            else
+            {
+                fm.NewPass = dao.GetUserByID(fm.ID).Password;
+            }
+            User user = ConvertUser(fm);
+            user.ID = fm.ID;
+            user.Password = fm.NewPass;
+            user.ProfileImage = GetUserByID(fm.ID).ProfileImage;
+            dao.UpdateUser(user);
+            return "Information updated.";
+        }
     }
 }
