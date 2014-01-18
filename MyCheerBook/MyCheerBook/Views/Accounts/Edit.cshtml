@@ -6,74 +6,79 @@
 
 <h2>Manage Account</h2>
 
-<div class="error">
-    @ViewBag.Error
+<div class="left">
+    <div class="error">
+        @ViewBag.Error
+    </div>
+    <h4>Update Information</h4>
+    @using (Html.BeginForm("EditTeams", "Accounts", FormMethod.Post))
+    {
+        <table style="font-size: 30px; margin: 25px;">
+            <tbody>
+                <tr id="name">
+                    <td>
+                        First Name:
+                    </td>
+                    <td>
+                        @Model.FirstName
+                    </td>
+                    <td class="green">
+                        Edit
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.FirstName, new { @id = "firstName" })
+                    </td>
+                </tr>
+                <tr id="name2">
+                    <td>
+                        Last Name:
+                    </td>
+                    <td>
+                        @Model.LastName
+                    </td>
+                    <td class="green">
+                        Edit
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.LastName, new { @id = "lastName" })
+                    </td>
+                </tr>
+                <tr id="email">
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        @Model.Email
+                    </td>
+                    <td class="green">
+                        Edit
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Email, new { @id = "emailBox" })
+                    </td>
+                </tr>
+                <tr id="password">
+                    <td>
+                        Password:
+                    </td>
+                    <td></td>
+                    <td class="green">
+                        Edit
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.NewPass, new { @placeholder = "New Password", @id = "newPass" })
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @id = "confirmPass" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input id="button" type="submit" value="Save Changes" />
+    }
 </div>
-
-@using (Html.BeginForm("Edit", "Accounts", FormMethod.Post))
-{
-    <table style="font-size: 30px; margin: 25px;">
-        <tbody>
-            <tr id="name">
-                <td>
-                    First Name:
-                </td>
-                <td>
-                    @Model.FirstName
-                </td>
-                <td class="green">
-                    Edit
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.FirstName, new { @id = "firstName" })
-                </td>
-            </tr>
-            <tr id="name2">
-                <td>
-                    Last Name:
-                </td>
-                <td>
-                    @Model.LastName
-                </td>
-                <td class="green">
-                    Edit
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.LastName, new { @id = "lastName" })
-                </td>
-            </tr>
-            <tr id="email">
-                <td>
-                    Email:
-                </td>
-                <td>
-                    @Model.Email
-                </td>
-                <td class="green">
-                    Edit
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.Email, new { @id = "emailBox" })
-                </td>
-            </tr>
-            <tr id="password">
-                <td>
-                    Password:
-                </td>
-                <td></td>
-                <td class="green">
-                    Edit
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.NewPass, new { @placeholder = "New Password", @id = "newPass" })
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @id = "confirmPass" })
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <input id="button" type="submit" value="Save Changes" />
-}
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/accountManager.js"></script>
+<div class="middle">
+    @Html.Action("EditTeams")
+</div>

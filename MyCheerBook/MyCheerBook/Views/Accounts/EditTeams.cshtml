@@ -1,0 +1,30 @@
+﻿@model List<BLL.TeamVM>
+
+<h4>Manage Teams</h4>
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>You current don't belong to any teams.</p>
+}
+else
+{
+    <table style="font-size: 30px; margin: 25px;">
+        <thead>
+            <tr>
+                <th class="rightPadding">Team Name</th>
+                <th class="rightPadding"></th>
+                <th class="rightPadding"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].TeamName</td>
+                    <td>@Html.ActionLink("X", "DeleteTeam", new { teamID = Model[i].ID }, new { @class = "red", onclick = "return confirm('Are you sure you want to delete this team?');" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

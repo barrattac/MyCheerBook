@@ -90,5 +90,20 @@ namespace MyCheerBook.Controllers
             ViewBag.Error = log.UpdateUser(fm);
             return View(fm);
         }
+
+        //Deletes Teams from Profile
+        [HttpGet]
+        public ActionResult EditTeams()
+        {
+            TeamServices ts = new TeamServices();
+            return PartialView(ts.GetUserTeams(Convert.ToInt32(Session["UserID"])));
+        }
+        [HttpPost]
+        public ActionResult DeleteTeam(int teamID)
+        {
+            TeamServices ts = new TeamServices();
+            ts.DenyRequest(Convert.ToInt32(Session["UserID"]), teamID);
+            return RedirectToAction("Edit");
+        }
     }
 }

@@ -29,8 +29,8 @@ else
                 <tr>
                     <td class="rightpadding">@Model[i].FirstName</td>
                     <td class="rightPadding">@Model[i].LastName</td>
-                    <td>@Html.ActionLink("Accept Request", "AcceptRequest", "Team", new { userID = Model[i].ID }, new { @class = "pink" })</td>
-                    <td>@Html.ActionLink("Deny Request", "DenyRequest", "Team", new { userID = Model[i].ID }, new { @class = "pink" })</td>
+                    <td>@Html.ActionLink("Accept Request", "AcceptRequest", "Team", new { userID = Model[i].ID }, new { @class = "pink", onclick = "return confirm('Are you sure you want to accept this join request?');" })</td>
+                    <td>@Html.ActionLink("Deny Request", "DenyRequest", "Team", new { userID = Model[i].ID }, new { @class = "pink", onclick = "return confirm('Are you sure you want to deny this join request?');" })</td>
                 </tr>
             }
         </tbody>
