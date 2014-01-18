@@ -1,0 +1,38 @@
+﻿@model List<BLL.UserVM>
+
+@{
+    ViewBag.Title = "Pending Join Request";
+}
+
+<h2>Pending Join Request</h2>
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>Your team current has no more pending join request.</p>
+}
+else
+{
+    <h3>@Model.Count users want to join your team.</h3>
+    <table>
+        <thead>
+            <tr>
+                <th class="rightPadding">First Name</th>
+                <th class="rightPadding">Last Name</th>
+                <th class="rightPadding"></th>
+                <th class="rightPadding"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="rightpadding">@Model[i].FirstName</td>
+                    <td class="rightPadding">@Model[i].LastName</td>
+                    <td>@Html.ActionLink("Accept Request", "AcceptRequest", "Team", new { userID = Model[i].ID }, new { @class = "pink" })</td>
+                    <td>@Html.ActionLink("Deny Request", "DenyRequest", "Team", new { userID = Model[i].ID }, new { @class = "pink" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}    

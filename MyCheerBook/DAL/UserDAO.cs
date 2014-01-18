@@ -209,5 +209,15 @@ namespace DAL
             };
             return ReadUsers("GetTeamMembers", parameters);
         }
+
+        //Returns a list of pending request to join a team
+        public List<User> GetPendingRequest(int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@TeamID", teamID)
+            };
+            return ReadUsers("GetTeamJoinRequest", parameters);
+        }
     }
 }

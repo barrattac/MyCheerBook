@@ -192,8 +192,55 @@ namespace BLL
             }
             else
             {
+                dao.SentJoinRequest(userID, teamID);
                 mail.TeamRequest(userID, teamID);
             }
+        }
+
+        //Checks to see if user has a pending request to join team
+        public bool RequestPeding(int userID, int teamID)
+        {
+            UserDAO dao = new UserDAO();
+            foreach (User user in dao.GetPendingRequest(teamID))
+            {
+                if (user.ID == userID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsCoach(int userID, int teamID)
+        {
+            AccountServices log = new AccountServices();
+            if (log.GetUserByID(userID).Email == GetTeamByID(teamID).Email)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //Get Team Join Request
+        public List<UserVM> TeamJoinRequest(int teamID)
+        {
+            UserDAO dao = new UserDAO();
+            AccountServices log = new AccountServices();
+            return log.ConvertUsers(dao.GetPendingRequest(teamID));
+        }
+
+        //Accept Request to join team
+        public void AcceptRequest(int userID, int teamID)
+        {
+            TeamDAO dao = new TeamDAO();
+            dao.AddUserTeam(userID, teamID);
+        }
+
+        //Denies Join Team Request
+        public void DenyRequest(int userID, int teamID)
+        {
+            TeamDAO dao = new TeamDAO();
+            dao.DeleteUserTeam(userID, teamID);
         }
     }
 }

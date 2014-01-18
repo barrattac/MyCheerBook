@@ -212,10 +212,15 @@ namespace MyCheerBook.Controllers
             return View(ts.GetTeamMembers(Convert.ToInt32(Session["ProfileID"])));
         }
 
-        //Button for joining team if not already on team
+        //Button for joining team if not already on team(Or if not already pending request)
         public ActionResult Join()
         {
             TeamServices ts = new TeamServices();
+            if (ts.RequestPeding(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                ViewBag.TeamMember = "Request Sent";
+                return PartialView("_Join", true);
+            }
             ViewBag.TeamMember = null;
             return PartialView("_Join", ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])));
         }
@@ -227,5 +232,37 @@ namespace MyCheerBook.Controllers
             ViewBag.TeamMember = "Request Sent";
             return View("Index", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
+
+        //Button for Managing Team Account
+        public ActionResult ManageAccount()
+        {
+            TeamServices ts = new TeamServices();
+            if(ts.IsCoach(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
+            {
+                return PartialView("_ManageAccount", ts.TeamJoinRequest(Convert.ToInt32(Session["ProfileID"])).Count);
+            }
+            return PartialView("_ManageAccount", 0);
+        }
+
+        //Handles Accepting and Denying Team Join Request
+        public ActionResult PendingJoinRequest()
+        {
+            TeamServices ts = new TeamServices();
+            return View(ts.TeamJoinRequest(Convert.ToInt32(Session["ProfileID"])));
+        }
+        public ActionResult AcceptRequest(int userID)
+        {
+            TeamServices ts = new TeamServices();
+            ts.AcceptRequest(userID, Convert.ToInt32(Session["ProfileID"]));
+            return RedirectToAction("PendingJoinRequest");
+        }
+        public ActionResult DenyRequest(int userID) 
+        {
+            TeamServices ts = new TeamServices();
+            ts.DenyRequest(userID, Convert.ToInt32(Session["ProfileID"]));
+            return RedirectToAction("PendingJoinRequest");
+        }
+
+            
     }
 }

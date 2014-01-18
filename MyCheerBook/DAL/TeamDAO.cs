@@ -159,5 +159,27 @@ namespace DAL
             }
             return null;
         }
+
+        //Add Join Request to Teams
+        public void SentJoinRequest(int userID, int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@TeamID", teamID)
+            };
+            Write("TeamJoinRequest", parameters);
+        }
+
+        //Deletes a team from users
+        public void DeleteUserTeam(int userID, int teamID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@UserID", userID),
+                new SqlParameter("@TeamID", teamID)
+            };
+            Write("DeleteUserTeam", parameters);
+        }
     }
 }

@@ -254,6 +254,8 @@
     <Content Include="Views\Search\_SearchTeams.cshtml" />
     <Content Include="Views\Search\_TeamResults.cshtml" />
     <Content Include="Views\Team\_Join.cshtml" />
+    <Content Include="Views\Team\_ManageAccount.cshtml" />
+    <Content Include="Views\Team\PendingJoinRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

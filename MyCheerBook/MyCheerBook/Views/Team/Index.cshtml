@@ -10,13 +10,24 @@
             @Html.Action("RandomPic")
         </div>
         <div class="leftNav scroll">
-            <ul>
-                <li>@Html.ActionLink("View Images", "Images", "Team", new { }, new { @class = "purple" })</li>
-                <li>@Html.ActionLink("View Videos", "Videos", "Team", new { }, new { @class = "purple" })</li>
-                <li>@Html.ActionLink("View Team Members", "Members", "Team", new { }, new { @class = "purple" })</li>
+            <div style="margin-left: 15px;">
+                @Html.ActionLink("View Images", "Images", "Team", new { }, new { @class = "purple" })
+            </div>
+            <div style="margin-left: 15px;">
+                @Html.ActionLink("View Videos", "Videos", "Team", new { }, new { @class = "purple" })
+            </div>
+            <div style="margin-left: 15px;">
+                @Html.ActionLink("View Team Members", "Members", "Team", new { }, new { @class = "purple" })
+            </div>
+            <div style="margin-left: 15px;">
                 @ViewBag.TeamMember
-                <li>@Html.Action("Join")</li>
-            </ul>
+            </div>
+            <div style="margin-left: 15px;">
+                @Html.Action("ManageAccount")
+            </div>
+            <div style="margin-left: 15px;">
+                @Html.Action("Join")
+            </div>
         </div>
     </div>
     <div class="profileRight scroll">
