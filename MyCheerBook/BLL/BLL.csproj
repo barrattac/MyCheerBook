@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices.cs" />
+    <Compile Include="ContactFM.cs" />
+    <Compile Include="ContactVM.cs" />
     <Compile Include="EventFM.cs" />
     <Compile Include="EventVM.cs" />
     <Compile Include="FriendServices.cs" />

@@ -12,6 +12,7 @@ namespace BLL
         public string CompanyName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public ContactInfo Contact { get; set; }
+        public string ConfirmPass { get; set; }
+        public ContactFM Contact { get; set; }
     }
 }

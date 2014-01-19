@@ -3,9 +3,9 @@
 <div style="clear:both;">
     <div style="float: right; width: 600px; padding-right: 50px;">
         <div class="left" style="float: left; display: inline-block; width: 200px">
-            <h2 style="text-align: left;">Login</h2>
+            <h2 style="text-align: left;">Login for Event Organizers</h2>
             @ViewBag.Error
-            @using (Html.BeginForm("Login", "Accounts", FormMethod.Post))
+            @using (Html.BeginForm("EventOrganizerLogin", "Accounts", FormMethod.Post))
             {
                 <div class="error">
                     @ViewBag.LoginError
@@ -29,40 +29,68 @@
             </div>
         </div>
         <div class="middle" style="float: left; display: inline-block; width: 350px">
-            <h2 style="text-align: left;">Register</h2>
-            @using (Html.BeginForm("Register", "Accounts", FormMethod.Post))
+            <h2 style="text-align: left;">Registration for Event Organizers</h2>
+            @using (Html.BeginForm("EventOrganizerRegister", "Accounts", FormMethod.Post))
             {
                 <div class="error">
                     @ViewBag.RegisterError
                 </div>
                 <div style="float: left; display: inline-block;">
-                    @Html.LabelFor(m => m.FirstName)
+                    @Html.Label("Company Name")
                     <div>
-                        @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", size = 15 })
+                        @Html.TextBoxFor(m => m.CompanyName, new { @placeholder = "Company Name", size = 15 })
                     </div>
                 </div>
                 <div style="float: left; padding-left: 25px; display: inline-block;">
-                    @Html.LabelFor(m => m.LastName)
+                    @Html.Label("Email")
                     <div>
-                        @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", size = 15 })
+                        @Html.TextBoxFor(m => m.Email, new { @placeholder = "Last Name", size = 15 })
                     </div>
                 </div>
                 <div style="clear: both;">
-                    @Html.LabelFor(m => m.Email)
-                    <div>
-                        @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", size = 40 })
-                    </div>
-                </div>
-                <div style="float: left; display: inline-block;">
-                    @Html.LabelFor(m => m.Password)
+                    @Html.Label("Password")
                     <div>
                         @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", size = 15 })
                     </div>
                 </div>
-                <div style="float: left; padding-left: 25px; display: inline-block; ">
-                    @Html.LabelFor(m => m.ConfirmPassword)
+                <div style="float: left; display: inline-block;">
+                    @Html.Label("Confirm Password")
                     <div>
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", size = 15 })
+                        @Html.PasswordFor(m => m.ConfirmPass, new { @placeholder = "Password", size = 15 })
+                    </div>
+                </div>
+                <div style="float: left; padding-left: 25px; display: inline-block; ">
+                    @Html.Label("Phone Number")
+                    <div>
+                        @Html.PasswordFor(m => m.Contact.Phone, new { @placeholder = "Phone Number", size = 15 })
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    @Html.Label("Address")
+                    <div>
+                        @Html.TextBoxFor(m => m.Contact.Line1, new { @placeholder = "Address", size = 40 })
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        @Html.TextBoxFor(m => m.Contact.Line2, new { @placeholder = "Address Line 2", size = 40 })
+                    </div>
+                    <div>
+                        <div style="float: left; display: inline-block;">
+                            @Html.TextBoxFor(m => m.Contact.City, new { @placeholder = "City", size = 19 })
+                        </div>
+                        <div style="float: left; display: inline-block; padding-left: 4px;">
+                            @Html.TextBoxFor(m => m.Contact.State, new { @placeholder = "State", size = 2 })
+                        </div>
+                        <div style="float: left; display: inline-block; padding-left: 4px;">
+                            @Html.TextBoxFor(m => m.Contact.Zip, new { @placeholder = "Zip Code", size = 5 })
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    @Html.Label("Website")
+                    <div>
+                        @Html.TextBoxFor(m => m.Contact.Website, new { @placeholder = "Website", size = 40 })
                     </div>
                 </div>
                 <div style="clear: both;">
