@@ -13,6 +13,10 @@ namespace MyCheerBook.Controllers
         //Team Home Page
         public ActionResult Index(TeamVM vm)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices log = new TeamServices();
             Session["ProfileID"] = vm.ID;
             return View(vm);
@@ -22,6 +26,10 @@ namespace MyCheerBook.Controllers
         [HttpGet]
         public ActionResult CreatePage()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             return View();
         }
         [HttpPost]
@@ -40,6 +48,10 @@ namespace MyCheerBook.Controllers
         //Picks a random pic from team's images
         public ActionResult RandomPic()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices log = new TeamServices();
             return PartialView("_RandomPic", log.RandomImage(Convert.ToInt32(Session["ProfileID"])));
         }
@@ -48,6 +60,10 @@ namespace MyCheerBook.Controllers
         [HttpGet]
         public ActionResult UpdateTeamNews()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             StatusFM fm = new StatusFM();
             TeamServices log = new TeamServices();
             //Determines if the user is part of the team
@@ -71,6 +87,10 @@ namespace MyCheerBook.Controllers
         //Team Name to be displayed(click links to team home page)
         public ActionResult TeamName()
         {
+            if (Session["ProfileID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             return PartialView("_TeamName", ts.GetTeamByID(Convert.ToInt32(Session["ProfileID"])));
         }
@@ -78,6 +98,10 @@ namespace MyCheerBook.Controllers
         //View for Images
         public ActionResult Images()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             if (ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
             {
@@ -89,6 +113,10 @@ namespace MyCheerBook.Controllers
         //Determines if a user has creditials to Delete things on team page
         public ActionResult Permissions(string view, int ID)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             if (ts.Permissions(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
             {
@@ -100,6 +128,10 @@ namespace MyCheerBook.Controllers
         //For Deleting Images from teams
         public ActionResult DeleteImage(int imageID)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             ts.DeleteImage(imageID, Convert.ToInt32(Session["ProfileID"]));
             return RedirectToAction("Images");
@@ -108,6 +140,10 @@ namespace MyCheerBook.Controllers
         //Determines if a user has creditials to Add images on team page
         public ActionResult AddImage(string view)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             ImageFM fm = new ImageFM();
             if (!ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
@@ -148,6 +184,10 @@ namespace MyCheerBook.Controllers
         //View for Videos
         public ActionResult Videos()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             if (ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
             {
@@ -159,7 +199,10 @@ namespace MyCheerBook.Controllers
         //For Deleting Video from teams
         public ActionResult DeleteVideo(int videoID)
         {
-            //Code for deleting Images
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             ts.DeleteVideo(videoID, Convert.ToInt32(Session["ProfileID"]));
             return RedirectToAction("Videos");
@@ -168,6 +211,10 @@ namespace MyCheerBook.Controllers
         //Determines if a user has creditials to Add video on team page
         public ActionResult AddVideo(string view)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             VideoFM fm = new VideoFM();
             if (!ts.IsExistingTeamMember(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
@@ -208,6 +255,10 @@ namespace MyCheerBook.Controllers
         //A view of all the Members of a team
         public ActionResult Members()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             return View(ts.GetTeamMembers(Convert.ToInt32(Session["ProfileID"])));
         }
@@ -215,6 +266,10 @@ namespace MyCheerBook.Controllers
         //Button for joining team if not already on team(Or if not already pending request)
         public ActionResult Join()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             if (ts.RequestPeding(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
             {
@@ -227,6 +282,10 @@ namespace MyCheerBook.Controllers
         //Request to join a team(sends an email if available)
         public ActionResult JoinTeam()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             ts.TeamRequest(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"]));
             ViewBag.TeamMember = "Request Sent";
@@ -236,6 +295,10 @@ namespace MyCheerBook.Controllers
         //Button for Managing Team Account
         public ActionResult ManageAccount()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             if(ts.IsCoach(Convert.ToInt32(Session["UserID"]), Convert.ToInt32(Session["ProfileID"])))
             {
@@ -247,17 +310,29 @@ namespace MyCheerBook.Controllers
         //Handles Accepting and Denying Team Join Request
         public ActionResult PendingJoinRequest()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             return View(ts.TeamJoinRequest(Convert.ToInt32(Session["ProfileID"])));
         }
         public ActionResult AcceptRequest(int userID)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             ts.AcceptRequest(userID, Convert.ToInt32(Session["ProfileID"]));
             return RedirectToAction("PendingJoinRequest");
         }
         public ActionResult DenyRequest(int userID) 
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             TeamServices ts = new TeamServices();
             ts.DenyRequest(userID, Convert.ToInt32(Session["ProfileID"]));
             return RedirectToAction("PendingJoinRequest");

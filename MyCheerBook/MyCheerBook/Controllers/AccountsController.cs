@@ -75,6 +75,10 @@ namespace MyCheerBook.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             AccountServices log = new AccountServices();
             UserFM fm = new UserFM();
             fm.FirstName = log.GetUserByID(Convert.ToInt32(Session["UserID"])).FirstName;
@@ -94,11 +98,19 @@ namespace MyCheerBook.Controllers
         //Deletes Teams from Profile
         public ActionResult EditTeams()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             TeamServices ts = new TeamServices();
             return PartialView(ts.GetUserTeams(Convert.ToInt32(Session["UserID"])).Teams);
         }
         public ActionResult DeleteTeam(int teamID)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             TeamServices ts = new TeamServices();
             ts.DenyRequest(Convert.ToInt32(Session["UserID"]), teamID);
             return RedirectToAction("Edit");
