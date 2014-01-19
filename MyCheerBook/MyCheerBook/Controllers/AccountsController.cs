@@ -92,13 +92,11 @@ namespace MyCheerBook.Controllers
         }
 
         //Deletes Teams from Profile
-        [HttpGet]
         public ActionResult EditTeams()
         {
             TeamServices ts = new TeamServices();
-            return PartialView(ts.GetUserTeams(Convert.ToInt32(Session["UserID"])));
+            return PartialView(ts.GetUserTeams(Convert.ToInt32(Session["UserID"])).Teams);
         }
-        [HttpPost]
         public ActionResult DeleteTeam(int teamID)
         {
             TeamServices ts = new TeamServices();

@@ -22,7 +22,7 @@ else
             {
                 <tr>
                     <td>@Model[i].TeamName</td>
-                    <td>@Html.ActionLink("X", "DeleteTeam", new { teamID = Model[i].ID }, new { @class = "red", onclick = "return confirm('Are you sure you want to delete this team?');" })</td>
+                    <td>@Html.ActionLink("X", "DeleteTeam", new { teamID = Model[i].ID }, new { @class = "red", @style="text-decoration: none;", onclick = "return confirm('Are you sure you want to delete this team?');" })</td>
                 </tr>
             }
         </tbody>
