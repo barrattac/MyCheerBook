@@ -41,11 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices.cs" />
+    <Compile Include="EventFM.cs" />
+    <Compile Include="EventVM.cs" />
     <Compile Include="FriendServices.cs" />
     <Compile Include="ImageFM.cs" />
     <Compile Include="ImagesVM.cs" />
     <Compile Include="MailFM.cs" />
     <Compile Include="MailServices.cs" />
+    <Compile Include="OrganizerFM.cs" />
+    <Compile Include="OrganizerVM.cs" />
     <Compile Include="PasswordFM.cs" />
     <Compile Include="ImageVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
