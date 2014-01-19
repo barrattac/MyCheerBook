@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class EventOrganizer
+    public class Oranizers
     {
         public int ID { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public int Contact { get; set; }
     }
 }

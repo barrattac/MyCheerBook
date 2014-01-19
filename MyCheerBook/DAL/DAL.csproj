@@ -43,7 +43,7 @@
     <Compile Include="ContactInfo.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventDAO.cs" />
-    <Compile Include="EventOrganizer.cs" />
+    <Compile Include="Oranizers.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="ImageDAO.cs" />
     <Compile Include="OrganizerDAO.cs" />

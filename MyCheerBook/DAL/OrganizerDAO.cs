@@ -17,7 +17,7 @@ namespace DAL
         }
 
         //Reads from database for Event Organizers
-        public List<EventOrganizer> ReadEventOrganizer(string statement, SqlParameter[] parameters)
+        public List<Oranizers> ReadEventOrganizer(string statement, SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=MyCheerBook;Integrated Security=SSPI;"))
             {
@@ -30,10 +30,10 @@ namespace DAL
                         command.Parameters.AddRange(parameters);
                     }
                     SqlDataReader data = command.ExecuteReader();
-                    List<EventOrganizer> eventOrganizers = new List<EventOrganizer>();
+                    List<Oranizers> eventOrganizers = new List<Oranizers>();
                     while (data.Read())
                     {
-                        EventOrganizer eventOrganizer = new EventOrganizer();
+                        Oranizers eventOrganizer = new Oranizers();
                         eventOrganizer.ID = Convert.ToInt32(data["ID"]);
                         eventOrganizer.CompanyName = data["CompanyName"].ToString();
                         eventOrganizer.Email = data["Email"].ToString();
@@ -51,6 +51,5 @@ namespace DAL
                 }
             }
         }
-
     }
 }

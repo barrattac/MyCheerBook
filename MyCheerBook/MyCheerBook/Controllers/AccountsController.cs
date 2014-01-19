@@ -37,7 +37,7 @@ namespace MyCheerBook.Controllers
             return View("Login");
         }
         
-        //Login Page
+        //Login and Registration Page
         [HttpGet]
         public ActionResult Login()
         {
@@ -116,10 +116,24 @@ namespace MyCheerBook.Controllers
             return RedirectToAction("Edit");
         }
 
-        //Registration for Event Organizers
-        public ActionResult EventOrganizerRegistration()
+        //Registration Code for Event Organizers
+        [HttpPost]
+        public ActionResult EventOrganizerRegister(OrganizerFM fm)
         {
             return View();
         }
+
+        //Login and Registration for Event Organizers
+        [HttpGet]
+        public ActionResult EventOrganizerLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EventOrganizerLogin(OrganizerFM fm)
+        {
+            return View();
+        }
+
     }
 }
