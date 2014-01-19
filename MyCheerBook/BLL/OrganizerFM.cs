@@ -11,6 +11,6 @@ namespace BLL
     {
         public string CompanyName { get; set; }
         public string Email { get; set; }
-        public int Contact { get; set; }
+        public ContactInfo Contact { get; set; }
     }
 }

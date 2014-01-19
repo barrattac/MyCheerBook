@@ -10,7 +10,7 @@ namespace BLL
     public class EventFM
     {
         public string EventName { get; set; }
-        public int Location { get; set; }
+        public ContactInfo Location { get; set; }
         public int Organizer { get; set; }
         public DateTime Registration { get; set; }
         public DateTime Competition { get; set; }
