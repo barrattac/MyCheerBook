@@ -115,5 +115,11 @@ namespace MyCheerBook.Controllers
             ts.DenyRequest(Convert.ToInt32(Session["UserID"]), teamID);
             return RedirectToAction("Edit");
         }
+
+        //Registration for Event Organizers
+        public ActionResult EventOrganizerRegistration()
+        {
+            return View();
+        }
     }
 }
