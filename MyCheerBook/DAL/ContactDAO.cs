@@ -55,5 +55,15 @@ namespace DAL
                 }
             }
         }
+
+        public int GetContact(ContactInfo contactInfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddContactInfo(ContactInfo contactInfo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

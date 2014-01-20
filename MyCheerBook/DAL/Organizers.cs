@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Oranizers
+    public class Organizers
     {
         public int ID { get; set; }
         public string CompanyName { get; set; }
