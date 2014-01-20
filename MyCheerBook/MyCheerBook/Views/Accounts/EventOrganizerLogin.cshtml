@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="middle" style="float: left; display: inline-block; width: 350px">
-        <h2 style="text-align: left;">Registration for Event Organizers</h2>
+        <h2 style="text-align: left;">Registration for </br> Event Organizers</h2>
         @using (Html.BeginForm("EventOrganizerRegister", "Accounts", FormMethod.Post))
         {
             <div class="error">
@@ -49,7 +49,7 @@
             <div style="float: left; display: inline-block; padding-left:10px;">
                 @Html.Label("Phone Number")
                 <div>
-                    @Html.PasswordFor(m => m.Contact.Phone, new { @placeholder = "Phone Number", size = 16 })
+                    @Html.TextBoxFor(m => m.Contact.Phone, new { @placeholder = "Phone Number", size = 16 })
                 </div>
             </div>
             <div style="float: left; display: inline-block;">
