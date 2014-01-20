@@ -36,7 +36,7 @@ namespace MyCheerBook.Controllers
             }
             return View("Login");
         }
-        
+
         //Login and Registration Page
         [HttpGet]
         public ActionResult Login()
@@ -120,7 +120,27 @@ namespace MyCheerBook.Controllers
         [HttpPost]
         public ActionResult EventOrganizerRegister(OrganizerFM fm)
         {
-            return View();
+            OrganizerServices log = new OrganizerServices();
+            AccountServices services = new AccountServices();
+            if (!log.IsExistingOrganization(fm.Email))
+            {
+                if (services.ValidEmail(fm.Email))
+                {
+                    if (fm.Password != null && services.ValidPassword(fm.Password) && fm.Password == fm.ConfirmPass)
+                    {
+                        log.CreateOrganization(fm);
+                        Session["OrganizerID"] = log.GetOrganizerByEmail(fm.Email).ID;
+                        return View();
+                    }
+                    ViewBag.RegisterError = "Password was not valid.";
+                    return View("EventOrganizerLogin");
+                }
+                ViewBag.RegisterError = "That email is not valid.";
+                return View("EventOrganizerLogin");
+
+            }
+            ViewBag.RegisterError = "That organization already exist.";
+            return View("EventOrganizerLogin");
         }
 
         //Login and Registration for Event Organizers

@@ -51,6 +51,7 @@
     <Compile Include="MailFM.cs" />
     <Compile Include="MailServices.cs" />
     <Compile Include="OrganizerFM.cs" />
+    <Compile Include="OrganizerServices.cs" />
     <Compile Include="OrganizerVM.cs" />
     <Compile Include="PasswordFM.cs" />
     <Compile Include="ImageVM.cs" />

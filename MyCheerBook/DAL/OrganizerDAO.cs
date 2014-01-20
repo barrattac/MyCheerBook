@@ -37,6 +37,7 @@ namespace DAL
                         eventOrganizer.ID = Convert.ToInt32(data["ID"]);
                         eventOrganizer.CompanyName = data["CompanyName"].ToString();
                         eventOrganizer.Email = data["Email"].ToString();
+                        eventOrganizer.Password = data["Password"].ToString();
                         eventOrganizer.Contact = Convert.ToInt32(data["ContactInfo"]);
                         eventOrganizers.Add(eventOrganizer);
                     }
